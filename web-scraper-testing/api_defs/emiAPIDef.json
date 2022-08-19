@@ -1,0 +1,110 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "Real-time dispatch",
+      "description": "<p>The real-time dispatch API provides a GET action and returns a set of three variables &mdash; dispatch prices, generation or dispatch megawatts, and megawatts of load. Note that dispatch prices are similar to but not identical to real-time prices – dispatch prices are generated a few minutes apart from real-time prices.\n</p>\n<p>\nIn order to use the real-time dispatch API you must subscribe to the <a href=\"/products\">Wholesale market prices</a> API product to receive your API key.\n</p>\n\n<p>The real-time dispatch API will return the following fields:</p>\n<ul>\n<li>PointOfConnectionCode</li>\n<li>FiveMinuteIntervalDatetime</li>\n<li>FiveMinuteIntervalNumber</li>\n<li>RunDateTime</li>\n<li>SPDLoadMegawatt</li>\n<li>SPDGenerationMegawatt</li>\n<li>DollarsPerMegawattHour</li>\n</ul>\n\n\n\n<p>A policy has been applied to the wholesale price APIs restricting users to 60 calls per minute and a total of 60 MB of data per hour. The Authority may revise this policy if high rates of utilisation negatively impacts performance.</p>",
+      "version": "1.0"
+    },
+    "servers": [
+      {
+        "url": "https://emi.azure-api.net/real-time-dispatch"
+      }
+    ],
+    "paths": {
+      "/": {
+        "get": {
+          "summary": "Real-time dispatch - GET",
+          "description": "<p>The GET action returns the latest set of real-time dispatch variables as a JSON result set. Optionally the result set can be influenced  by providing a range of OData filters on \n<ul>\n<li>PointOfConnectionCode </li>\n<li>FiveMinuteIntervalDatetime</li>\n<li>FiveMinuteIntervalNumber</li>\n<li>DollarsPerMegawattHour</li>\n</ul>\n<br>\n<p> Some OData filter examples </p>\n<ul>\n<li>For field PointOfConnectionCode, valid operators are: eq, and here are some examples: \n<ul>\n<li>$filter=PointOfConnectionCode eq 'AB1234'  </li>\n</ul>\n</li>\n\n<li>For field FiveMinuteIntervalDatetime, valid operators are: eq, and here are some examples: \n<ul>\n<li>$filter=FiveMinuteIntervalDatetime eq datetime'2020-04-01T00:00'  </li>\n</ul>\n</li>\n\n<li>For field FiveMinuteIntervalNumber, valid operators are: eq, le, ge, and here are some examples: \n<ul>\n<li>$filter=FiveMinuteIntervalNumber eq 15</li>\n<li>$filter=FiveMinuteIntervalNumber ge 23</li>\n <li>$filter=FiveMinuteIntervalNumber le 10</li>\n <li>$filter=FiveMinuteIntervalNumber ge 1 and FiveMinuteIntervalNumber le 2  </li>\n</ul>\n</li>\n</ul>\n<ul>\n<li>For field DollarsPerMegawattHour, valid operators are: eq, le, ge, and here are some examples: <ul>\n<li>$filter=DollarsPerMegawattHour eq 15.0M</li>\n<li>$filter=DollarsPerMegawattHour ge 23.0M</li>\n <li>$filter=DollarsPerMegawattHour le 10.0M</li>\n <li>$filter=DollarsPerMegawattHour ge 199.4M and DollarsPerMegawattHour le 200.1M  </li>\n</ul>\n</li>\n</ul>",
+          "operationId": "5f98fa8b243aa88e0dbe9741",
+          "parameters": [
+            {
+              "name": "$filter",
+              "in": "query",
+              "description": "ODATA to limit result set, eg ?$filter=DollarsPerMegawattHour eq 15.0M",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Real-time dispatch collection",
+              "content": {
+                "application/json": {
+                  "example": [
+                    {
+                      "PointOfConnectionCode": "ABY0111",
+                      "FiveMinuteIntervalDatetime": "2020-10-31T17:00:00.0000000+00:00",
+                      "FiveMinuteIntervalNumber": 1,
+                      "RunDateTime": "2020-10-31T03:59:01.0000000+00:00",
+                      "SPDLoadMegawatt": 2.613,
+                      "SPDGenerationMegawatt": 0,
+                      "DollarsPerMegawattHour": 112
+                    },
+                    {
+                      "PointOfConnectionCode": "ABY1101",
+                      "FiveMinuteIntervalDatetime": "2020-10-31T17:00:00.0000000+00:00",
+                      "FiveMinuteIntervalNumber": 1,
+                      "RunDateTime": "2020-10-31T03:59:01.0000000+00:00",
+                      "SPDLoadMegawatt": 0,
+                      "SPDGenerationMegawatt": 0,
+                      "DollarsPerMegawattHour": 111.88
+                    },
+                    {
+                      "PointOfConnectionCode": "AG1",
+                      "FiveMinuteIntervalDatetime": "2020-10-31T17:00:00.0000000+00:00",
+                      "FiveMinuteIntervalNumber": 1,
+                      "RunDateTime": "2020-10-31T03:59:01.0000000+00:00",
+                      "SPDLoadMegawatt": 0,
+                      "SPDGenerationMegawatt": 0,
+                      "DollarsPerMegawattHour": 0
+                    },
+                    {
+                      "PointOfConnectionCode": "AG2",
+                      "FiveMinuteIntervalDatetime": "2020-10-31T17:00:00.0000000+00:00",
+                      "FiveMinuteIntervalNumber": 1,
+                      "RunDateTime": "2020-10-31T03:59:01.0000000+00:00",
+                      "SPDLoadMegawatt": 0,
+                      "SPDGenerationMegawatt": 0,
+                      "DollarsPerMegawattHour": 0
+                    },
+                    {
+                      "PointOfConnectionCode": "AG3",
+                      "FiveMinuteIntervalDatetime": "2020-10-31T17:00:00.0000000+00:00",
+                      "FiveMinuteIntervalNumber": 1,
+                      "RunDateTime": "2020-10-31T03:59:01.0000000+00:00",
+                      "SPDLoadMegawatt": 0,
+                      "SPDGenerationMegawatt": 0,
+                      "DollarsPerMegawattHour": 0
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "securitySchemes": {
+        "apiKeyHeader": {
+          "type": "apiKey",
+          "name": "Ocp-Apim-Subscription-Key",
+          "in": "header"
+        },
+        "apiKeyQuery": {
+          "type": "apiKey",
+          "name": "subscription-key",
+          "in": "query"
+        }
+      }
+    },
+    "security": [
+      {
+        "apiKeyHeader": [ ]
+      },
+      {
+        "apiKeyQuery": [ ]
+      }
+    ]
+  }

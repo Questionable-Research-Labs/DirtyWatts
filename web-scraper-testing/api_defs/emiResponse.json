@@ -1,0 +1,47 @@
+[
+    {
+        "PointOfConnectionCode": "ABY0111",
+        "FiveMinuteIntervalDatetime": "2020-10-31T17:00:00",
+        "FiveMinuteIntervalNumber": 1,
+        "RunDateTime": "2020-10-31T03:59:01",
+        "SPDLoadMegawatt": 2.613,
+        "SPDGenerationMegawatt": 0.000,
+        "DollarsPerMegawattHour": 112.00
+    },
+    {
+        "PointOfConnectionCode": "ABY1101",
+        "FiveMinuteIntervalDatetime": "2020-10-31T17:00:00",
+        "FiveMinuteIntervalNumber": 1,
+        "RunDateTime": "2020-10-31T03:59:01",
+        "SPDLoadMegawatt": 0.000,
+        "SPDGenerationMegawatt": 0.000,
+        "DollarsPerMegawattHour": 111.88
+    },
+    {
+        "PointOfConnectionCode": "AG1",
+        "FiveMinuteIntervalDatetime": "2020-10-31T17:00:00",
+        "FiveMinuteIntervalNumber": 1,
+        "RunDateTime": "2020-10-31T03:59:01",
+        "SPDLoadMegawatt": 0.000,
+        "SPDGenerationMegawatt": 0.000,
+        "DollarsPerMegawattHour": 0.00
+    },
+    {
+        "PointOfConnectionCode": "AG2",
+        "FiveMinuteIntervalDatetime": "2020-10-31T17:00:00",
+        "FiveMinuteIntervalNumber": 1,
+        "RunDateTime": "2020-10-31T03:59:01",
+        "SPDLoadMegawatt": 0.000,
+        "SPDGenerationMegawatt": 0.000,
+        "DollarsPerMegawattHour": 0.00
+    },
+    {
+        "PointOfConnectionCode": "AG3",
+        "FiveMinuteIntervalDatetime": "2020-10-31T17:00:00",
+        "FiveMinuteIntervalNumber": 1,
+        "RunDateTime": "2020-10-31T03:59:01",
+        "SPDLoadMegawatt": 0.000,
+        "SPDGenerationMegawatt": 0.000,
+        "DollarsPerMegawattHour": 0.00
+    }
+]
