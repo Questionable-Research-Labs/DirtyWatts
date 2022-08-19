@@ -13,9 +13,9 @@ table! {
         id -> Int4,
         connection_code -> Varchar,
         address -> Text,
-        network_region_id -> Numeric,
-        network_region_name -> Text,
-        network_region_zone -> Varchar,
+        network_region_id -> Nullable<Numeric>,
+        network_region_name -> Nullable<Text>,
+        network_region_zone -> Nullable<Varchar>,
         latitude -> Numeric,
         longitude -> Numeric,
     }
