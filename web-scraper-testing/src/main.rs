@@ -9,8 +9,9 @@ mod db;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>>{
-    println!("POWERSTATION STATS:\n{:?}",get_current_power().await?);
-    println!("EMI STATS:\n{:?}",get_emi_stats().await?);
+    println!("POWERSTATION STATS:\n{:?}\n",get_current_power().await?);
+    let connections = get_emi_stats().await?;
+    println!("\nEMI STATS: (connections: {:})\n{:?}",connections.len(),connections[0]);
     Ok(())
 }
 
