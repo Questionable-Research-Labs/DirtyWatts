@@ -1,3 +1,6 @@
-fn main() {
-    println!("Hello, world!");
+mod scraper;
+
+#[tokio::main]
+async fn main() {
+
 }

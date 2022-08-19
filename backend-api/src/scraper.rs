@@ -1,13 +1,6 @@
-use chrono::Local;
+use chrono::{DateTime, Local};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use std::result::Result;
-
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    println!("{:?}", get_current_power().await?);
-    Ok(())
-}
 
 async fn get_current_power() -> anyhow::Result<ApiJson> {
     let api_url = format!(
@@ -17,22 +10,17 @@ async fn get_current_power() -> anyhow::Result<ApiJson> {
 
     let transpower_api_raw = reqwest::get(api_url).await?.text().await?;
 
-    println!("{transpower_api_raw}");
-
     let data: ApiJson = serde_json::from_str(&transpower_api_raw)?;
 
     return Ok(data);
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-enum GenerationReport {
-    GenerationReport {
-        #[serde(alias = "generation")]
-        generation_mw: f64,
-        #[serde(alias = "capacity")]
-        capacity_mw: f64,
-    },
-    Total(f64),
+struct GenerationReport {
+    #[serde(alias = "generation")]
+    generation_mw: f64,
+    #[serde(alias = "capacity")]
+    capacity_mw: f64,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
