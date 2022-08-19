@@ -1,0 +1,4736 @@
+[
+  {
+    "PointOfConnectionCode": "ABY0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": -4.100,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ABY1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ALB0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 86.875,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ALB1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 34.790,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ALB2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "APS0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.101,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "APS0661",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ARA2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ARA2201 ARA0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 16.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ARG1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ARG1101 BRR0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ARI1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.164,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ARI1101 ARI0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 50.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ARI1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ARI1102 ARI0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 40.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ASB0661",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 49.400,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ASB0661 HBK0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 23.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ASB2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ASY0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 9.860,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ASY0661",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ATI2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.435,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ATI2201 ATI0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 21.290,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ATU1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "AVI2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "AVI2201 AVI0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 137.966,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BAL0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 17.003,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BAL1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BDE0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 7.548,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BDE1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BEN2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BEN2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BEN2202 BEN0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 342.980,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BEN3502",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BEN3503",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BHL2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BHL2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BLN0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 42.760,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BLN1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BOB0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 7.742,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BOB1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 51.783,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BPC1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BPD1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 4.226,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BPE0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 54.257,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BPE0331 TWF0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 31.260,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BPE0551",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BPE1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BPE2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BPT1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BRB0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 13.071,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BRB2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BRK0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 13.675,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BRK2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BRK2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BRY0661",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 99.203,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BRY2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BWK1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "BWK1101 WPI0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CBG0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 28.254,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CBG1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CBG1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CLH0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.223,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CLH0661",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CML0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 24.750,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CML1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CML1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CML2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CML2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "COL0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.124,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "COL0661",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.127,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "COL0661 COL0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 18.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CPK0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 12.368,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CPK0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 86.070,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CPK1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CPK1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CPK1103",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CST0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 39.214,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CST1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CUL0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 5.936,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CUL0661",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 3.924,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CUL2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CUL2203",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CYD0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": -6.300,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CYD2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "CYD2201 CYD0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 185.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "DOB0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 3.172,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "DOB0661",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "DOB1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "DOB1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "DRY2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "DRY2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "DVK0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 7.742,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "DVK1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "DVK1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "EDG0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 41.200,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "EDG1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "EDG1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "EDG2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "EDN0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 13.381,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "EDN1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "FHL0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 29.763,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "FHL1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "FKN0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 47.790,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "FKN1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "FKN1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "GFD0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 36.198,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "GFD1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "GFD1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "GLN0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 79.700,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "GLN0332",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 47.258,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "GLN0332 GLN0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 35.500,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "GLN2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "GNY1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "GOR0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 21.732,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "GOR1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "GOR1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "GOR2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "GOR2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "GOT2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "GOT2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "GYM0661",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 7.526,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "GYT0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 6.837,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "GYT1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "GYT1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HAM0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 15.284,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HAM0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 78.529,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HAM0551",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.00
+  },
+  {
+    "PointOfConnectionCode": "HAM1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HAM2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HAY0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 9.552,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HAY0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 9.049,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HAY1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HAY2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HAY3502",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HAY3503",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HEN0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 74.909,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HEN1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HEN2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HEP0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 80.339,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HEP1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HIN0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 26.646,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HIN1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HKK0661",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 2.213,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HLY0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 16.993,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HLY2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 5.275,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HLY2201 HLY1",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HLY2201 HLY2",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HLY2201 HLY4",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HLY2201 HLY5",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 205.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HLY2201 HLY6",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 43.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HOB1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 32.075,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HOB2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HOR0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 5.836,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HOR0661",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 1.811,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HPI2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HPI2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HTI0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 13.071,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HTI1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 1.609,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HUI0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 17.093,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HUI1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HWA0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 16.591,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HWA0332",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 9.419,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HWA1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HWA1101 PTA1",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 11.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HWA1101 PTA2",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 11.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HWA1101 PTA3",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 9.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HWA1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HWA1102 WAA0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 12.780,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HWB0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 68.969,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HWB0331 MAH0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 19.350,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HWB0331 WPI0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HWB1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "HWB2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "IGH1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "INV0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 63.486,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "INV1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "INV2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "INV2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ISL0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 45.778,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ISL0661",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 291.572,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ISL2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "JRD1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.091,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "JRD1101 JRD0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KAI0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 17.305,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KAI0661",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KAW0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 8.619,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KAW0111 TAM0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 24.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KAW0112",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 15.900,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KAW0112 DLS0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KAW0112 ONU0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 26.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KAW0113",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.100,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KAW0113 DLS1",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KAW1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KAW1101 KAG0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 105.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KAW2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KBT0661",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KBT0662",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KBY0661",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 3.018,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KBY0662",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 3.119,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KIK0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 1.409,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KIK1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KIK2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KIN0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 20.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KIN0112",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 11.300,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KIN0112 KIN0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 34.800,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KIN0113",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 35.400,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KIN0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 11.262,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KIN1005",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KIN1009",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KIN1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KIN1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KMO0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 18.903,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KMO1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KMO1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KMO1103",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KMO2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KOE1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 20.904,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KOE1101 NGB0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 33.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KPA1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KPA1101 KPI1",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 5.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KPO1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KPO1101 KPO0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 44.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KPU0661",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 27.852,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KPU1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KPU1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KUM0661",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.382,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KUM0661 KUM0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KWA0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 14.680,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KWA1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "KWA1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "LFD1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "LFD1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 6.737,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "LIV2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "LTN0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 35.896,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "LTN0331 TWF0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 29.300,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "LTN2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "LTN2201 TUR0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 107.400,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "LTN2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MAN2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.857,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MAN2201 MAN0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 788.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MAT1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 4.754,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MAT1101 ANI0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 19.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MAT1101 MAT0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 38.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MCH0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MCH1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MDN1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MDN2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MGM0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 9.653,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MGM1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MHO0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 24.643,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MHO0331 MHO0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MHO1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MHO1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MHT1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MHT1103",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MKE1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MKE1101 MKE1",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MKT1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MLG0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 15.284,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MLG0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 17.797,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MLG1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MLG1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MNG0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 71.792,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MNG1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 3.400,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MNI0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 10.052,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MNI1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MPE1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 74.952,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MST0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 25.238,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MST1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MTI2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MTI2201 MTI0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 92.010,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MTM0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 39.114,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MTM1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MTN0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 10.144,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MTN1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MTN1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MTO0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 14.077,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MTO1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MTO1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MTR0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 3.762,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MTR1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MVE1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "MVE1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "NAP2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "NAP2201 NAP0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 139.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "NAP2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "NAP2202 NTM0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 84.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "NGA1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "NMA0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 26.471,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "NMA0331 WHL0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 26.570,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "NMA2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "NPK0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 2.313,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "NPK1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "NSY0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 26.128,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "NSY0331 PAE0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 6.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "NSY2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OAM0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 21.631,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OAM1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OAM1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OHA2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OHA2201 OHA0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 153.438,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OHB2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OHB2201 OHB0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 132.808,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OHC2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OHC2201 OHC0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 132.808,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OHK2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OHK2201 OHK0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 23.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OHW2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OHW2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OKE1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OKI2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.260,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OKI2201 OKI0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 39.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OKN0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 3.519,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OKN1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ONG0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ONG1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OPI2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OPI2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OPK0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 5.338,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OPK1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OPK1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ORO1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ORO1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OTA0221",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 35.293,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OTA1103",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OTA1104",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OTA1105",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OTA1106",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OTA1107",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OTA1108",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OTA1109",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OTA110A",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OTA2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OTA2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OTA2203",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OTI0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OTI0661",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OWH0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 7.742,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "OWH1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "PAK0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 83.557,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "PAK2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "PAO1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 25.540,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "PEN0221",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 19.406,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "PEN0222",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "PEN0251",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 3.017,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "PEN0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 166.812,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "PEN1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 68.776,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "PEN2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "PIE1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "PNI0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 10.658,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "PNI1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "PNI1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "PPI2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "PPI2201 PPI0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 35.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "PRM0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 39.315,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "PRM2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "PRM2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "PRT2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "PRT2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "RDF0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 35.796,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "RDF1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "RDF1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "RDF2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "RFC1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "RFN1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 1.107,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "RFN1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 1.220,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ROS0221",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 61.838,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ROS1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 32.176,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ROT0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 14.881,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ROT0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 30.649,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ROT1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ROT1101 WHE0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 14.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ROT1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ROX1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ROX1101 ROX0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 40.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ROX2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "ROX2201 ROX0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 120.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "RPO2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "RPO2201 RPO0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 119.999,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "RTO1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "RTR1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "SBK0661",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 30.485,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "SDN0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 43.766,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "SDN2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "SFD0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 16.189,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "SFD1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "SFD2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 1.669,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "SFD2201 SFD21",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "SFD2201 SFD22",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "SFD2201 SPL0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "STK0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 79.986,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "STK0661",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 17.909,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "STK0661 COB0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 1.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "STK1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "STK2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "STU0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 5.634,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "STU1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.00
+  },
+  {
+    "PointOfConnectionCode": "SVL0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 50.778,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "SVL2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "SVL2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "SWN0251",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "SWN2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.139,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "SWN2201 SWN1",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TAK0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 67.167,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TAK2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TAK2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TGA0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 13.373,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TGA0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 53.291,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TGA0331 KMI0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 35.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TGA1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "THI2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "THI2201 THI1",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 78.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "THI2201 THI2",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 79.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TIM0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 42.961,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TIM1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TIM2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TIM2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TKA0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TKA0111 TKA1",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 20.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TKA0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 2.515,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TKA1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TKB2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TKB2201 TKB1",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 112.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TKR0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 61.134,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TKR1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TKU0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 5.172,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TKU2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TKU2201 TKU0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 94.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TMH2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TMI0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 27.752,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TMI1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TMK0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 27.568,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TMK1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TMK1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TMN0551",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TMN2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TMU0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 24.534,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TMU1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TNG0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 18.300,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TNG0551",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TNG2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TRK0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 5.138,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TRK1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TRK1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TRK2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TUI1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 32.679,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TUI1101 KTW0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 7.700,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TUI1101 PRI0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 13.800,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TUI1101 TUI0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 18.500,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TWC2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TWC2201 NZW0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 32.280,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TWC2201 TWF0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 68.190,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TWH0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 68.675,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TWH0331 TRC1",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 42.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TWH0331 TUK0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 42.100,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TWH2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TWI2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 578.200,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TWT2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TWZ0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 3.924,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TWZ2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "TWZ2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "UHT0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 19.306,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "UHT1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WAI0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 7.642,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WAI0501",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.804,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WAI1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WDV0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 1.396,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WDV1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WDV1101 TAP0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 67.770,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WDV1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WEL0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 22.423,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WEL1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WEL1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WGN0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 16.691,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WGN1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WHI0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 12.800,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WHI2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WHI2201 WHI0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WHU0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 17.596,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WHU1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WIL0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 25.479,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WIL0331 MCK0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 53.140,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WIL1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WIL2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WIR0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 58.620,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WIR1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WIR1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WKM2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 6.033,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WKM2201 MOK0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 87.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WKM2201 WKM0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 56.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WKM2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WKO0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 24.735,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WKO1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WPA2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.130,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WPA2201 WPA0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 21.312,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WPR0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 4.528,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WPR0661",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.704,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WPR2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WPR2203",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WPT1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WPT1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WPW0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 11.825,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WPW1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WPW1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WRD0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 38.510,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WRD2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WRK0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 31.271,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WRK0331 RKA0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 33.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WRK0331 TAA0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 24.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WRK2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WRK2201 WRK0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 121.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WTK0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 1.811,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WTK0111 WTK0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 90.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WTK0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WTK1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WTK1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WTK2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WTU0331",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 48.666,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WTU2201",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WTU2202",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WVY0111",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 2.313,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WVY1101",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WVY1101 WPP0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 73.770,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WWD1102",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WWD1102 WWD0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 64.420,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WWD1103",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 0.000,
+    "DollarsPerMegawattHour": 0.02
+  },
+  {
+    "PointOfConnectionCode": "WWD1103 WWD0",
+    "FiveMinuteIntervalDatetime": "2022-08-20T11:25:00",
+    "FiveMinuteIntervalNumber": 6,
+    "RunDateTime": "2022-08-19T23:24:03",
+    "SPDLoadMegawatt": 0.000,
+    "SPDGenerationMegawatt": 63.130,
+    "DollarsPerMegawattHour": 0.02
+  }
+]

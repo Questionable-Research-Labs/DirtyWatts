@@ -3,9 +3,23 @@ use std::fs;
 use chrono::{DateTime, Local, NaiveDateTime, TimeZone};
 use serde::{Deserialize, Serialize};
 use serde_json;
+use dotenv;
 
 pub async fn get_emi_stats() -> Result<Vec<ConnectionPoint>, Box<dyn std::error::Error>> {
-    let raw_data = fs::read_to_string("./api_defs/emiResponse.json")?;
+    dotenv::dotenv().ok();
+    let api_key = dotenv::var("EMI_API_KEY").unwrap();
+    
+    let api_url = "https://emi.azure-api.net/real-time-dispatch";
+    let client = reqwest::Client::new();
+
+    
+    let raw_data = client.get(api_url)
+        .header("Ocp-Apim-Subscription-Key", api_key)
+        .send()
+        .await?
+        .text()
+        .await?;
+
     let data: Vec<ConnectionPointAPI> = serde_json::from_str(&raw_data)?;
     let formatted: Vec<ConnectionPoint> = data
         .iter()
@@ -20,16 +34,9 @@ pub async fn get_emi_stats() -> Result<Vec<ConnectionPoint>, Box<dyn std::error:
             mwh_price: x.mwh_price,
         })
         .collect();
+    
     return Ok(formatted);
 }
-
-// "PointOfConnectionCode": "ABY0111",
-// "FiveMinuteIntervalDatetime": "2020-10-31T17:00:00",
-// "FiveMinuteIntervalNumber": 1,
-// "RunDateTime": "2020-10-31T03:59:01",
-// "SPDLoadMegawatt": 2.613,
-// "SPDGenerationMegawatt": 0.000,
-// "DollarsPerMegawattHour": 112.00
 
 #[derive(Serialize, Deserialize, Debug)]
 struct ConnectionPointAPI {
