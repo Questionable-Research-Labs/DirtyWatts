@@ -71,12 +71,12 @@ function update() {
 
             // UPDATE LIGHT
 
-            if(percent_fossil > 20){
-                percent_fossil = 20
+            if(percent_fossil > 10){
+                percent_fossil = 10
             }
             let fossil_amount = 0 
-            fossil_amount = percent_fossil / 20
-            console.log("Fossil: " + fossil_amount + " (% / 20)")
+            fossil_amount = percent_fossil / 10
+            console.log("Fossil: " + fossil_amount + " (% / 10)")
             let red_value = 0
             let green_value = 0
             red_value = Math.round(255 * fossil_amount)
