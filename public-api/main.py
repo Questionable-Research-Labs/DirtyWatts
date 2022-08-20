@@ -8,6 +8,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import RedirectResponse
 
+from typing import Union
+
+
 from pydantic import BaseModel
 import os
 from dotenv import load_dotenv
@@ -95,9 +98,9 @@ class ConnectionPoint(BaseModel):
     mwh_price: float
     latitude: float
     longitude: float
-    network_region_id: int | None
-    network_region_name: str | None
-    network_region_zone: str | None
+    network_region_id: Union[int, None]
+    network_region_name: Union[str, None]
+    network_region_zone: Union[str, None]
     address: str
 
 
