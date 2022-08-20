@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from responseModels import PowerStationStats, PowerTypes, PowerstationUpdatePackage, ConnectionPoint
+from responseModels import PowerStationStats, PowerstationUpdatePackage, ConnectionPoint, power_type_count
 from typing import List
 import db
 router = APIRouter(
@@ -10,8 +10,13 @@ router = APIRouter(
 
 @router.get("/power_stations", response_model=PowerstationUpdatePackage)
 async def power_stations():
-    query = db.session.query(db.generationLevels, db.powerSources).join(
-        db.powerSources, db.generationLevels.c.source_id == db.powerSources.c.id)
+    query = (
+        db.session.query(db.generationLevels, db.powerSources)
+        .join(db.powerSources, db.generationLevels.c.source_id == db.powerSources.c.id)
+        .order_by(db.generationLevels.c.reading_timestamp.desc())
+        .limit(power_type_count)
+    )
+
     allPowerTypes = query.all()
     print(allPowerTypes[0]["kind"])
     updateTime = allPowerTypes[0]["reading_timestamp"]

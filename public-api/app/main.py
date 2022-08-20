@@ -9,6 +9,7 @@ from starlette.responses import RedirectResponse
 
 import db
 import liveRoutes
+import historyRoutes
 
 import os
 from dotenv import load_dotenv
@@ -51,3 +52,4 @@ async def redirect_to_docs():
     return RedirectResponse(url="/docs")
 
 app.include_router(liveRoutes.router)
+app.include_router(historyRoutes.router)
