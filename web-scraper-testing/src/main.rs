@@ -5,6 +5,7 @@ use crate::{power_station::get_current_power, emi_stats::get_emi_stats};
 
 mod power_station;
 mod emi_stats;
+mod db;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>>{
