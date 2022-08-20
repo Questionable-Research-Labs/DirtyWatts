@@ -1,6 +1,6 @@
 import { writable, type Writable } from "svelte/store";
-import type { ConnectionPoint, PowerStationsResponse, PowerType } from "./api";
+import type { ConnectionPoint, PowerStationsResponse } from "./api";
 
-export let powerTypes: Writable<PowerStationsResponse | null> = writable(null);
-export let connectionPoints: Writable<ConnectionPoint[]> = writable([]);
-export let powerTypesHistory: Writable<PowerStationsResponse[]> = writable([]);
+export const powerTypes: Writable<PowerStationsResponse | null> = writable(null);
+export const connectionPoints: Writable<ConnectionPoint[]> = writable([]);
+export const powerTypesHistory: Writable<PowerStationsResponse[]> = writable([]);
