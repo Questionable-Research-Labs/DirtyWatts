@@ -5,7 +5,7 @@
     import ConnectionMap from "$lib/ConnectionMap.svelte";
 </script>
 
-<div class="heading section">
+<div class="heading section section--fit">
     <img class="heading__logo" src={Logo} width="512" height="512" alt="Dirty Watts Logo"/>
     <div>
         <h1 class="section__title">Dirty Watts</h1>
@@ -20,8 +20,6 @@
 <img src={Prints} class="prints">
 
 <PowerStations/>
-<ConnectionMap/>
-
 
 <style lang="scss">
   // Force scrollbar so model poup doesn't shift layout
@@ -47,6 +45,12 @@
     display: block;
     width: 100%;
     max-width: 256px;
+  }
+
+  @media all and (max-width: 1000px) {
+    .heading {
+      flex-flow: column;
+    }
   }
 
 </style>

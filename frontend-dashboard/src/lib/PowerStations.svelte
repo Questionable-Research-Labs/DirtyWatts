@@ -85,7 +85,7 @@
     });
 </script>
 
-<section class="section">
+<section class="section section--fit">
     {#if $coalPercent > 0}
         <CoalPower percent={$coalPercent}/>
     {/if}
