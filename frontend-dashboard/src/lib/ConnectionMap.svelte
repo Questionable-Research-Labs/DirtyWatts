@@ -28,6 +28,10 @@
     });
 </script>
 
+<section class="section">
+    <h1 class="section__title">Grid Connection Map</h1>
+    <p></p>
+</section>
 <section class="map-container">
     <div class="map-wrapper">
         <Map
