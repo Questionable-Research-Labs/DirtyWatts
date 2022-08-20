@@ -1,11 +1,12 @@
 <script lang="ts">
     import { Map, Marker, controls } from "@beyonk/svelte-mapbox";
     import { onMount } from "svelte";
-    import { getConnectionPoints, type ConnectionPoint } from "./api";
+    import type { ConnectionPoint } from "./api";
     import ConnectionPointHistory from "./ConnectionPointHistory.svelte";
     import MapIcon from "./MapIcon.svelte";
 
     import { getContext } from "svelte";
+    import { connectionPoints } from "./stores";
     const { open } = getContext("simple-modal");
 
     const { GeolocateControl, NavigationControl, ScaleControl } = controls;
@@ -16,8 +17,6 @@
     const ACCESS_TOKEN =
         "pk.eyJ1IjoiZmFsbHN0b3AiLCJhIjoiY2w3MjkyYTFvMHZ6eDN2bXF5aGRveW50cyJ9.0Grfc0Ws4WVdgsGeiXEwrA";
 
-    let connection_points: ConnectionPoint[] = [];
-
     onMount(async () => {
         if (mapComponent) {
             mapComponent.setCenter([174.1148181731923, -40.8804662625221]); // zoom is optional
@@ -26,7 +25,6 @@
                 zoom: 4,
             }); // documentation (https://docs.mapbox.com/mapbox-gl-js/example/flyto)
         }
-        connection_points = await getConnectionPoints();
     });
 </script>
 
@@ -40,7 +38,7 @@
                 style: "mapbox://styles/mapbox/dark-v10",
             }}
         >
-            {#each connection_points as point}
+            {#each $connectionPoints as point}
                 {#if point.generation_mw > 0 || point.load_mw > 0}
                     <Marker
                         lat={point.latitude}
@@ -55,11 +53,17 @@
                             <span class="popup-header">{point.address}</span>
                             <div class="popup-content">
                                 <span class="popup-content-label">Load:</span>
-                                <span class="popup-content-value">{point.load_mw.toFixed(1)} MW</span>
+                                <span class="popup-content-value"
+                                    >{point.load_mw.toFixed(1)} MW</span
+                                >
                             </div>
                             <div class="popup-content">
-                                <span class="popup-content-label">Generation:</span>
-                                <span class="popup-content-value">{point.generation_mw.toFixed(1)} MW</span>
+                                <span class="popup-content-label"
+                                    >Generation:</span
+                                >
+                                <span class="popup-content-value"
+                                    >{point.generation_mw.toFixed(1)} MW</span
+                                >
                             </div>
                             <button
                                 class="popup-more-info"
@@ -69,10 +73,9 @@
                                             point.connection_code,
                                     });
                                 }}
-                                >
-                                View History
-                            </button
                             >
+                                View History
+                            </button>
                         </div>
                     </Marker>
                 {/if}
