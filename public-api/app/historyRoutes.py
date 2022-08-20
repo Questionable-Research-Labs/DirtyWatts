@@ -1,3 +1,5 @@
+from datetime import datetime
+from xmlrpc.client import DateTime
 from fastapi import APIRouter
 from responseModels import PowerStationStats, PowerTypes, PowerstationUpdatePackage, power_type_count
 from typing import List
@@ -9,12 +11,14 @@ router = APIRouter(
     responses={404: {"description": "Not found"}},
 )
 
-@router.get("/power_stations")
-async def power_stations():
+@router.get("/power_stations", response_model=List[PowerstationUpdatePackage])
+async def power_stations(start: datetime = datetime.min, end: datetime = datetime.max):
     query = (
         db.session.query(db.generationLevels, db.powerSources)
         .join(db.powerSources, db.generationLevels.c.source_id == db.powerSources.c.id)
         .order_by(db.generationLevels.c.reading_timestamp.desc())
+        .filter(db.generationLevels.c.reading_timestamp <= end)
+        .filter(db.generationLevels.c.reading_timestamp >= start)
     )
     allPowerTypes = list(chunks(query.all(),power_type_count))
     print(len(allPowerTypes))
