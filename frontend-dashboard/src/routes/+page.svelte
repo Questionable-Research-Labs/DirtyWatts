@@ -12,7 +12,7 @@
 <PowerStations/>
 
 <section class="section">
-    <h1 class="section__title">Connection Map</h1>
+    <h1 class="section__title">Grid Connection Map</h1>
 </section>
 <ConnectionMap/>
 

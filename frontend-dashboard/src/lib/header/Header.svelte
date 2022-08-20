@@ -1,9 +1,9 @@
 <script lang="ts">
-    import Logo from "$assets/img/logo.svg"
+    import LogoNB from "$assets/img/logo-nb.svg"
 </script>
 
 <header class="header">
-    <img src={Logo} alt="Dirty Watts Logo" class="header__logo" width="128" height="128"/>
+    <img src={LogoNB} alt="Dirty Watts Logo" class="header__logo" width="100" height="100"/>
     <h1 class="header__title">Dirty Watts</h1>
 </header>
 
