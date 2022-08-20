@@ -22,5 +22,8 @@
 </section>
 
 <style lang="scss">
-
+    // Force scrollbar so model poup doesn't shift layout
+    :global(html) {
+        overflow-y: scroll;
+    }
 </style>

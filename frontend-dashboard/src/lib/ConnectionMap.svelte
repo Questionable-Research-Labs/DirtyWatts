@@ -2,17 +2,15 @@
     import { Map, Marker, controls } from "@beyonk/svelte-mapbox";
     import { onMount } from "svelte";
     import { getConnectionPoints, type ConnectionPoint } from "./api";
-import MapIcon from "./MapIcon.svelte";
+    import ConnectionPointHistory from "./ConnectionPointHistory.svelte";
+    import MapIcon from "./MapIcon.svelte";
+
+    import { getContext } from "svelte";
+    const { open } = getContext("simple-modal");
+
     const { GeolocateControl, NavigationControl, ScaleControl } = controls;
 
     let mapComponent: any;
-
-    // Define this to handle `eventname` events - see [GeoLocate Events](https://docs.mapbox.com/mapbox-gl-js/api/markers/#geolocatecontrol-events)
-    function eventHandler(e) {
-        const data = e.detail;
-        console.log(data);
-        // do something with `data`, it's the result returned from the mapbox event
-    }
 
     // Public key for Mapbox
     const ACCESS_TOKEN =
@@ -22,7 +20,6 @@ import MapIcon from "./MapIcon.svelte";
 
     onMount(async () => {
         if (mapComponent) {
-            // Usage of methods like setCenter and flyto
             mapComponent.setCenter([174.1148181731923, -40.8804662625221]); // zoom is optional
             mapComponent.flyTo({
                 center: [174.1148181731923, -40.8804662625221],
@@ -48,10 +45,35 @@ import MapIcon from "./MapIcon.svelte";
                     <Marker
                         lat={point.latitude}
                         lng={point.longitude}
-                        label={`${point.load_mw > 0 ? `Using ${point.load_mw} MW`:""}${point.load_mw > 0 && point.generation_mw > 0 ? " && ": ""}${point.generation_mw > 0 ? `Generating: ${point.generation_mw} MW`:""}`}
                         popupClassName="class-name"
                     >
-                        <MapIcon generateMW={point.generation_mw} loadMW={point.load_mw} />
+                        <MapIcon
+                            generateMW={point.generation_mw}
+                            loadMW={point.load_mw}
+                        />
+                        <div slot="popup" class="popup">
+                            <span class="popup-header">{point.address}</span>
+                            <div class="popup-content">
+                                <span class="popup-content-label">Load:</span>
+                                <span class="popup-content-value">{point.load_mw.toFixed(1)} MW</span>
+                            </div>
+                            <div class="popup-content">
+                                <span class="popup-content-label">Generation:</span>
+                                <span class="popup-content-value">{point.generation_mw.toFixed(1)} MW</span>
+                            </div>
+                            <button
+                                class="popup-more-info"
+                                on:click={() => {
+                                    open(ConnectionPointHistory, {
+                                        connectionPointID:
+                                            point.connection_code,
+                                    });
+                                }}
+                                >
+                                View History
+                            </button
+                            >
+                        </div>
                     </Marker>
                 {/if}
             {/each}
@@ -70,12 +92,35 @@ import MapIcon from "./MapIcon.svelte";
         padding-bottom: 56.25%; /* 16:9 */
         height: 0;
         overflow: show;
+
         .map-wrapper {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+        }
+    }
+
+    .popup {
+        .popup-header {
+            font-size: 1rem;
+            font-weight: 900;
+            letter-spacing: 0.1rem;
+        }
+        .popup-content-label {
+            font-size: 0.8rem;
+            font-weight: 900;
+        }
+        .popup-more-info {
+            min-width: 100%;
+            font-size: 0.8rem;
+            font-weight: 900;
+            color: #fff;
+            background: #333;
+            padding: 0.5em;
+            border: none;
+            cursor: pointer;
         }
     }
 </style>

@@ -14,7 +14,7 @@ export interface PowerType {
 
 export interface ConnectionPoint {
     connection_code: string,
-    timestamp: Date,
+    timestamp: string,
     load_mw: number,
     generation_mw: number,
     mwh_price: number,
@@ -40,10 +40,8 @@ export async function getPowerStationsHistory(): Promise<PowerStationsResponse[]
 }
 
 export async function getConnectionPoints(): Promise<ConnectionPoint[]> {
-    return fetchAPI<ConnectionPoint[]>("live/grid_connection_points").then(points=>{
-        return points.map(point=>{return({
-                ...point,
-                timestamp: new Date(point.timestamp) || point.timestamp
-        })})
-    })
+    return fetchAPI<ConnectionPoint[]>("live/grid_connection_points")
+}
+export async function getConnectionPointHistory(point_code: string): Promise<ConnectionPoint[]> {
+    return fetchAPI<ConnectionPoint[]>(`history/grid_connection_points/${point_code}`)
 }
