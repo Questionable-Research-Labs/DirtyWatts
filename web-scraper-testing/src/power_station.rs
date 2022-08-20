@@ -41,7 +41,7 @@ pub struct PowerTypes {
     #[serde(alias = "Hydro")]
     pub hydro: PowerStationType,
     #[serde(alias = "Liquid")]
-    pub liquid: PowerStationType,
+    pub diesel: PowerStationType,
     #[serde(alias = "Wind")]
     pub wind: PowerStationType,
 }
