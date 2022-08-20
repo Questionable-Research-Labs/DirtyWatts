@@ -19,7 +19,7 @@ client.on('connect', function () {
 
 app.post('/socket_1', function (req, res) {
     res.send(req.body)
-    console.log(req.body)
+    console.log(JSON.stringify(req.body))
     client.publish('zigbee2mqtt/socket_1/set', JSON.stringify(req.body)) 
     console.log('command sent')
 })
