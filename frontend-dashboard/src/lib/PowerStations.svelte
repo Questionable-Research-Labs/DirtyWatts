@@ -137,7 +137,7 @@
                                 "stacked": true
                           },
                           bottom: {
-                                "title": "",
+                                "title": "Date",
                                 "mapsTo": "date",
                                 "scaleType": "time",
                               },
