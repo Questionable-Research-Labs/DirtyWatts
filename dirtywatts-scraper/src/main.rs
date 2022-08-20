@@ -54,6 +54,7 @@ async fn run_emi_stats(conn: &PgConnection) {
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
+    println!("Yeet");
     dotenv::dotenv();
     println!("Creating connection");
     let conn = create_connection()?;
