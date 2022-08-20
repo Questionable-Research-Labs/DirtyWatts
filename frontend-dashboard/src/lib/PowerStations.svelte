@@ -19,6 +19,7 @@
         value: number;
     }
 
+
     const prettyNames: Record<string, string> = {
         battery: "Battery",
         co_gen: "CoGen",
@@ -30,7 +31,12 @@
         wind: "Wind",
     };
 
-    const graphData = writable<Group[]>();
+    const cleanPower: string[] = ['hydro', 'wind', 'geothermal']
+    const dirtyPower: string[] = ['batter', 'co_gen', 'coal', 'gas', 'diesel']
+
+    const cleanGraphData = writable<Group[]>();
+    const dirtyGraphData = writable<Group[]>();
+
     const historyData = writable<HistoryGroup[]>();
     const coalPercent = writable<number>(0);
 
@@ -38,7 +44,8 @@
         if (!powerTypes) {
             return;
         }
-        let graphGroups: Group[] = [];
+        let cleanGroups: Group[] = [];
+        let dirtyGroups: Group[] = [];
         let total = 0;
         let coalValue = 0;
         for (const key in powerTypes?.power_types) {
@@ -46,25 +53,43 @@
                 powerTypes?.power_types[key];
             const name = prettyNames[key] ?? key;
 
+
             total += generation_mw;
             if (key === "coal") {
                 coalValue = generation_mw;
             }
 
-            graphGroups.push({
-                group: "Generation (MW)",
-                key: name,
-                value: generation_mw,
-            });
+            if (cleanPower.indexOf(key) != -1) {
+                cleanGroups.push({
+                    group: "Generation (MW)",
+                    key: name,
+                    value: generation_mw,
+                });
 
-            graphGroups.push({
-                group: "Extra Capacity (MW)",
-                key: name,
-                value: capacity_mw - generation_mw,
-            });
+                cleanGroups.push({
+                    group: "Extra Capacity (MW)",
+                    key: name,
+                    value: capacity_mw - generation_mw,
+                });
+            } else if (dirtyPower.indexOf(key) != -1) {
+                dirtyGroups.push({
+                    group: "Generation (MW)",
+                    key: name,
+                    value: generation_mw,
+                });
+
+                dirtyGroups.push({
+                    group: "Extra Capacity (MW)",
+                    key: name,
+                    value: capacity_mw - generation_mw,
+                });
+            }
+
         }
 
-        $graphData = graphGroups;
+        $cleanGraphData = cleanGroups
+        $dirtyGraphData = dirtyGroups
+
         $coalPercent = (coalValue / total) * 100;
     });
 
@@ -93,13 +118,14 @@
     <p class="section__text">The graph below shows the different power sources the purple bar indicates how much power
         is currently being
         generated in MW (Megawatts) and the cyan bar indicates the extra capacity </p>
-    {#if $graphData != null}
+    {#if $cleanGraphData != null}
         <div class="chart-wrapper">
+            <h2 class="chart__title">Clean Power</h2>
             <BarChartStacked
                     theme="g90"
-                    data={$graphData}
+                    data={$cleanGraphData}
                     options={{
-                    height: "600px",
+                    height: "400px",
                     axes: {
                         left: { scaleType: "labels", title: "Type" },
                         bottom: { stacked: true, title: "MW" },
@@ -107,15 +133,32 @@
                 }}
             />
         </div>
+        {#if $dirtyGraphData != null}
+            <div class="chart-wrapper">
+                <h2 class="chart__title">Dirty Power</h2>
+                <BarChartStacked
+                        theme="g90"
+                        data={$dirtyGraphData}
+                        options={{
+                    height: "400px",
+                    axes: {
+                        left: { scaleType: "labels", title: "Type" },
+                        bottom: { stacked: true, title: "MW" },
+                    },
+                }}
+                />
+            </div>
+        {/if}
     {:else}
         <span class="loader"></span>
     {/if}
 
     <div class="chart-wrapper">
         <h1 class="section__title">NZ Power draw</h1>
-        <p class="section__text">The graph below shows historical data for what the power generation for each source was
+        <p class="section__text">The graph below shows historical data for what the power generation for each source
+            was
             at different dates and times </p>
-        {#if $graphData != null}
+        {#if $historyData != null}
             <StackedAreaChart
                     theme="g90"
                     data={$historyData}
@@ -149,5 +192,11 @@
     margin: 1rem auto;
     overflow: hidden;
     padding: 1rem;
+  }
+
+  .chart__title {
+    font-size: 1.5rem;
+    color: white;
+    font-weight: bold;
   }
 </style>
