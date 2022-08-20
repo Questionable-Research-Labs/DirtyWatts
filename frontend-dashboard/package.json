@@ -30,6 +30,7 @@
 	"dependencies": {
 		"@carbon/charts-svelte": "^1.5.2",
 		"@fontsource/fira-mono": "^4.5.0",
+		"@fontsource/roboto": "^4.5.8",
 		"cookie": "^0.4.1",
 		"sass": "^1.54.4"
 	}

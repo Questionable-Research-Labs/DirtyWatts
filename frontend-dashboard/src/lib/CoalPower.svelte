@@ -6,7 +6,7 @@
 </script>
 
 <div class="coal">
-    <img src={CoalIcon} alt="Coal Icon" class="coal__icon">
+    <img src={CoalIcon} alt="Coal Icon" class="coal__icon" width="64" height="64">
     <div class="coal__block">
         <h1 class="coal__title">Coal Power In Use</h1>
         <p class="coal__text">Currently {Math.floor(percent)}% of power is coming from Coal</p>
@@ -18,9 +18,12 @@
 .coal {
   padding: 1rem;
   display: flex;
-  max-width: 700px;
+  max-width: 600px;
 
-  margin: 1rem auto;
+  align-items: center;
+  gap: 2rem;
+
+  margin: 1rem auto 2rem;
 
   border-radius: 5px;
 

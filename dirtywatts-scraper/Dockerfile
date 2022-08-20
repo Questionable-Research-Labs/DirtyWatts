@@ -1,13 +1,11 @@
-FROM rust:alpine as builder
+FROM rust as builder
 WORKDIR /app
-RUN apk add libpq-dev musl-dev
-COPY dirtywatts-scraper/Cargo.toml .
-COPY dirtywatts-scraper/Cargo.lock .
-RUN mkdir src && touch src/main.rs && echo "fn main() {}" >> src/main.rs && cargo build --release && rm -rf src
+RUN apt update && apt install libpq-dev libssl-dev -y
 COPY dirtywatts-scraper/ .
 RUN cargo build --release
 
-FROM alpine
+FROM debian:bullseye
 WORKDIR /app
-COPY --from=builder /app/target/release/dirtywatts-scraper /usr/bin
-CMD ["dirtywatts-scraper"]
+RUN apt update && apt install libpq-dev openssl ca-certificates -y
+COPY --from=builder /app/target/release/dirtywatts-scraper ./dirtywatts-scraper
+CMD ["./dirtywatts-scraper"]

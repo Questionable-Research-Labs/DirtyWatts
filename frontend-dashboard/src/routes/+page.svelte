@@ -1,5 +1,4 @@
 <script lang="ts">
-    import Logo from "$assets/img/logo.svg"
     import PowerStations from "$lib/PowerStations.svelte";
 </script>
 
@@ -8,21 +7,18 @@
     <meta name="description" content="Svelte demo app"/>
 </svelte:head>
 
-<section>
-    <div class="heading">
 
-    </div>
-    <PowerStations/>
+<PowerStations/>
+
+<section class="section">
+    <h1 class="section__title">About</h1>
 </section>
 
-<section>
-
-</section>
 
 <section>
 
 </section>
 
-<style>
+<style lang="scss">
 
 </style>
