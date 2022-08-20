@@ -1,7 +1,7 @@
 FROM rust:alpine as builder
 WORKDIR /app
 RUN apk add libpq-dev musl-dev
-COPY . .
+COPY dirtywatts-scraper/ .
 RUN cargo build --release
 
 FROM alpine
