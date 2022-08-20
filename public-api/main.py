@@ -33,6 +33,17 @@ networkSupply = sqlalchemy.Table(
     sqlalchemy.Column("longitude", sqlalchemy.NUMERIC),
 )
 
+networkSupplyReading = sqlalchemy.Table(
+    "network_supply_reading",
+    metadata,
+    sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
+    sqlalchemy.Column("connection_code", sqlalchemy.VARCHAR(length=7)),
+    sqlalchemy.Column("timestamp", sqlalchemy.TIMESTAMP),
+    sqlalchemy.Column("load", sqlalchemy.NUMERIC),
+    sqlalchemy.Column("generation", sqlalchemy.NUMERIC),
+    sqlalchemy.Column("mwh_price", sqlalchemy.NUMERIC),
+)
+
 powerSources = sqlalchemy.Table(
     "power_sources",
     metadata,
@@ -54,6 +65,7 @@ engine = sqlalchemy.create_engine(
     DATABASE_URL, pool_size=3, max_overflow=0
 )
 metadata.create_all(engine)
+session = Session(engine, future=True)
 
 class PowerStationStats(BaseModel):
     generation_mw: float
@@ -105,7 +117,6 @@ async def redirect_to_docs():
 
 @app.get("/power_stations", response_model=PowerstationUpdatePackage)
 async def power_stations():
-    session = Session(engine, future=True)
     query = session.query(generationLevels, powerSources).join(powerSources, generationLevels.c.source_id == powerSources.c.id)
     allPowerTypes = query.all()
     print(allPowerTypes[0]["kind"])
@@ -118,4 +129,8 @@ async def power_stations():
         )
     print(powerTypes)
     return PowerstationUpdatePackage(timestamp=updateTime, power_types=powerTypes)
-    
+
+@app.get("/grid_connection_points")
+async def power_stations():
+    query = session.query(networkSupplyReading, networkSupply).join(networkSupply, networkSupplyReading.c.connection_code == networkSupply.c.connection_code)
+    return {}
