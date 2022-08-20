@@ -1,19 +1,16 @@
-use std::fs;
-
-use chrono::{DateTime, Local, NaiveDateTime, TimeZone};
+use chrono::{DateTime, Local, NaiveDateTime, TimeZone, Utc};
+use dotenv;
 use serde::{Deserialize, Serialize};
 use serde_json;
-use dotenv;
 
 pub async fn get_emi_stats() -> Result<Vec<ConnectionPoint>, Box<dyn std::error::Error>> {
-    dotenv::dotenv().ok();
     let api_key = dotenv::var("EMI_API_KEY").unwrap();
-    
+
     let api_url = "https://emi.azure-api.net/real-time-dispatch";
     let client = reqwest::Client::new();
 
-    
-    let raw_data = client.get(api_url)
+    let raw_data = client
+        .get(api_url)
         .header("Ocp-Apim-Subscription-Key", api_key)
         .send()
         .await?
@@ -25,16 +22,18 @@ pub async fn get_emi_stats() -> Result<Vec<ConnectionPoint>, Box<dyn std::error:
         .iter()
         .map(|x| ConnectionPoint {
             connection_code: x.connection_code.clone(),
-            timestamp: Local.from_utc_datetime(
-                &NaiveDateTime::parse_from_str(&x.datetime, "%Y-%m-%dT%H:%M:%S")
-                    .unwrap_or(NaiveDateTime::from_timestamp(0, 0)),
-            ),
+            timestamp: Local
+                .from_utc_datetime(
+                    &NaiveDateTime::parse_from_str(&x.datetime, "%Y-%m-%dT%H:%M:%S")
+                        .unwrap_or(NaiveDateTime::from_timestamp(0, 0)),
+                )
+                .with_timezone(&Utc),
             generation_mw: x.generation_mw,
             load_mw: x.load_mw,
             mwh_price: x.mwh_price,
         })
         .collect();
-    
+
     return Ok(formatted);
 }
 
@@ -58,9 +57,9 @@ struct ConnectionPointAPI {
 
 #[derive(Clone, Debug)]
 pub struct ConnectionPoint {
-    connection_code: String,
-    timestamp: DateTime<Local>,
-    load_mw: f64,
-    generation_mw: f64,
-    mwh_price: f64,
+    pub connection_code: String,
+    pub timestamp: DateTime<Utc>,
+    pub load_mw: f64,
+    pub generation_mw: f64,
+    pub mwh_price: f64,
 }
