@@ -10,7 +10,7 @@ app.use(express.json())
 
 client.on('connect', function () {
     console.log("connected")
-    // client.publish('zigbee2mqtt/socket_1/set', '{"state": "ON"}')
+    client.publish('zigbee2mqtt/socket_1/set', '{"state": "OFF"}')
 })
 
 // app.get('/', function (req, res) {
