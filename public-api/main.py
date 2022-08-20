@@ -6,6 +6,8 @@ from sqlalchemy.orm import Session
 
 from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.responses import RedirectResponse
+
 from pydantic import BaseModel
 import os
 import urllib
@@ -13,6 +15,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 DATABASE_URL = os.environ.get("DATABASE_URL")
+print("connecting to",DATABASE_URL)
 database = databases.Database(DATABASE_URL)
 
 metadata = sqlalchemy.MetaData()
@@ -95,6 +98,11 @@ async def startup():
 async def shutdown():
     await database.disconnect()
 
+@app.get("/")
+async def redirect_to_docs():
+    return RedirectResponse(url="/docs")
+
+
 @app.get("/power_stations", response_model=PowerstationUpdatePackage)
 async def power_stations():
     session = Session(engine, future=True)
@@ -110,3 +118,4 @@ async def power_stations():
         )
     print(powerTypes)
     return PowerstationUpdatePackage(timestamp=updateTime, power_types=powerTypes)
+    
