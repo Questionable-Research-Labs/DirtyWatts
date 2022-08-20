@@ -16,6 +16,7 @@
 		"@types/cookie": "^0.5.1",
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
 		"@typescript-eslint/parser": "^5.27.0",
+		"d3": "^7.6.1",
 		"eslint": "^8.16.0",
 		"eslint-plugin-svelte3": "^4.0.0",
 		"svelte": "^3.46.0",
@@ -27,6 +28,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@carbon/charts-svelte": "^1.5.2",
 		"@fontsource/fira-mono": "^4.5.0",
 		"cookie": "^0.4.1",
 		"sass": "^1.54.4"
