@@ -85,7 +85,7 @@ function update() {
             
             let lamp_info = {"state": "ON", "color": {"r": red_value, "g": green_value, "b": 0}}
 
-            client.publish('zigbee2mqtt/lamp_rgb_1/set', lamp_info) 
+            client.publish('zigbee2mqtt/lamp_rgb_1/set', JSON.stringify(lamp_info)) 
 
 
         }).catch(console.error)
