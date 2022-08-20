@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Header from "$lib/header/Header.svelte";
+    import Header from "$lib/Header.svelte";
     import "$assets/scss/app.scss";
     import Modal from "svelte-simple-modal";
     import { onMount } from "svelte";
