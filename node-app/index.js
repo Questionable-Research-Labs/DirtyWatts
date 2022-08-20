@@ -1,5 +1,5 @@
 const mqtt = require('mqtt')
-const client  = mqtt.connect('127.0.0.1')
+const client  = mqtt.connect('mqtt://127.0.0.1')
 
 client.on('connect', function () {
     console.log("connected")
