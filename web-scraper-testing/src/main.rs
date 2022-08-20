@@ -4,7 +4,6 @@ extern crate diesel;
 extern crate diesel_migrations;
 
 use diesel::PgConnection;
-use std::result::Result;
 use std::time::Duration;
 
 use crate::db::{add_emi_stats, add_readings, create_connection};

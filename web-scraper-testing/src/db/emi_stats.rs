@@ -1,13 +1,11 @@
 use crate::db::models::{NetworkSupply, NetworkSupplyReading, NewNetworkSupplyReading};
-use crate::db::schema::generation_levels::reading_timestamp;
 use crate::emi_stats::ConnectionPoint;
 use bigdecimal::BigDecimal;
 use chrono::{DateTime, Utc};
 use diesel::prelude::*;
-use serde_json::to_string;
 
 fn check_for_network_supply(cc: &str, connection: &PgConnection) -> bool {
-    use super::schema::network_supply::{self, dsl::*};
+    use super::schema::network_supply::dsl::*;
     network_supply
         .filter(connection_code.like(cc))
         .first::<NetworkSupply>(connection)
@@ -15,7 +13,7 @@ fn check_for_network_supply(cc: &str, connection: &PgConnection) -> bool {
 }
 
 fn check_for_read_ts(cc: &str, ts: &DateTime<Utc>, connection: &PgConnection) -> bool {
-    use super::schema::network_supply_reading::{self, dsl::*};
+    use super::schema::network_supply_reading::dsl::*;
     network_supply_reading
         .filter(connection_code.like(cc))
         .filter(timestamp.eq(ts))
@@ -24,7 +22,7 @@ fn check_for_read_ts(cc: &str, ts: &DateTime<Utc>, connection: &PgConnection) ->
 }
 
 pub fn add_emi_stats(points: Vec<ConnectionPoint>, connection: &PgConnection) {
-    use super::schema::network_supply_reading::{self, dsl::*};
+    use super::schema::network_supply_reading;
 
     println!("----------------------------------------");
 
