@@ -1,6 +1,5 @@
 use chrono::{DateTime, Local, NaiveDateTime, TimeZone, Utc};
 use serde::{Deserialize, Serialize};
-use serde_json;
 
 pub async fn get_current_power() -> Result<PowerStationUpdatePackage, Box<dyn std::error::Error>> {
     let api_url = format!(
@@ -42,7 +41,7 @@ pub struct PowerTypes {
     #[serde(alias = "Hydro")]
     pub hydro: PowerStationType,
     #[serde(alias = "Liquid")]
-    pub liquid: PowerStationType,
+    pub diesel: PowerStationType,
     #[serde(alias = "Wind")]
     pub wind: PowerStationType,
 }

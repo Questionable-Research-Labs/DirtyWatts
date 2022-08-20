@@ -76,7 +76,7 @@ pub fn add_readings(
         coal,
         hydro,
         geothermal,
-        liquid,
+        diesel,
         wind,
     } = power_types;
 
@@ -86,7 +86,7 @@ pub fn add_readings(
     add_data("coal", coal, &timestamp, connection)?;
     add_data("hydro", hydro, &timestamp, connection)?;
     add_data("geothermal", geothermal, &timestamp, connection)?;
-    add_data("liquid", liquid, &timestamp, connection)?;
+    add_data("diesel", diesel, &timestamp, connection)?;
     add_data("wind", wind, &timestamp, connection)?;
 
     Ok(())

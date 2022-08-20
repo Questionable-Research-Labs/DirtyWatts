@@ -1,7 +1,6 @@
 use super::schema::*;
 use bigdecimal::BigDecimal;
-use chrono::{DateTime, Local, TimeZone, Utc};
-use diesel::types::BigInt;
+use chrono::{DateTime, Utc};
 
 #[derive(Insertable, Debug)]
 #[table_name = "power_sources"]
