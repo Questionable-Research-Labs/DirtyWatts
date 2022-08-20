@@ -15,7 +15,7 @@ class PowerTypes(BaseModel):
     gas: PowerStationStats
     geothermal: PowerStationStats
     hydro: PowerStationStats
-    liquid: PowerStationStats
+    diesel: PowerStationStats
     wind: PowerStationStats
 
 
