@@ -16,13 +16,15 @@ router = APIRouter(
 
 @router.get("/power_stations", response_model=List[PowerstationUpdatePackage])
 async def power_stations(start: datetime = datetime.min, end: datetime = datetime.max):
+    session = db.sessionMaker()
     query = (
-        db.session.query(db.generationLevels, db.powerSources)
+        session.query(db.generationLevels, db.powerSources)
         .join(db.powerSources, db.generationLevels.c.source_id == db.powerSources.c.id)
         .order_by(db.generationLevels.c.reading_timestamp.desc())
         .filter(db.generationLevels.c.reading_timestamp <= end)
         .filter(db.generationLevels.c.reading_timestamp >= start)
     )
+    session.close()
     allPowerTypes = list(chunks(query.all(),power_type_count))
     print(len(allPowerTypes))
 
@@ -45,12 +47,14 @@ async def power_stations(start: datetime = datetime.min, end: datetime = datetim
 async def power_stations(connection_code: str, start: datetime = datetime.min, end: datetime = datetime.max, time_interval_minutes: float = 60):
     update_interval = max(round(time_interval_minutes/15),1)
 
-    sub_query = db.session.query(
+    session = db.sessionMaker()
+
+    sub_query = session.query(
         db.networkSupplyReading,
         func.row_number().over(order_by=desc(db.networkSupplyReading.c.timestamp)).label("row_number")
         ).subquery()
 
-    query = (db.session
+    query = (session
                 .query(db.networkSupplyReading, db.networkSupply)
                 .order_by(db.networkSupplyReading.c.connection_code, db.networkSupplyReading.c.timestamp.desc())
                 .filter(db.networkSupplyReading.c.timestamp <= end)
@@ -62,6 +66,9 @@ async def power_stations(connection_code: str, start: datetime = datetime.min, e
                 .filter(sub_query.c.row_number % update_interval == 0)
     )
     networkSupplyReadings = query.all()
+
+    session.close()
+
     allData = []
     for i in networkSupplyReadings:
         allData.append(ConnectionPoint(
