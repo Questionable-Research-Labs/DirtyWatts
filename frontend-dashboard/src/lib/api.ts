@@ -18,5 +18,9 @@ async function fetchAPI<T>(path: string): Promise<T> {
 }
 
 export async function getPowerStations(): Promise<PowerStationsResponse> {
-    return await fetchAPI<PowerStationsResponse>("power_stations")
+    return fetchAPI<PowerStationsResponse>("live/power_stations")
+}
+
+export async function getPowerStationsHistory(): Promise<PowerStationsResponse[]> {
+    return fetchAPI<PowerStationsResponse[]>("history/power_stations")
 }

@@ -15,6 +15,7 @@
 
 
     background: #333;
+    margin-bottom: 1.5rem;
   }
 
   .header__logo {
@@ -26,7 +27,7 @@
 
   .header__title {
     color: white;
-    font-weight: bold;
+    font-weight: 900;
     letter-spacing: 2px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     text-transform: uppercase;

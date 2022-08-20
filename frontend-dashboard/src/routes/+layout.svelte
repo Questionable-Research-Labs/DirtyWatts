@@ -14,4 +14,9 @@
 
 <style>
 
+	main {
+		max-width: 1000px;
+		margin: 1rem auto;
+	}
+
 </style>

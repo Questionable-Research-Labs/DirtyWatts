@@ -2,9 +2,9 @@
     import { onMount } from "svelte";
     import "@carbon/styles/css/styles.css";
     import "@carbon/charts/styles.css";
-    import { BarChartStacked } from "@carbon/charts-svelte";
+    import { BarChartStacked, LineChart } from "@carbon/charts-svelte";
     import type { PowerType } from "$lib/api";
-    import { getPowerStations } from "$lib/api";
+    import { getPowerStations, getPowerStationsHistory } from "$lib/api";
     import { writable } from "svelte/store";
     import CoalPower from "$lib/CoalPower.svelte";
 
@@ -14,76 +14,103 @@
         value: number
     }
 
+    interface HistoryGroup {
+        group: string;
+        date: string;
+        value: number;
+
+    }
+
+    const prettyNames: Record<string, string> = {
+        "battery": "Battery",
+        "co_gen": "CoGen",
+        "coal": "Coal",
+        "gas": "Gas",
+        "geothermal": "Geothermal",
+        "hydro": "Hydro",
+        "diesel": "Diesel",
+        "wind": "Wind"
+    };
+
     const graphData = writable<Group[]>()
+    const historyData = writable<HistoryGroup[]>()
     const coalPercent = writable<number>(0)
 
-    onMount(async () => {
-        const response = await getPowerStations()
 
-        let data: Group[] = [];
-
-        const powerTypes = response.power_types;
-        const prettyNames = {
-            "battery": "Battery",
-            "co_gen": "CoGen",
-            "coal": "Coal",
-            "gas": "Gas",
-            "geothermal": "Geothermal",
-            "hydro": "Hydro",
-            "liquid": "Liquid",
-            "wind": "Wind"
-        };
-
-        for (const key in powerTypes) {
-            const {generation_mw, capacity_mw}: PowerType = powerTypes[key];
+    async function updatePowerStations() {
+        const {power_types} = await getPowerStations()
+        let graphGroups: Group[] = [];
+        let total = 0
+        let coalValue = 0
+        for (const key in power_types) {
+            const {generation_mw, capacity_mw}: PowerType = power_types[key];
             const name = prettyNames[key] ?? key;
 
-            data.push({
+            total += generation_mw;
+            if (key === "coal") {
+                coalValue = generation_mw
+            }
+
+            graphGroups.push({
                 group: "Generation (MW)",
                 key: name,
                 value: generation_mw
             })
 
-            data.push({
+            graphGroups.push({
                 group: "Capacity (MW)",
                 key: name,
                 value: capacity_mw
             })
         }
 
-        let total = 0
-        let coalValue = 0
-        for (let key in powerTypes) {
-            const {generation_mw}: PowerType = powerTypes[key];
-            total += generation_mw;
-            if (key === "coal") {
-                coalValue = generation_mw
+        $graphData = graphGroups
+        $coalPercent = (coalValue / total) * 100
+    }
+
+    async function updateHistory() {
+        let historyGroups: HistoryGroup[] = [];
+        const response = await getPowerStationsHistory()
+        for (let {timestamp, power_types} of response) {
+            for (const key in power_types) {
+                const {generation_mw}: PowerType = power_types[key];
+                const name = prettyNames[key] ?? key;
+                historyGroups.push({
+                    date: timestamp,
+                    value: generation_mw,
+                    group: name
+                })
             }
         }
+        $historyData = historyGroups
 
-        console.log(total)
+    }
 
-        $coalPercent = (coalValue / total) * 100
 
-        $graphData = data
+    onMount(async () => {
 
-        $coalPercent = 20
+        await Promise.all([
+            updatePowerStations(),
+            updateHistory()
+        ])
+
     })
 
 
 </script>
 
-<div>
-    <h1>Power Stations</h1>
+<section class="section">
 
-    {#if $coalPercent > 1}
+    {#if $coalPercent > 0}
         <CoalPower percent={$coalPercent}/>
     {/if}
     {#if $graphData != null}
-        <BarChartStacked
-                theme="g90"
-                data={$graphData}
-                options={{
+        <h1 class="section__title">Generation & Capacity</h1>
+        <div class="chart-wrapper">
+            <BarChartStacked
+                    theme="g90"
+                    data={$graphData}
+                    options={{
 
                         height: "600px",
                         axes: {
@@ -91,13 +118,40 @@
                           bottom: { stacked: true, title: "MW" },
                         },
                   }}
-        />
+            />
+            <LineChart
+                    theme="g90"
+                    data={$historyData}
+                    options={{
+
+                        height: "600px",
+                        axes: {
+                          left: {
+                                "mapsTo": "value",
+                                "title": "Generation (MW)",
+                                "scaleType": "linear",
+                          },
+                          bottom: {
+                                "title": "",
+                                "mapsTo": "date",
+                                "scaleType": "time",
+                              },
+                     },
+                        "curve": "curveMonotoneX",
+                  }}
+            />
+        </div>
     {:else}
-        <h1>Loading Data</h1>
+        <span class="loader"></span>
     {/if}
 
-</div>
+</section>
 
 <style lang="scss">
-
+  .chart-wrapper {
+    max-width: 1000px;
+    margin: 1rem auto;
+    overflow: hidden;
+    padding: 1rem;
+  }
 </style>

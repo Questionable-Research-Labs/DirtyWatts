@@ -1,3 +1,46 @@
+@import "@fontsource/roboto/400.css";
+@import "@fontsource/roboto/700.css";
+@import "@fontsource/roboto/900.css";
+
 body {
   background: #222 !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.loader {
+  margin: 4rem auto;
+  display: block;
+  width: 128px;
+  height: 128px;
+  border: 15px solid transparent;
+  border-top-color: #00d241;
+  border-radius: 100%;
+  animation: 1s linear infinite loader;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.section {
+
+}
+
+.section__title {
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
