@@ -1,0 +1,9 @@
+id,kind
+0,battery
+1,co_gen
+2,coal
+3,gas
+4,geothermal
+5,hydro
+6,liquid
+7,wind
