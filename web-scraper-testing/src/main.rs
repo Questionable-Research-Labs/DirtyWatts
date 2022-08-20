@@ -1,5 +1,7 @@
 #[macro_use]
 extern crate diesel;
+#[macro_use]
+extern crate diesel_migrations;
 
 use diesel::PgConnection;
 use std::result::Result;
@@ -11,6 +13,8 @@ use crate::{emi_stats::get_emi_stats, power_station::get_current_power};
 mod db;
 mod emi_stats;
 mod power_station;
+
+embed_migrations!();
 
 async fn run_power_sources(conn: &PgConnection) {
     loop {
@@ -53,6 +57,10 @@ async fn run_emi_stats(conn: &PgConnection) {
 async fn main() -> anyhow::Result<()> {
     dotenv::dotenv().ok();
     let conn = create_connection()?;
+
+    println!("Running migrations");
+    embedded_migrations::run(&conn)?;
+    println!("Done!");
 
     tokio::select! {
         _ = run_power_sources(&conn) => {}
