@@ -1,19 +1,19 @@
-
-use chrono::{Local, DateTime, NaiveDateTime, TimeZone};
+use chrono::{DateTime, Local, NaiveDateTime, TimeZone, Utc};
+use serde::{Deserialize, Serialize};
 use serde_json;
-use serde::{Serialize, Deserialize};
 
-pub async fn get_current_power()-> Result<PowerstationUpdatePackage, Box<dyn std::error::Error>>  {
-    
-    let api_url = format!("https://www.transpower.co.nz/aws/data/current_generation/{}",Local::now().timestamp());
-    
-    let transpower_api_raw = reqwest::get(api_url)
-        .await?
-        .text()
-        .await?;
+pub async fn get_current_power() -> Result<PowerStationUpdatePackage, Box<dyn std::error::Error>> {
+    let api_url = format!(
+        "https://www.transpower.co.nz/aws/data/current_generation/{}",
+        Local::now().timestamp()
+    );
+
+    let transpower_api_raw = reqwest::get(api_url).await?.text().await?;
     let data: ApiJson = serde_json::from_str(&transpower_api_raw)?;
-    let update: PowerstationUpdatePackage = PowerstationUpdatePackage {
-        timestamp: Local.from_utc_datetime(&NaiveDateTime::from_timestamp(data.timestamp, 0)),
+    let update: PowerStationUpdatePackage = PowerStationUpdatePackage {
+        timestamp: Local
+            .from_utc_datetime(&NaiveDateTime::from_timestamp(data.timestamp, 0))
+            .with_timezone(&Utc),
         power_types: data.data.new_zealand,
     };
     return Ok(update);
@@ -22,48 +22,47 @@ pub async fn get_current_power()-> Result<PowerstationUpdatePackage, Box<dyn std
 #[derive(Serialize, Deserialize, Debug)]
 pub struct PowerStationType {
     #[serde(alias = "generation")]
-    generation_mw: f64,
+    pub generation_mw: f64,
     #[serde(alias = "capacity")]
-    capacity_mw: f64,
+    pub capacity_mw: f64,
 }
-
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct PowerTypes {
     #[serde(alias = "Battery")]
-    battery: PowerStationType,
+    pub battery: PowerStationType,
     #[serde(alias = "Co-Gen")]
-    co_gen: PowerStationType,
+    pub co_gen: PowerStationType,
     #[serde(alias = "Coal")]
-    coal: PowerStationType,
+    pub coal: PowerStationType,
     #[serde(alias = "Gas")]
-    gas: PowerStationType,
+    pub gas: PowerStationType,
     #[serde(alias = "Geothermal")]
-    geothermal: PowerStationType,
+    pub geothermal: PowerStationType,
     #[serde(alias = "Hydro")]
-    hydro: PowerStationType,
+    pub hydro: PowerStationType,
     #[serde(alias = "Liquid")]
-    liquid: PowerStationType,
+    pub liquid: PowerStationType,
     #[serde(alias = "Wind")]
-    wind: PowerStationType,
+    pub wind: PowerStationType,
 }
 
 #[derive(Debug)]
-pub struct PowerstationUpdatePackage {
-    timestamp: DateTime<Local>,
-    power_types: PowerTypes,
+pub struct PowerStationUpdatePackage {
+    pub timestamp: DateTime<Utc>,
+    pub power_types: PowerTypes,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 struct CountryPower {
     #[serde(alias = "New Zealand")]
-    new_zealand: PowerTypes,
+    pub new_zealand: PowerTypes,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 struct ApiJson {
-    data: CountryPower,
-    date: String,
-    timestamp: i64,
-    update: bool
+    pub data: CountryPower,
+    pub date: String,
+    pub timestamp: i64,
+    pub update: bool,
 }
