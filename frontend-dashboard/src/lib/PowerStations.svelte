@@ -115,7 +115,7 @@
         <CoalPower percent={$coalPercent}/>
     {/if}
     <h1 class="section__title">Generation & Capacity</h1>
-    <p class="section__text">The graph below shows the different power sources the purple bar indicates how much power
+    <p class="section__text">The graphs below show the different power sources the purple bar indicates how much power
         is currently being
         generated in MW (Megawatts) and the cyan bar indicates the extra capacity </p>
     {#if $cleanGraphData != null}

@@ -2,7 +2,7 @@
     import Logo from "$assets/img/logo-nb.svg"
     import Prints from "$assets/img/prints.svg"
     import PowerStations from "$lib/PowerStations.svelte";
-    import ConnectionMap from "$lib/ConnectionMap.svelte";
+    import Footer from "$lib/Footer.svelte";
 </script>
 
 <div class="heading section section--fit">
@@ -20,6 +20,8 @@
 <img src={Prints} class="prints">
 
 <PowerStations/>
+
+<Footer/>
 
 <style lang="scss">
   // Force scrollbar so model poup doesn't shift layout

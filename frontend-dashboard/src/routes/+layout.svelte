@@ -4,6 +4,7 @@
     import Modal from "svelte-simple-modal";
     import { onMount } from "svelte";
     import { initialiseAPI } from "$lib/api";
+    import Footer from "$lib/Footer.svelte";
 
     onMount(async () => {
         await initialiseAPI();
@@ -14,9 +15,8 @@
     <Header/>
 
     <slot/>
-</Modal>
 
-<footer/>
+</Modal>
 
 <style lang="scss">
 

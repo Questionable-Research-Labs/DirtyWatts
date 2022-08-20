@@ -7,7 +7,7 @@
 
     const {open} = getContext("simple-modal");
 
-    const {GeolocateControl, NavigationControl, ScaleControl} = controls;
+    const {GeolocateControl, NavigationControl} = controls;
 
     let mapComponent: any;
 
