@@ -1,3 +1,5 @@
+import { connectionPoints, powerTypes, powerTypesHistory } from "./stores";
+
 const API_URL = "https://dirty-watts-api.host.qrl.nz"
 
 export type PowerTypes = Record<string, PowerType>
@@ -44,4 +46,10 @@ export async function getConnectionPoints(): Promise<ConnectionPoint[]> {
 }
 export async function getConnectionPointHistory(point_code: string): Promise<ConnectionPoint[]> {
     return fetchAPI<ConnectionPoint[]>(`history/grid_connection_points/${point_code}`)
+}
+
+export async function initialiseAPI() {
+    powerTypes.set(await getPowerStations())
+    powerTypesHistory.set(await getPowerStationsHistory())
+    connectionPoints.set(await getConnectionPoints())
 }
