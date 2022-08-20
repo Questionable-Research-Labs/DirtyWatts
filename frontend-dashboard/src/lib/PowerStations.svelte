@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
     import "@carbon/styles/css/styles.css";
     import "@carbon/charts/styles.css";
-    import { BarChartStacked, LineChart } from "@carbon/charts-svelte";
+    import { BarChartStacked, LineChart, StackedAreaChart } from "@carbon/charts-svelte";
     import type { PowerType } from "$lib/api";
     import { getPowerStations, getPowerStationsHistory } from "$lib/api";
     import { writable } from "svelte/store";
@@ -58,9 +58,9 @@
             })
 
             graphGroups.push({
-                group: "Capacity (MW)",
+                group: "Extra Capacity (MW)",
                 key: name,
-                value: capacity_mw
+                value: capacity_mw-generation_mw
             })
         }
 
@@ -119,7 +119,11 @@
                         },
                   }}
             />
-            <LineChart
+        </div>
+        <div class="chart-wrapper">
+
+            <h1 class="section__title">NZ Power draw</h1>
+            <StackedAreaChart
                     theme="g90"
                     data={$historyData}
                     options={{
@@ -130,6 +134,7 @@
                                 "mapsTo": "value",
                                 "title": "Generation (MW)",
                                 "scaleType": "linear",
+                                "stacked": true
                           },
                           bottom: {
                                 "title": "",
