@@ -15,14 +15,26 @@ router = APIRouter(
 )
 
 @router.get("/power_stations", response_model=List[PowerstationUpdatePackage])
-async def power_stations(start: datetime = datetime.min, end: datetime = datetime.max):
+async def power_stations(start: datetime = datetime.min, end: datetime = datetime.max, time_interval_minutes: float = 30):
+    """
+    Gets the entire history of the power station type generation. It defaults to half-hourly data, which is the finest resolution available. 
+    """
+    update_interval = max(round(time_interval_minutes/30),1)
+
     session = db.sessionMaker()
+    sub_query = session.query(
+        db.generationLevels,
+        func.row_number().over(order_by=desc(db.generationLevels.c.reading_timestamp)).label("row_number")
+    ).subquery()
+
     query = (
         session.query(db.generationLevels, db.powerSources)
         .join(db.powerSources, db.generationLevels.c.source_id == db.powerSources.c.id)
         .order_by(db.generationLevels.c.reading_timestamp.desc())
         .filter(db.generationLevels.c.reading_timestamp <= end)
         .filter(db.generationLevels.c.reading_timestamp >= start)
+        .join(sub_query, sub_query.c.id == db.generationLevels.c.id)
+        .filter(func.div(sub_query.c.row_number - 1, power_type_count) % update_interval == 0)
     )
     session.close()
     allPowerTypes = list(chunks(query.all(),power_type_count))
@@ -42,9 +54,11 @@ async def power_stations(start: datetime = datetime.min, end: datetime = datetim
     return outputSlices
 
 
-# Example: ABY0111
 @router.get("/grid_connection_points/{connection_code}", response_model=List[ConnectionPoint])
 async def power_stations(connection_code: str, start: datetime = datetime.min, end: datetime = datetime.max, time_interval_minutes: float = 60):
+    """
+    Gets the entire history of a particular connection point, for example you can try "ABY0111". It defaults to hourly data, but you can go down to 15 minutely data. 
+    """
     update_interval = max(round(time_interval_minutes/15),1)
 
     session = db.sessionMaker()
