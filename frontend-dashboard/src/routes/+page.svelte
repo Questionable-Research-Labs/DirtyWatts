@@ -1,4 +1,5 @@
 <script lang="ts">
+    import ConnectionMap from "$lib/ConnectionMap.svelte";
     import PowerStations from "$lib/PowerStations.svelte";
 </script>
 
@@ -11,12 +12,13 @@
 <PowerStations/>
 
 <section class="section">
-    <h1 class="section__title">About</h1>
+    <h1 class="section__title">Connection Map</h1>
 </section>
+<ConnectionMap/>
 
 
-<section>
-
+<section class="section">
+    <h1 class="section__title">About</h1>
 </section>
 
 <style lang="scss">

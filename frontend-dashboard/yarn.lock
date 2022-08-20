@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@beyonk/svelte-mapbox@^8.1.4":
+  version "8.1.4"
+  resolved "https://registry.yarnpkg.com/@beyonk/svelte-mapbox/-/svelte-mapbox-8.1.4.tgz#2c52c6c056baa182c5799a3710f0974b579eb25f"
+  integrity sha512-H7c5i+iWReb3try5Vk2rIeIXJ6BqmO3eb8OeBntrdKAiKEA0ye7n5t4C13Ne4vvMrfqqzyHuV6kGsM0y/g+lJg==
+
 "@carbon/charts-svelte@^1.5.2":
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/@carbon/charts-svelte/-/charts-svelte-1.5.2.tgz#0c66f9c7344ff70b4ea6435166f87fc100996da2"

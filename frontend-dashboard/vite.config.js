@@ -11,6 +11,9 @@ const config = {
 		alias: {
 			$assets: resolve('./src/assets'),
 		}
+	},
+	optimizeDeps: {
+		include: ["fastq"] // 👈
 	}
 };
 
