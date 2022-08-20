@@ -233,7 +233,7 @@
     "@sveltejs/adapter-netlify" "1.0.0-next.71"
     "@sveltejs/adapter-vercel" "1.0.0-next.66"
 
-"@sveltejs/adapter-cloudflare@1.0.0-next.31":
+"@sveltejs/adapter-cloudflare@1.0.0-next.31", "@sveltejs/adapter-cloudflare@^1.0.0-next.31":
   version "1.0.0-next.31"
   resolved "https://registry.yarnpkg.com/@sveltejs/adapter-cloudflare/-/adapter-cloudflare-1.0.0-next.31.tgz#5d56db9aed0ee0577d31a0291a3fc8b32019c461"
   integrity sha512-HhEFZP72GJ8AZGgFECKIiayDcLaAWi65pI0AnBfiNhCifYSlH/mPNWNVD4AWRDnXnH6XU+FLwhGDnIDwytTyYg==
