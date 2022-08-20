@@ -11,7 +11,7 @@
         <nav class="nav">
 
             <a href="/" class="nav__link" class:active={$page.url.pathname === '/'}>Home</a>
-            <a href="/api" class="nav__link" class:active={$page.url.pathname === '/api'}>API</a>
+            <a href="/api" class="nav__link" class:active={$page.url.pathname === '/home'}>API</a>
             <a href="https://wiki.dirtywatts.nz/" rel="noreferrer nooppener" class="nav__link">WIKI</a>
 
         </nav>

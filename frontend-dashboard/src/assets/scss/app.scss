@@ -38,9 +38,23 @@ body {
 
 }
 
+.section {
+  text-align: center;
+  padding: 1rem;
+}
 .section__title {
-  color: white;
-  font-weight: bold;
+  font-size: 3rem;
   text-transform: uppercase;
   letter-spacing: 2px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.section__text {
+  font-size: 1.25rem;
+  line-height: 1.75;
+  color: #CCC;
+  max-width: 800px;
+  margin: 0 auto;
 }

@@ -1,12 +1,7 @@
 <script lang="ts">
-    import { onMount } from "svelte";
     import "@carbon/styles/css/styles.css";
     import "@carbon/charts/styles.css";
-    import {
-        BarChartStacked,
-        LineChart,
-        StackedAreaChart,
-    } from "@carbon/charts-svelte";
+    import { BarChartStacked, StackedAreaChart, } from "@carbon/charts-svelte";
     import type { PowerType } from "$lib/api";
     import { writable } from "svelte/store";
     import CoalPower from "$lib/CoalPower.svelte";
@@ -47,7 +42,7 @@
         let total = 0;
         let coalValue = 0;
         for (const key in powerTypes?.power_types) {
-            const { generation_mw, capacity_mw }: PowerType =
+            const {generation_mw, capacity_mw}: PowerType =
                 powerTypes?.power_types[key];
             const name = prettyNames[key] ?? key;
 
@@ -75,9 +70,9 @@
 
     powerTypesHistory.subscribe((powerTypesHistory) => {
         let historyGroups: HistoryGroup[] = [];
-        for (let { timestamp, power_types } of powerTypesHistory) {
+        for (let {timestamp, power_types} of powerTypesHistory) {
             for (const key in power_types) {
-                const { generation_mw }: PowerType = power_types[key];
+                const {generation_mw}: PowerType = power_types[key];
                 const name = prettyNames[key] ?? key;
                 historyGroups.push({
                     date: timestamp,
@@ -92,15 +87,18 @@
 
 <section class="section">
     {#if $coalPercent > 0}
-        <CoalPower percent={$coalPercent} />
+        <CoalPower percent={$coalPercent}/>
     {/if}
     <h1 class="section__title">Generation & Capacity</h1>
+    <p class="section__text">The graph below shows the different power sources the purple bar indicates how much power
+        is currently being
+        generated in MW (Megawatts) and the cyan bar indicates the extra capacity </p>
     {#if $graphData != null}
         <div class="chart-wrapper">
             <BarChartStacked
-                theme="g90"
-                data={$graphData}
-                options={{
+                    theme="g90"
+                    data={$graphData}
+                    options={{
                     height: "600px",
                     axes: {
                         left: { scaleType: "labels", title: "Type" },
@@ -110,15 +108,18 @@
             />
         </div>
     {:else}
-        <span class="loader" />
+        <span class="loader"></span>
     {/if}
+
     <div class="chart-wrapper">
         <h1 class="section__title">NZ Power draw</h1>
-    {#if $graphData != null}
-        <StackedAreaChart
-            theme="g90"
-            data={$historyData}
-            options={{
+        <p class="section__text">The graph below shows historical data for what the power generation for each source was
+            at different dates and times </p>
+        {#if $graphData != null}
+            <StackedAreaChart
+                    theme="g90"
+                    data={$historyData}
+                    options={{
                 height: "600px",
                 axes: {
                     left: {
@@ -135,18 +136,18 @@
                 },
                 curve: "curveMonotoneX",
             }}
-        />
+            />
         {:else}
-        <span class="loader" />
-    {/if}
+            <span class="loader"></span>
+        {/if}
     </div>
 </section>
 
 <style lang="scss">
-    .chart-wrapper {
-        max-width: 1000px;
-        margin: 1rem auto;
-        overflow: hidden;
-        padding: 1rem;
-    }
+  .chart-wrapper {
+    max-width: 1000px;
+    margin: 1rem auto;
+    overflow: hidden;
+    padding: 1rem;
+  }
 </style>

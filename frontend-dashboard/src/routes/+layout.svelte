@@ -22,7 +22,7 @@
 
 <style lang="scss">
 	main {
-		max-width: 1000px;
+		max-width: 1300px;
 		margin: 1rem auto;
 	}
 
