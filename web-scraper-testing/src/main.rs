@@ -1,17 +1,63 @@
+#[macro_use]
+extern crate diesel;
 
+use diesel::PgConnection;
 use std::result::Result;
+use std::time::Duration;
 
-use crate::{power_station::get_current_power, emi_stats::get_emi_stats};
+use crate::db::{add_emi_stats, add_readings, create_connection};
+use crate::{emi_stats::get_emi_stats, power_station::get_current_power};
 
-mod power_station;
-mod emi_stats;
 mod db;
+mod emi_stats;
+mod power_station;
 
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>>{
-    println!("POWERSTATION STATS:\n{:?}\n",get_current_power().await?);
-    let connections = get_emi_stats().await?;
-    println!("\nEMI STATS: (connections: {:})\n{:?}",connections.len(),connections[0]);
-    Ok(())
+async fn run_power_sources(conn: &PgConnection) {
+    loop {
+        let current_power = get_current_power().await;
+        match current_power {
+            Ok(val) => {
+                match add_readings(val, conn) {
+                    Ok(_) => {}
+                    Err(ex) => {
+                        println!("Error uploading data: {ex}")
+                    }
+                };
+            }
+            Err(ex) => {
+                println!("Error fetching data {ex}");
+            }
+        }
+
+        tokio::time::sleep(Duration::from_secs(60)).await;
+    }
 }
 
+async fn run_emi_stats(conn: &PgConnection) {
+    loop {
+        let current_power = get_emi_stats().await;
+        match current_power {
+            Ok(val) => {
+                add_emi_stats(val, conn);
+            }
+            Err(ex) => {
+                println!("Error fetching data {ex}");
+            }
+        }
+
+        tokio::time::sleep(Duration::from_secs(60 * 15)).await;
+    }
+}
+
+#[tokio::main]
+async fn main() -> anyhow::Result<()> {
+    dotenv::dotenv().ok();
+    let conn = create_connection()?;
+
+    tokio::select! {
+        _ = run_power_sources(&conn) => {}
+        _ = run_emi_stats(&conn) => {}
+    }
+
+    Ok(())
+}

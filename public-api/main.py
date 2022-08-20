@@ -4,18 +4,19 @@ import databases
 import sqlalchemy
 from sqlalchemy.orm import Session
 
-from fastapi import FastAPI, status
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import RedirectResponse
 
+from typing import Union
+
+
 from pydantic import BaseModel
 import os
-import urllib
 from dotenv import load_dotenv
 load_dotenv()
 
 DATABASE_URL = os.environ.get("DATABASE_URL")
-print("connecting to",DATABASE_URL)
 database = databases.Database(DATABASE_URL)
 
 metadata = sqlalchemy.MetaData()
@@ -23,7 +24,6 @@ metadata = sqlalchemy.MetaData()
 networkSupply = sqlalchemy.Table(
     "network_supply",
     metadata,
-    sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
     sqlalchemy.Column("connection_code", sqlalchemy.VARCHAR(length=7)),
     sqlalchemy.Column("address", sqlalchemy.TEXT),
     sqlalchemy.Column("network_region_id", sqlalchemy.NUMERIC),
@@ -58,7 +58,8 @@ generationLevels = sqlalchemy.Table(
     sqlalchemy.Column("source_id", sqlalchemy.Integer),
     sqlalchemy.Column("generation", sqlalchemy.NUMERIC, default=0),
     sqlalchemy.Column("capacity", sqlalchemy.NUMERIC, default=0),
-    sqlalchemy.Column("reading_timestamp", sqlalchemy.TIMESTAMP, default=sqlalchemy.func.now()),
+    sqlalchemy.Column("reading_timestamp", sqlalchemy.TIMESTAMP,
+                      default=sqlalchemy.func.now()),
 )
 
 engine = sqlalchemy.create_engine(
@@ -67,9 +68,11 @@ engine = sqlalchemy.create_engine(
 metadata.create_all(engine)
 session = Session(engine, future=True)
 
+
 class PowerStationStats(BaseModel):
     generation_mw: float
     capacity_mw: float
+
 
 class PowerTypes(BaseModel):
     battery: PowerStationStats
@@ -81,6 +84,7 @@ class PowerTypes(BaseModel):
     liquid: PowerStationStats
     wind: PowerStationStats
 
+
 class PowerstationUpdatePackage(BaseModel):
     timestamp: datetime
     power_types: PowerTypes
@@ -88,10 +92,17 @@ class PowerstationUpdatePackage(BaseModel):
 
 class ConnectionPoint(BaseModel):
     connection_code: str
-    timestamp: str
+    timestamp: datetime
     load_mw: float
     generation_mw: float
     mwh_price: float
+    latitude: float
+    longitude: float
+    network_region_id: Union[int, None]
+    network_region_name: Union[str, None]
+    network_region_zone: Union[str, None]
+    address: str
+
 
 app = FastAPI(title="REST API using FastAPI PostgreSQL Async EndPoints")
 app.add_middleware(
@@ -102,13 +113,16 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
+
 @app.on_event("startup")
 async def startup():
     await database.connect()
 
+
 @app.on_event("shutdown")
 async def shutdown():
     await database.disconnect()
+
 
 @app.get("/")
 async def redirect_to_docs():
@@ -117,7 +131,8 @@ async def redirect_to_docs():
 
 @app.get("/power_stations", response_model=PowerstationUpdatePackage)
 async def power_stations():
-    query = session.query(generationLevels, powerSources).join(powerSources, generationLevels.c.source_id == powerSources.c.id)
+    query = session.query(generationLevels, powerSources).join(
+        powerSources, generationLevels.c.source_id == powerSources.c.id)
     allPowerTypes = query.all()
     print(allPowerTypes[0]["kind"])
     updateTime = allPowerTypes[0]["reading_timestamp"]
@@ -130,7 +145,31 @@ async def power_stations():
     print(powerTypes)
     return PowerstationUpdatePackage(timestamp=updateTime, power_types=powerTypes)
 
-@app.get("/grid_connection_points")
+
+@app.get("/grid_connection_points", response_model=List[ConnectionPoint])
 async def power_stations():
-    query = session.query(networkSupplyReading, networkSupply).join(networkSupply, networkSupplyReading.c.connection_code == networkSupply.c.connection_code)
-    return {}
+    query = (session
+                .query(networkSupplyReading, networkSupply)
+                .order_by(networkSupplyReading.c.connection_code, networkSupplyReading.c.timestamp.desc())
+                .distinct(networkSupplyReading.c.connection_code)
+                .join(
+                    networkSupply, networkSupply.c.connection_code == networkSupplyReading.c.connection_code)
+    )
+    networkSupplyReadings = query.all()
+    connectionPoints = []
+    for i in networkSupplyReadings:
+        connectionPoints.append(ConnectionPoint(
+            connection_code=i["connection_code"],
+            timestamp=i["timestamp"],
+            load_mw=i["load"],
+            generation_mw=i["generation"],
+            mwh_price=i["mwh_price"],
+            latitude=i["latitude"],
+            longitude=i["longitude"],
+            network_region_id=i["network_region_id"],
+            network_region_name=i["network_region_name"],
+            network_region_zone=i["network_region_zone"],
+            address=i["address"]
+        ))
+
+    return connectionPoints
