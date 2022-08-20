@@ -5,6 +5,8 @@ from responseModels import PowerStationStats, ConnectionPoint, PowerstationUpdat
 from typing import List, Dict
 import db
 from utils import chunks
+from sqlalchemy import func, desc
+import math
 
 router = APIRouter(
     prefix="/history",
@@ -37,20 +39,32 @@ async def power_stations(start: datetime = datetime.min, end: datetime = datetim
         outputSlices.append(PowerstationUpdatePackage(timestamp=updateTime, power_types=powerTypes))
     return outputSlices
 
-@router.get("/grid_connection_points", response_model=Dict[str,List[ConnectionPoint]])
-async def power_stations(start: datetime = datetime.min, end: datetime = datetime.max):
+
+# Example: ABY0111
+@router.get("/grid_connection_points/{connection_code}", response_model=List[ConnectionPoint])
+async def power_stations(connection_code: str, start: datetime = datetime.min, end: datetime = datetime.max, time_interval_minutes: float = 60):
+    update_interval = max(round(time_interval_minutes/15),1)
+
+    sub_query = db.session.query(
+        db.networkSupplyReading,
+        func.row_number().over(order_by=desc(db.networkSupplyReading.c.timestamp)).label("row_number")
+        ).subquery()
+
     query = (db.session
                 .query(db.networkSupplyReading, db.networkSupply)
                 .order_by(db.networkSupplyReading.c.connection_code, db.networkSupplyReading.c.timestamp.desc())
+                .filter(db.networkSupplyReading.c.timestamp <= end)
+                .filter(db.networkSupplyReading.c.timestamp >= start)
+                .filter(db.networkSupplyReading.c.connection_code == connection_code)
                 .join(
                     db.networkSupply, db.networkSupply.c.connection_code == db.networkSupplyReading.c.connection_code)
+                .join(sub_query, sub_query.c.id == db.networkSupplyReading.c.id)
+                .filter(sub_query.c.row_number % update_interval == 0)
     )
     networkSupplyReadings = query.all()
-    allData = {
-
-    }
+    allData = []
     for i in networkSupplyReadings:
-        point = (ConnectionPoint(
+        allData.append(ConnectionPoint(
             connection_code=i["connection_code"],
             timestamp=i["timestamp"],
             load_mw=i["load"],
@@ -63,8 +77,5 @@ async def power_stations(start: datetime = datetime.min, end: datetime = datetim
             network_region_zone=i["network_region_zone"],
             address=i["address"]
         ))
-        if point.connection_code not in allData:
-            allData[point.connection_code] = []
-        allData[point.connection_code].append(point)
 
     return allData
