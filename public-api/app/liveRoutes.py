@@ -4,7 +4,7 @@ from typing import List
 import db
 router = APIRouter(
     prefix="/live",
-    tags=["live"],
+    tags=["Live Data"],
     responses={404: {"description": "Not found"}},
 )
 
