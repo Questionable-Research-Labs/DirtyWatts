@@ -1,0 +1,46 @@
+<script lang="ts">
+    import CoalIcon from "$assets/img/coal.png"
+
+    export let percent: number;
+
+</script>
+
+<div class="coal">
+    <img src={CoalIcon} alt="Coal Icon" class="coal__icon">
+    <div class="coal__block">
+        <h1 class="coal__title">Coal Power In Use</h1>
+        <p class="coal__text">Currently {Math.floor(percent)}% of power is coming from Coal</p>
+    </div>
+</div>
+
+<style lang="scss">
+
+.coal {
+  padding: 1rem;
+  display: flex;
+  max-width: 700px;
+
+  margin: 1rem auto;
+
+  border-radius: 5px;
+
+  background: #462a2a;
+  border: 5px solid #d96c6c;
+
+  box-shadow: 2px 2px 10px rgba(0,0,0,1);
+}
+
+.coal__block {
+  display: flex;
+  flex-flow: column;
+}
+
+.coal__title {
+  color: white;
+}
+
+.coal__text {
+  color: #ECECEC;
+}
+
+</style>
