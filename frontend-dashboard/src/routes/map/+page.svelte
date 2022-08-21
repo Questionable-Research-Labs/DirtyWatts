@@ -9,7 +9,7 @@
 
     const {open} = getContext("simple-modal");
 
-    const {GeolocateControl, NavigationControl} = controls;
+    const {NavigationControl} = controls;
 
     let mapComponent: any;
 
@@ -26,8 +26,16 @@
             }); // documentation (https://docs.mapbox.com/mapbox-gl-js/example/flyto)
         }
     });
+
+    const description = "Check out our usage map. This map shows all the locations which have power generation along with how much they are generating along with a history."
 </script>
 
+<svelte:head>
+    <title>Dirty Watts - Usage Map</title>
+    <meta property="og:title" content="Dirty Watts - Map">
+    <meta name="description" content={description}>
+    <meta property="og:description" content={description}>
+</svelte:head>
 
 <section class="map-container">
     <div class="map-wrapper">

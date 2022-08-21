@@ -3,6 +3,8 @@
     import Prints from "$assets/img/prints.svg"
     import PowerStations from "$lib/PowerStations.svelte";
     import Footer from "$lib/Footer.svelte";
+
+    const description = "Ever wanted to see where the power you're using is coming from? Want to make sure you reduce the amount of power you're using when Coal is being burned for power? Dirty Watts is the answer to all these problems."
 </script>
 
 <div class="heading section section--fit">
@@ -16,6 +18,15 @@
         </p>
     </div>
 </div>
+
+
+<svelte:head>
+    <title>Dirty Watts - Home</title>
+    <meta property="og:title" content="Dirty Watts - Home">
+    <meta name="description" content={description}>
+    <meta property="og:description" content={description}>
+
+</svelte:head>
 
 <img src={Prints} class="prints">
 
