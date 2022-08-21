@@ -1,4 +1,6 @@
 <script lang="ts">
+    import "@carbon/styles/css/styles.css";
+    import "@carbon/charts/styles.css";
     import { controls, Map, Marker } from "@beyonk/svelte-mapbox";
     import { getContext, onMount } from "svelte";
     import ConnectionPointHistory from "$lib/ConnectionPointHistory.svelte";

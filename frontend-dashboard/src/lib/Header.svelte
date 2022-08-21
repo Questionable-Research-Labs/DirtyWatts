@@ -87,10 +87,10 @@
 			90deg,
 			rgba(51, 51, 51, 1) 0%,
 			rgba(51, 51, 51, 1) 33%,
-			rgba(15, 102, 2, 1) calc(calc(var(--percent-renewable) * 100%) - 1px),
+			rgb(19, 148, 79) calc(calc(var(--percent-renewable) * 100%) - 1px),
 			rgb(255, 255, 255) calc(calc(var(--percent-renewable) * 100%) - 1px),
 			rgb(255, 255, 255) calc(calc(var(--percent-renewable) * 100%) + 1px),
-			rgb(211, 71, 55) calc(calc(var(--percent-renewable) * 100%) + 1px)
+			rgb(203, 95, 95) calc(calc(var(--percent-renewable) * 100%) + 1px)
 		);
 		margin-bottom: 1.5rem;
 
@@ -105,13 +105,12 @@
 		.clean-power {
 			right: calc(calc(1 - var(--percent-renewable)) * 100%);
 			text-align: right;
-			border-right: solid white 1px;
+			border-right: 2px solid white;
 		}
 		.dirty-power {
 			left: calc(var(--percent-renewable) * 100%);
 			text-align: left;
-			border-left: solid white 1px;
-
+			border-left: 1px solid white;
 		}
 
 		@media screen and (max-width: 1000px) {
