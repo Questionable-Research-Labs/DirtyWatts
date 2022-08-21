@@ -38,7 +38,6 @@
     const dirtyGraphData = writable<Group[]>();
 
     const historyData = writable<HistoryGroup[]>();
-    const coalPercent = writable<number>(0);
 
     powerTypes.subscribe((powerTypes) => {
         if (!powerTypes) {
@@ -89,8 +88,6 @@
 
         $cleanGraphData = cleanGroups
         $dirtyGraphData = dirtyGroups
-
-        $coalPercent = (coalValue / total) * 100;
     });
 
     powerTypesHistory.subscribe((powerTypesHistory) => {
@@ -111,9 +108,6 @@
 </script>
 
 <section class="section section--fit">
-    {#if Math.round($coalPercent) > 0}
-        <CoalPower percent={$coalPercent}/>
-    {/if}
     <h1 class="section__title">Generation & Capacity</h1>
     <p class="section__text">The graphs below show the different power sources the purple bar indicates how much power
         is currently being

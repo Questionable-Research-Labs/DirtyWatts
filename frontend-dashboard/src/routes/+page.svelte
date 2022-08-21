@@ -1,38 +1,74 @@
 <script lang="ts">
-    import Logo from "$assets/img/logo-nb.svg"
-    import Prints from "$assets/img/prints.svg"
-    import PowerStations from "$lib/PowerStations.svelte";
-    import Footer from "$lib/Footer.svelte";
+  import Logo from "$assets/img/logo-nb.svg";
+  import Prints from "$assets/img/prints.svg";
+  import PowerStations from "$lib/PowerStations.svelte";
+  import Footer from "$lib/Footer.svelte";
+  import { derived } from "svelte/store";
+  import { powerTypes } from "$lib/stores";
+import CoalPower from "$lib/CoalPower.svelte";
 
-    const description = "Ever wanted to see where the power you're using is coming from? Want to make sure you reduce the amount of power you're using when Coal is being burned for power? Dirty Watts is the answer to all these problems."
+  const description =
+    "Ever wanted to see where the power you're using is coming from? Want to make sure you reduce the amount of power you're using when Coal is being burned for power? Dirty Watts is the answer to all these problems.";
+
+  let coalPercent = derived(powerTypes, (powerTypes) => {
+    if (!powerTypes) {
+      return 0
+    }
+    // get total power from power types
+    let total = 0;
+    for (const key in powerTypes?.power_types) {
+      if (!powerTypes?.power_types[key]) continue
+      const { generation_mw } = powerTypes?.power_types[key];
+      total += generation_mw;
+    }
+
+    return (powerTypes?.power_types["coal"].generation_mw / total) * 100;
+  });
 </script>
 
 <div class="heading section section--fit">
-    <img class="heading__logo" src={Logo} width="512" height="512" alt="Dirty Watts Logo"/>
-    <div>
-        <h1 class="section__title">Dirty Watts</h1>
-        <p class="section__text">
-            Ever wanted to see where the power you're using is coming from? Want to make sure you reduce the amount of
-            power you're using when Coal is being burned for power? <b>Dirty Watts</b> is the answer to all these problems.
-            We provide helpful tools and API's to easily check where New Zealand's power is being generated
-        </p>
-    </div>
+  <img
+    class="heading__logo"
+    src={Logo}
+    width="512"
+    height="512"
+    alt="Dirty Watts Logo"
+  />
+  <div>
+    <h1 class="section__title">Dirty Watts</h1>
+    {#if $coalPercent > 0}
+  <CoalPower
+    percent={$coalPercent}
+    coalMW={$powerTypes?.power_types["coal"]?.generation_mw}
+  />
+{/if}
+    <p class="section__text">
+      Ever wanted to see where the power you're using is coming from? Want to
+      make sure you reduce the amount of power you're using when Coal is being
+      burned for power? <b>Dirty Watts</b> is the answer to all these problems. We
+      provide helpful tools and API's to easily check where New Zealand's power is
+      being generated
+    </p>
+  </div>
 </div>
 
-
 <svelte:head>
-    <title>Dirty Watts - Home</title>
-    <meta property="og:title" content="Dirty Watts - Home">
-    <meta name="description" content={description}>
-    <meta property="og:description" content={description}>
-
+  <title>Dirty Watts - Home</title>
+  <meta property="og:title" content="Dirty Watts - Home" />
+  <meta name="description" content={description} />
+  <meta property="og:description" content={description} />
 </svelte:head>
 
-<img src={Prints} class="prints" alt="carbon footprint" title="Carbon footprint">
+<img
+  src={Prints}
+  class="prints"
+  alt="carbon footprint"
+  title="Carbon footprint"
+/>
 
-<PowerStations/>
+<PowerStations />
 
-<Footer/>
+<Footer />
 
 <style lang="scss">
   // Force scrollbar so model poup doesn't shift layout
@@ -45,13 +81,14 @@
     align-items: center;
   }
 
-
   .heading__logo {
     width: 100%;
     max-width: 512px;
     margin: 1rem auto;
+    @media screen and (max-width: 500px) {
+      margin: 0 auto;
+    }
   }
-
 
   .prints {
     margin: 0 auto 6rem;
@@ -65,5 +102,4 @@
       flex-flow: column;
     }
   }
-
 </style>

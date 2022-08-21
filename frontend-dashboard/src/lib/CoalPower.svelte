@@ -2,14 +2,14 @@
     import CoalIcon from "$assets/img/coal.png"
 
     export let percent: number;
-
+    export let coalMW: number;
 </script>
 
 <div class="coal">
     <img src={CoalIcon} alt="Coal Icon" class="coal__icon" width="64" height="64">
     <div class="coal__block">
         <h1 class="coal__title">Coal Power In Use</h1>
-        <p class="coal__text">Currently {Math.floor(percent)}% of power is coming from Coal</p>
+        <p class="coal__text">Currently {Math.ceil(percent)}% of power is coming from Coal ({Math.ceil(coalMW)} MW)</p>
     </div>
 </div>
 
