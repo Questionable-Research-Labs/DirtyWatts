@@ -130,7 +130,7 @@
                         left: { scaleType: "labels", title: "Type" },
                         bottom: { stacked: true, title: "MW" },
                     },
-                    title: ""
+                    title: `Last Updated: ${new Date($powerTypes?.timestamp || "").toLocaleString()}`,
                 }}
             />
         </div>
@@ -146,7 +146,7 @@
                         left: { scaleType: "labels", title: "Type" },
                         bottom: { stacked: true, title: "MW" },
                     },
-                    title: ""
+                    title: `Last Updated: ${new Date($powerTypes?.timestamp || "").toLocaleString()}`
                 }}
                 />
             </div>
@@ -180,7 +180,7 @@
                     },
                 },
                 curve: "curveMonotoneX",
-                title: ""
+                title: `Last Updated: ${new Date($powerTypes?.timestamp || "").toLocaleString()}`
             }}
             />
         {:else}
@@ -195,11 +195,13 @@
     margin: 1rem auto;
     overflow: hidden;
     padding: 1rem;
+    text-align: left;
   }
 
   .chart__title {
     font-size: 1.5rem;
     color: white;
     font-weight: bold;
+    text-align: center;
   }
 </style>
