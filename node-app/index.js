@@ -115,7 +115,7 @@ function update() {
 
 setInterval(() => {
     update()
-}, 1000 * 0.5)
+}, 1000 * 30)
 
 update()
 
