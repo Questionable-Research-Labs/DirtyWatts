@@ -134,7 +134,7 @@ function fancyLights() {
         client.publish('zigbee2mqtt/socket_1/set', JSON.stringify(switch_info))
 
         if(red < 255) red++;
-        if(green > 0) green++;
+        if(green > 0) green--;
     }, 100)
 
 
