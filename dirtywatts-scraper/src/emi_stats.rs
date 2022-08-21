@@ -28,8 +28,8 @@ pub async fn get_emi_stats() -> Result<Vec<ConnectionPoint>, Box<dyn std::error:
                         .unwrap_or(NaiveDateTime::from_timestamp(0, 0)),
                 )
                 .with_timezone(&Utc),
-            generation_mw: x.generation_mw,
-            load_mw: x.load_mw,
+            generation_mw: if x.load_mw < 0.0 { -x.load_mw } else { 0.0 } + x.generation_mw,
+            load_mw: if x.load_mw < 0.0 { 0.0 } else { x.load_mw },
             mwh_price: x.mwh_price,
         })
         .collect();
