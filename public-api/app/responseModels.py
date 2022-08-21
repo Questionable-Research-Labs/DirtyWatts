@@ -1,14 +1,16 @@
 from pydantic import BaseModel
 from datetime import datetime
-from typing import Union
-
+from typing import Union, List
 
 
 class PowerStationStats(BaseModel):
     generation_mw: float
     capacity_mw: float
 
+
 power_type_count = 8
+
+
 class PowerTypes(BaseModel):
     battery: PowerStationStats
     co_gen: PowerStationStats
@@ -33,7 +35,4 @@ class ConnectionPoint(BaseModel):
     mwh_price: float
     latitude: float
     longitude: float
-    network_region_id: Union[int, None]
-    network_region_name: Union[str, None]
-    network_region_zone: Union[str, None]
     address: str

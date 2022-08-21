@@ -46,7 +46,7 @@ struct ConnectionPointAPI {
     #[serde(alias = "FiveMinuteIntervalNumber")]
     interval_number: u32,
     #[serde(alias = "RunDateTime")]
-    run_datetime: String,
+    run_datetime: Option<String>,
     #[serde(alias = "SPDLoadMegawatt")]
     load_mw: f64,
     #[serde(alias = "SPDGenerationMegawatt")]
