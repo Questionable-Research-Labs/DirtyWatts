@@ -55,58 +55,59 @@ function update() {
             // power_types.wind.generation_mw          = 629        //max 1040
 
 
-            let total_generation_mw = 0   // total up power usage
-            for(key in power_types){
-                let power_type = power_types[key];
-                total_generation_mw += power_type.generation_mw;
-            }
+            // let total_generation_mw = 0   // total up power usage
+            // for(key in power_types){
+            //     let power_type = power_types[key];
+            //     total_generation_mw += power_type.generation_mw;
+            // }
 
-            console.log("====================")
-            console.log("Total Power Generation: " + total_generation_mw + " MW")
+            // console.log("====================")
+            // console.log("Total Power Generation: " + total_generation_mw + " MW")
 
-            let bad_generation_mw = 0   // total up non-renewables power usage
-            bad_generation_mw = power_types.coal.generation_mw + power_types.gas.generation_mw + power_types.diesel.generation_mw // + power_types.co_gen.generation_mw
-            console.log("Non-Renewable Power: " + bad_generation_mw + " MW")
+            // let bad_generation_mw = 0   // total up non-renewables power usage
+            // bad_generation_mw = power_types.coal.generation_mw + power_types.gas.generation_mw + power_types.diesel.generation_mw // + power_types.co_gen.generation_mw
+            // console.log("Non-Renewable Power: " + bad_generation_mw + " MW")
             
-            percent_fossil = 100 * (bad_generation_mw / total_generation_mw)  // calculate % non-renewable
-            console.log("Percentage Non-Renewable: " + percent_fossil + "%")
+            // percent_fossil = 100 * (bad_generation_mw / total_generation_mw)  // calculate % non-renewable
+            // console.log("Percentage Non-Renewable: " + percent_fossil + "%")
 
 
-            // UPDATE LIGHT
-            let red_value = 0
-            let green_value = 0
+            // // UPDATE LIGHT
+            // let red_value = 0
+            // let green_value = 0
 
-            if (power_types.coal.generation_mw > 0 || power_types.diesel.generation_mw > 0){
-                let half_max_coal = Math.round(power_types.coal.capacity_mw/2 + power_types.diesel.capacity_mw/2)
-                let bad_generation = (power_types.coal.generation_mw + power_types.diesel.generation_mw) / half_max_coal
-                if(bad_generation > 1){
-                    bad_generation = 1
-                }
+            // if (power_types.coal.generation_mw > 0 || power_types.diesel.generation_mw > 0){
+            //     let half_max_coal = Math.round(power_types.coal.capacity_mw/2 + power_types.diesel.capacity_mw/2)
+            //     let bad_generation = (power_types.coal.generation_mw + power_types.diesel.generation_mw) / half_max_coal
+            //     if(bad_generation > 1){
+            //         bad_generation = 1
+            //     }
                 
-                red_value = 150 + Math.round(105 * bad_generation)
-                green_value = Math.round(95 - (95 * bad_generation))
+            //     red_value = 150 + Math.round(105 * bad_generation)
+            //     green_value = Math.round(95 - (95 * bad_generation))
 
-                outlet_state = false
-            } else {
-                let half_max_gas = Math.round(power_types.gas.capacity_mw/2)
-                let medium_generation = power_types.gas.generation_mw / half_max_gas
-                if(medium_generation > 1){
-                    medium_generation = 1
-                }
+            //     outlet_state = false
+            // } else {
+            //     let half_max_gas = Math.round(power_types.gas.capacity_mw/2)
+            //     let medium_generation = power_types.gas.generation_mw / half_max_gas
+            //     if(medium_generation > 1){
+            //         medium_generation = 1
+            //     }
 
-                red_value = Math.round(160 * medium_generation)
-                green_value = Math.round(255 - (127 * medium_generation))
+            //     red_value = Math.round(160 * medium_generation)
+            //     green_value = Math.round(255 - (127 * medium_generation))
 
-                outlet_state = true
-            }
+            //     outlet_state = true
+            // }
 
 
-            console.log("Value For Lamp: (" + red_value + ", " + green_value + ", 0) (RGB)")
-            let lamp_info = {"state": "ON", "color": {"r": red_value, "g": green_value, "b": 0}}
-            let switch_info = {"state": outlet_state}
 
-            client.publish('zigbee2mqtt/lamp_rgb_1/set', JSON.stringify(lamp_info)) 
-            client.publish('zigbee2mqtt/socket_1/set', JSON.stringify(switch_info))
+            // console.log("Value For Lamp: (" + red_value + ", " + green_value + ", 0) (RGB)")
+            // let lamp_info = {"state": "ON", "color": {"r": red_value, "g": green_value, "b": 0}}
+            // let switch_info = {"state": outlet_state}
+
+            // client.publish('zigbee2mqtt/lamp_rgb_1/set', JSON.stringify(lamp_info)) 
+            // client.publish('zigbee2mqtt/socket_1/set', JSON.stringify(switch_info))
 
 
         }).catch(console.error)
@@ -114,9 +115,32 @@ function update() {
 
 setInterval(() => {
     update()
-}, 1000 * 30)
+}, 1000 * 0.5)
 
 update()
+
+function fancyLights() {
+
+    let red = 0;
+    let green = 255;
+
+    setInterval(() => {
+
+        console.log("Value For Lamp: (" + red + ", " + green + ", 0) (RGB)")
+        let lamp_info = {"state": "ON", "color": {"r": red, "g": green, "b": 0}}
+        let switch_info = {"state": true}
+
+        client.publish('zigbee2mqtt/lamp_rgb_1/set', JSON.stringify(lamp_info)) 
+        client.publish('zigbee2mqtt/socket_1/set', JSON.stringify(switch_info))
+
+        if(red < 255) red+=10;
+        if(green > 0) green-=10;
+    }, 1000)
+
+
+}
+
+fancyLights();
 
 // client.on('connect', function () {
 //     console.log("connected")
