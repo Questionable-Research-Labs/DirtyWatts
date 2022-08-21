@@ -42,7 +42,7 @@ function update() {
     getDataFromAPI()
         .then((data) => {
             let power_types = data.power_types
-            let outlet_state = true
+            let outlet_state = "ON"
 
             // pseudo data (comment/uncomment during testing)
             // power_types.battery.generation_mw       = 0        //max 1
@@ -55,59 +55,59 @@ function update() {
             // power_types.wind.generation_mw          = 629        //max 1040
 
 
-            // let total_generation_mw = 0   // total up power usage
-            // for(key in power_types){
-            //     let power_type = power_types[key];
-            //     total_generation_mw += power_type.generation_mw;
-            // }
+            let total_generation_mw = 0   // total up power usage
+            for(key in power_types){
+                let power_type = power_types[key];
+                total_generation_mw += power_type.generation_mw;
+            }
 
-            // console.log("====================")
-            // console.log("Total Power Generation: " + total_generation_mw + " MW")
+            console.log("====================")
+            console.log("Total Power Generation: " + total_generation_mw + " MW")
 
-            // let bad_generation_mw = 0   // total up non-renewables power usage
-            // bad_generation_mw = power_types.coal.generation_mw + power_types.gas.generation_mw + power_types.diesel.generation_mw // + power_types.co_gen.generation_mw
-            // console.log("Non-Renewable Power: " + bad_generation_mw + " MW")
+            let bad_generation_mw = 0   // total up non-renewables power usage
+            bad_generation_mw = power_types.coal.generation_mw + power_types.gas.generation_mw + power_types.diesel.generation_mw // + power_types.co_gen.generation_mw
+            console.log("Non-Renewable Power: " + bad_generation_mw + " MW")
             
-            // percent_fossil = 100 * (bad_generation_mw / total_generation_mw)  // calculate % non-renewable
-            // console.log("Percentage Non-Renewable: " + percent_fossil + "%")
+            percent_fossil = 100 * (bad_generation_mw / total_generation_mw)  // calculate % non-renewable
+            console.log("Percentage Non-Renewable: " + percent_fossil + "%")
 
 
-            // // UPDATE LIGHT
-            // let red_value = 0
-            // let green_value = 0
+            // UPDATE LIGHT
+            let red_value = 0
+            let green_value = 0
 
-            // if (power_types.coal.generation_mw > 0 || power_types.diesel.generation_mw > 0){
-            //     let half_max_coal = Math.round(power_types.coal.capacity_mw/2 + power_types.diesel.capacity_mw/2)
-            //     let bad_generation = (power_types.coal.generation_mw + power_types.diesel.generation_mw) / half_max_coal
-            //     if(bad_generation > 1){
-            //         bad_generation = 1
-            //     }
+            if (power_types.coal.generation_mw > 0 || power_types.diesel.generation_mw > 0){
+                let half_max_coal = Math.round(power_types.coal.capacity_mw/2 + power_types.diesel.capacity_mw/2)
+                let bad_generation = (power_types.coal.generation_mw + power_types.diesel.generation_mw) / half_max_coal
+                if(bad_generation > 1){
+                    bad_generation = 1
+                }
                 
-            //     red_value = 150 + Math.round(105 * bad_generation)
-            //     green_value = Math.round(95 - (95 * bad_generation))
+                red_value = 150 + Math.round(105 * bad_generation)
+                green_value = Math.round(95 - (95 * bad_generation))
 
-            //     outlet_state = false
-            // } else {
-            //     let half_max_gas = Math.round(power_types.gas.capacity_mw/2)
-            //     let medium_generation = power_types.gas.generation_mw / half_max_gas
-            //     if(medium_generation > 1){
-            //         medium_generation = 1
-            //     }
+                outlet_state = "OFF"
+            } else {
+                let half_max_gas = Math.round(power_types.gas.capacity_mw/2)
+                let medium_generation = power_types.gas.generation_mw / half_max_gas
+                if(medium_generation > 1){
+                    medium_generation = 1
+                }
 
-            //     red_value = Math.round(160 * medium_generation)
-            //     green_value = Math.round(255 - (127 * medium_generation))
+                red_value = Math.round(160 * medium_generation)
+                green_value = Math.round(255 - (127 * medium_generation))
 
-            //     outlet_state = true
-            // }
+                outlet_state = "ON"
+            }
 
 
 
-            // console.log("Value For Lamp: (" + red_value + ", " + green_value + ", 0) (RGB)")
-            // let lamp_info = {"state": "ON", "color": {"r": red_value, "g": green_value, "b": 0}}
-            // let switch_info = {"state": outlet_state}
+            console.log("Value For Lamp: (" + red_value + ", " + green_value + ", 0) (RGB)")
+            let lamp_info = {"state": "ON", "color": {"r": red_value, "g": green_value, "b": 0}}
+            let switch_info = {"state": outlet_state}
 
-            // client.publish('zigbee2mqtt/lamp_rgb_1/set', JSON.stringify(lamp_info)) 
-            // client.publish('zigbee2mqtt/socket_1/set', JSON.stringify(switch_info))
+            client.publish('zigbee2mqtt/lamp_rgb_1/set', JSON.stringify(lamp_info)) // SET LAMP_RGB_1 TO THE NAME OF YOUR LAMP IN THE DASHBOARD
+            client.publish('zigbee2mqtt/socket_1/set', JSON.stringify(switch_info)) // SAME AS ABOVE WITH SMART SOCKET
 
 
         }).catch(console.error)
@@ -119,51 +119,50 @@ setInterval(() => {
 
 update()
 
-function fancyLights() {
+// function fancyLights() {
 
-    let red = 0;
-    let green = 255;
+//     let red = 0;
+//     let green = 255;
 
-    setInterval(() => {
+//     setInterval(() => {
 
-        console.log("Value For Lamp: (" + red + ", " + green + ", 0) (RGB)")
-        let lamp_info = {"state": "ON", "color": {"r": red, "g": green, "b": 0}}
-        let switch_info = {"state": "ON"}
+//         console.log("Value For Lamp: (" + red + ", " + green + ", 0) (RGB)")
+//         let lamp_info = {"state": "ON", "color": {"r": red, "g": green, "b": 0}}
+//         let switch_info = {"state": "ON"}
 
-        client.publish('zigbee2mqtt/lamp_rgb_1/set', JSON.stringify(lamp_info)) 
-        client.publish('zigbee2mqtt/socket_1/set', JSON.stringify(switch_info))
+//         client.publish('zigbee2mqtt/lamp_rgb_1/set', JSON.stringify(lamp_info)) 
+//         client.publish('zigbee2mqtt/socket_1/set', JSON.stringify(switch_info))
 
-        if(red < 255) red++;
-        if(green > 0) green--;
-    }, 100)
+//         if(red < 255) red++;
+//         if(green > 0) green--;
+//     }, 100)
 
 
-}
+// }
 
-var fs = require("fs/promises")
+// var fs = require("fs/promises")
 
-const keypress = async () => {
-    process.stdin.setRawMode(true)
-    return new Promise(resolve => process.stdin.once('data', () => {
-      process.stdin.setRawMode(false)
-      resolve()
-    }))
-  }
+// const keypress = async () => {
+//     process.stdin.setRawMode(true)
+//     return new Promise(resolve => process.stdin.once('data', () => {
+//       process.stdin.setRawMode(false)
+//       resolve()
+//     }))
+//   }
   
 // fancyLights();
-setTimeout(async ()=>{
-    let colors = [[0,255,0],[127,127,0],[150,105,0],[255,0,0]]
-    while (true) {
-        for (let color of colors) {
-            let lamp_info = {"state": "ON", "color": {"r": color[0], "g": color[1], "b": color[2]}}
-            client.publish('zigbee2mqtt/lamp_rgb_1/set', JSON.stringify(lamp_info)) 
-            console.log(lamp_info)
+// setTimeout(async ()=>{
+//     let colors = [[0,255,0],[127,127,0],[150,105,0],[255,0,0]]
+//     while (true) {
+//         for (let color of colors) {
+//             let lamp_info = {"state": "ON", "color": {"r": color[0], "g": color[1], "b": color[2]}}
+//             client.publish('zigbee2mqtt/lamp_rgb_1/set', JSON.stringify(lamp_info)) 
+//             console.log(lamp_info)
     
-            await keypress()
-        }
-    }
-    
-},100)
+//             await keypress()
+//         }
+//     }
+// },100)
 
 
 client.on('connect', function () {
