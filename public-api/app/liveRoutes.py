@@ -1,12 +1,16 @@
 from fastapi import APIRouter
+
 from responseModels import PowerStationStats, PowerstationUpdatePackage, ConnectionPoint, power_type_count
 from typing import List
+from sqlalchemy import func
 import db
+
 router = APIRouter(
     prefix="/live",
     tags=["Live Data"],
     responses={404: {"description": "Not found"}},
 )
+
 
 @router.get("/power_stations", response_model=PowerstationUpdatePackage)
 async def power_stations():
@@ -37,17 +41,36 @@ async def power_stations():
 @router.get("/grid_connection_points", response_model=List[ConnectionPoint])
 async def power_stations():
     session = db.sessionMaker()
-    query = (session
-                .query(db.networkSupplyReading, db.networkSupply)
-                .order_by(db.networkSupplyReading.c.connection_code, db.networkSupplyReading.c.timestamp.desc())
-                .distinct(db.networkSupplyReading.c.connection_code)
-                .join(
-                    db.networkSupply, db.networkSupply.c.connection_code == db.networkSupplyReading.c.connection_code)
-    )
+
+    subquery = session.query(db.networkSupplyReading).distinct(db.networkSupplyReading.c.connection_code).order_by(
+        db.networkSupplyReading.c.connection_code, db.networkSupplyReading.c.timestamp.desc()).subquery()
+
+    query = session.query(func.avg(subquery.c.mwh_price).label("mwh_price"),
+                          func.sum(subquery.c.load).label("load"),
+                          func.sum(subquery.c.generation).label("generation"),
+                          func.string_agg(subquery.c.connection_code, ',').label("connection_code"),
+                          func.string_agg(db.networkSupply.c.address, ', ').label("address"),
+                          func.round(db.networkSupply.c.longitude, 1).label("longitude"),
+                          func.round(db.networkSupply.c.latitude, 1).label("latitude"),
+                          func.max(subquery.c.timestamp).label("timestamp")).join(
+        db.networkSupply,
+        db.networkSupply.c.connection_code == subquery.c.connection_code).group_by(
+        func.round(db.networkSupply.c.longitude, 1), func.round(db.networkSupply.c.latitude, 1)).order_by(
+        func.string_agg(subquery.c.connection_code, ','), func.max(subquery.c.timestamp).desc())
+
+    from sqlalchemy.dialects import postgresql
+    print(query.statement.compile(dialect=postgresql.dialect(), compile_kwargs={"literal_binds": True}))
+
     networkSupplyReadings = query.all()
     session.close()
     connectionPoints = []
     for i in networkSupplyReadings:
+        # Remove any duplicate addresses
+        unique = []
+        for elm in i["address"].split(", "):
+            if elm not in unique:
+                unique.append(elm)
+
         connectionPoints.append(ConnectionPoint(
             connection_code=i["connection_code"],
             timestamp=i["timestamp"],
@@ -56,10 +79,10 @@ async def power_stations():
             mwh_price=i["mwh_price"],
             latitude=i["latitude"],
             longitude=i["longitude"],
-            network_region_id=i["network_region_id"],
-            network_region_name=i["network_region_name"],
-            network_region_zone=i["network_region_zone"],
-            address=i["address"]
+            # network_region_id=[float(x) for x in i["network_region_id"].split(",")],
+            # network_region_name=i["network_region_name"].split(","),
+            # network_region_zone=i["network_region_zone"].split(","),
+            address=', '.join(unique)
         ))
 
     return connectionPoints
