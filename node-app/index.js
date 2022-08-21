@@ -128,7 +128,7 @@ function fancyLights() {
 
         console.log("Value For Lamp: (" + red + ", " + green + ", 0) (RGB)")
         let lamp_info = {"state": "ON", "color": {"r": red, "g": green, "b": 0}}
-        let switch_info = {"state": true}
+        let switch_info = {"state": "ON"}
 
         client.publish('zigbee2mqtt/lamp_rgb_1/set', JSON.stringify(lamp_info)) 
         client.publish('zigbee2mqtt/socket_1/set', JSON.stringify(switch_info))
@@ -140,12 +140,36 @@ function fancyLights() {
 
 }
 
-fancyLights();
+var fs = require("fs/promises")
 
-// client.on('connect', function () {
-//     console.log("connected")
-//     // client.publish('zigbee2mqtt/socket_1/set', '{"state": "OFF"}')  
-// })
+const keypress = async () => {
+    process.stdin.setRawMode(true)
+    return new Promise(resolve => process.stdin.once('data', () => {
+      process.stdin.setRawMode(false)
+      resolve()
+    }))
+  }
+  
+// fancyLights();
+setTimeout(async ()=>{
+    let colors = [[0,255,0],[127,127,0],[150,105,0],[255,0,0]]
+    while (true) {
+        for (let color of colors) {
+            let lamp_info = {"state": "ON", "color": {"r": color[0], "g": color[1], "b": color[2]}}
+            client.publish('zigbee2mqtt/lamp_rgb_1/set', JSON.stringify(lamp_info)) 
+            console.log(lamp_info)
+    
+            await keypress()
+        }
+    }
+    
+},100)
+
+
+client.on('connect', function () {
+    console.log("connected")
+    // client.publish('zigbee2mqtt/socket_1/set', '{"state": "OFF"}')  
+})
 
 // app.post('/socket_1', function (req, res) {
 //     res.send(req.body)
