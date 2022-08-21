@@ -42,16 +42,17 @@ function update() {
     getDataFromAPI()
         .then((data) => {
             let power_types = data.power_types
+            let outlet_state = true
 
             // pseudo data (comment/uncomment during testing)
-            power_types.battery.generation_mw       = 0        //max 1
-            power_types.co_gen.generation_mw        = 118        //max 216
-            power_types.coal.generation_mw          = 10        //max 750
-            power_types.gas.generation_mw           = 197        //max 1280
-            power_types.geothermal.generation_mw    = 933        //max 1062
-            power_types.hydro.generation_mw         = 2950        //max 5415
-            power_types.diesel.generation_mw        = 0        //max 156
-            power_types.wind.generation_mw          = 629        //max 1040
+            // power_types.battery.generation_mw       = 0        //max 1
+            // power_types.co_gen.generation_mw        = 118        //max 216
+            // power_types.coal.generation_mw          = 10        //max 750
+            // power_types.gas.generation_mw           = 197        //max 1280
+            // power_types.geothermal.generation_mw    = 933        //max 1062
+            // power_types.hydro.generation_mw         = 2950        //max 5415
+            // power_types.diesel.generation_mw        = 0        //max 156
+            // power_types.wind.generation_mw          = 629        //max 1040
 
 
             let total_generation_mw = 0   // total up power usage
@@ -86,33 +87,51 @@ function update() {
             let red_value = 0
             let green_value = 0
 
-            // 1000
-            
-            let fully_red = 1500
-            let fully_green = 1000 // eg 100
-            fully_red -= fully_green // now 1400
+            if (power_types.coal.generation_mw > 0 || power_types.diesel.generation_mw > 0){
+                let half_max_coal = Math.round(power_types.coal.capacity_mw/2 + power_types.diesel.capacity_mw/2)
+                let bad_generation = (power_types.coal.generation_mw + power_types.diesel.generation_mw) / half_max_coal
+                if(bad_generation > 1){
+                    bad_generation = 1
+                }
+                
+                red_value = 150 + Math.round(105 * bad_generation)
+                green_value = Math.round(95 - (95 * bad_generation))
 
-            weighted_bad_generation -= fully_green // 900
+                outlet_state = false
+            } else {
+                let half_max_gas = Math.round(power_types.gas.capacity_mw/2)
+                let medium_generation = power_types.gas.generation_mw / half_max_gas
+                if(medium_generation > 1){
+                    medium_generation = 1
+                }
 
+                red_value = Math.round(160 * medium_generation)
+                green_value = Math.round(255 - (127 * medium_generation))
 
-            weighted_light_value = weighted_bad_generation / fully_red // 0.64
-
-            // console.log(weighted_light_value, weighted_bad_generation, fully_green, fully_red)
-
-            if(weighted_light_value < 0){ //make sure not cringe
-                weighted_light_value = 0
+                outlet_state = true
             }
             
-            if(weighted_light_value > 1){ //make sure not cringe part 2
-                weighted_light_value = 1
-            }
+            // let fully_red = 1300
+            // let fully_green = 1000 // eg 100
+            // fully_red -= fully_green // now 1400
 
-            red_value = Math.round(255 * weighted_light_value)
-            green_value = Math.round(255 - (255 * weighted_light_value))
-
+            // weighted_bad_generation -= fully_green // 900
 
 
-        
+            // weighted_light_value = weighted_bad_generation / fully_red // 0.64
+
+            // // console.log(weighted_light_value, weighted_bad_generation, fully_green, fully_red)
+
+            // if(weighted_light_value < 0){ //make sure not cringe
+            //     weighted_light_value = 0
+            // }
+            
+            // if(weighted_light_value > 1){ //make sure not cringe part 2
+            //     weighted_light_value = 1
+            // }
+
+            // red_value = Math.round(255 * weighted_light_value)
+            // green_value = Math.round(255 - (255 * weighted_light_value))
 
             // if(percent_fossil > 10){
             //     percent_fossil = 10
@@ -125,9 +144,7 @@ function update() {
             // green_value = Math.round(255 - (255 * fossil_amount))
 
             console.log("Value For Lamp: (" + red_value + ", " + green_value + ", 0) (RGB)")
-            
             let lamp_info = {"state": "ON", "color": {"r": red_value, "g": green_value, "b": 0}}
-
             client.publish('zigbee2mqtt/lamp_rgb_1/set', JSON.stringify(lamp_info)) 
 
 
