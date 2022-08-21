@@ -1,7 +1,7 @@
 from glob import glob
 import databases
 import sqlalchemy
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import sessionmaker
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -21,7 +21,7 @@ database = databases.Database(DATABASE_URL)
 
 
 engine = sqlalchemy.create_engine(
-    DATABASE_URL, pool_size=3, max_overflow=0
+    DATABASE_URL
 )
 db.metadata.create_all(engine)
 
@@ -50,15 +50,13 @@ app.openapi = custom_openapi
 
 @app.on_event("startup")
 async def startup():
-    db.session = Session(engine, future=True)
+    db.sessionMaker = sessionmaker(autocommit=False, autoflush=False, bind=engine)
     await database.connect()
 
 
 @app.on_event("shutdown")
 async def shutdown():
-    db.session.close()
     await database.disconnect()
-
 
 @app.get("/", include_in_schema=False)
 async def redirect_to_docs():

@@ -10,14 +10,18 @@ router = APIRouter(
 
 @router.get("/power_stations", response_model=PowerstationUpdatePackage)
 async def power_stations():
+    session = db.sessionMaker()
     query = (
-        db.session.query(db.generationLevels, db.powerSources)
+        session.query(db.generationLevels, db.powerSources)
         .join(db.powerSources, db.generationLevels.c.source_id == db.powerSources.c.id)
         .order_by(db.generationLevels.c.reading_timestamp.desc())
         .limit(power_type_count)
     )
 
     allPowerTypes = query.all()
+
+    session.close()
+
     print(allPowerTypes[0]["kind"])
     updateTime = allPowerTypes[0]["reading_timestamp"]
     powerTypes = {}
@@ -32,7 +36,8 @@ async def power_stations():
 
 @router.get("/grid_connection_points", response_model=List[ConnectionPoint])
 async def power_stations():
-    query = (db.session
+    session = db.sessionMaker()
+    query = (session
                 .query(db.networkSupplyReading, db.networkSupply)
                 .order_by(db.networkSupplyReading.c.connection_code, db.networkSupplyReading.c.timestamp.desc())
                 .distinct(db.networkSupplyReading.c.connection_code)
@@ -40,6 +45,7 @@ async def power_stations():
                     db.networkSupply, db.networkSupply.c.connection_code == db.networkSupplyReading.c.connection_code)
     )
     networkSupplyReadings = query.all()
+    session.close()
     connectionPoints = []
     for i in networkSupplyReadings:
         connectionPoints.append(ConnectionPoint(

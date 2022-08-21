@@ -1,6 +1,6 @@
 import sqlalchemy
 from sqlalchemy.orm import Session
-session = None
+sessionMaker = None
 
 metadata = sqlalchemy.MetaData()
 
