@@ -22,7 +22,7 @@
             mapComponent.setCenter([174.1148181731923, -40.8804662625221]); // zoom is optional
             mapComponent.flyTo({
                 center: [174.1148181731923, -40.8804662625221],
-                zoom: 4,
+                zoom: 5,
             }); // documentation (https://docs.mapbox.com/mapbox-gl-js/example/flyto)
         }
     });
@@ -108,7 +108,7 @@
 
     width: 100%;
     position: relative;
-    height: calc(100vh - 100px - 2rem);
+    height: calc(100vh - 100px);
 
     .map-wrapper {
       position: absolute;

@@ -4,7 +4,7 @@
 
     $: majorityClass = generateMW >= loadMW ? "generate" : "load";
 </script>
-<div class={`icon ${majorityClass}`} style={`--size: ${Math.max(Math.log(generateMW + loadMW) * 10, 12)}px`}></div>
+<div class={`icon ${majorityClass}`} style={`--size: ${Math.max(Math.log(generateMW + loadMW) * 10, 16)}px`}></div>
 
 <style lang="scss">
     .icon {

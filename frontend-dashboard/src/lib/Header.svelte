@@ -110,7 +110,6 @@
 			);
 		}
 
-		margin-bottom: 1.5rem;
 
 		.clean-power,
 		.dirty-power {
