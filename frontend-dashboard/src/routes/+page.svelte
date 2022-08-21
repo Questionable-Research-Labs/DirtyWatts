@@ -14,7 +14,7 @@
         <p class="section__text">
             Ever wanted to see where the power you're using is coming from? Want to make sure you reduce the amount of
             power you're using when Coal is being burned for power? <b>Dirty Watts</b> is the answer to all these problems.
-            We provide helpful tools and APIS to easily check where New Zealand's power is being generated
+            We provide helpful tools and API's to easily check where New Zealand's power is being generated
         </p>
     </div>
 </div>
@@ -28,7 +28,7 @@
 
 </svelte:head>
 
-<img src={Prints} class="prints">
+<img src={Prints} class="prints" alt="carbon footprint" title="Carbon footprint">
 
 <PowerStations/>
 

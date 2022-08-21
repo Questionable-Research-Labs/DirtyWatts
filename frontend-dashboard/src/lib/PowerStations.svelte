@@ -111,7 +111,7 @@
 </script>
 
 <section class="section section--fit">
-    {#if $coalPercent > 0}
+    {#if Math.round($coalPercent) > 0}
         <CoalPower percent={$coalPercent}/>
     {/if}
     <h1 class="section__title">Generation & Capacity</h1>
