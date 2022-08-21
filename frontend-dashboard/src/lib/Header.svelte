@@ -62,9 +62,9 @@
 				class:active={$page.url.pathname === "/map"}>MAP</a
 			>
 			<a
-				href="/api"
+				href="https://api.dirtywatts.nz/"
+				rel="noreferrer nooppener"
 				class="nav__link"
-				class:active={$page.url.pathname === "/api"}>API</a
 			>
 			<a
 				href="https://wiki.dirtywatts.nz/"
