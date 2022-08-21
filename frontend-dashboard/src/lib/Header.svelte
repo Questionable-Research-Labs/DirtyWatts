@@ -4,6 +4,7 @@
 	import { derived } from "svelte/store";
 	import { powerTypes } from "./stores";
 	import type { PowerType } from "./api";
+	import { fade } from "svelte/transition";
 
 	const cleanPowerIndex: Record<string, boolean> = {
 		battery: true,
@@ -18,7 +19,7 @@
 
 	let percentRenewable = derived(powerTypes, (powerTypes) => {
 		if (!powerTypes) {
-			return 1;
+			return null;
 		}
 		let total_clean = 0;
 		let total_dirty = 0;
@@ -35,7 +36,10 @@
 	});
 </script>
 
-<header class="header" style="--percent-renewable: {$percentRenewable};">
+<header
+	class="header {$percentRenewable != null ? 'fancy-progress' : ''}"
+	style="--percent-renewable: {$percentRenewable || 1};"
+>
 	<img
 		src={LogoNB}
 		alt="Dirty Watts Logo"
@@ -69,9 +73,15 @@
 			>
 		</nav>
 	</div>
-	<div class="clean-power">{Math.round($percentRenewable * 100)}% Clean</div>
-	{#if $percentRenewable <= 0.95}
-		<div class="dirty-power">{Math.round((1- $percentRenewable) * 100)}% Dirty</div>
+	{#if $percentRenewable !== null}
+		<div class="clean-power" transition:fade={{ duration: 200 }}>
+			{Math.round($percentRenewable * 100)}% Clean
+		</div>
+		{#if $percentRenewable <= 0.95}
+			<div class="dirty-power" transition:fade={{ duration: 200 }}>
+				{Math.round((1 - $percentRenewable) * 100)}% Dirty
+			</div>
+		{/if}
 	{/if}
 </header>
 
@@ -81,31 +91,41 @@
 		justify-content: left;
 		align-items: center;
 		position: relative;
+		transition: all 0.2s ease-in-out;
 
 		background: #333;
-		background: linear-gradient(
-			90deg,
-			rgba(51, 51, 51, 1) 0%,
-			rgba(51, 51, 51, 1) 33%,
-			rgb(19, 148, 79) calc(calc(var(--percent-renewable) * 100%) - 1px),
-			rgb(255, 255, 255) calc(calc(var(--percent-renewable) * 100%) - 1px),
-			rgb(255, 255, 255) calc(calc(var(--percent-renewable) * 100%) + 1px),
-			rgb(203, 95, 95) calc(calc(var(--percent-renewable) * 100%) + 1px)
-		);
+		&.fancy-progress {
+			background: linear-gradient(
+				90deg,
+				rgba(51, 51, 51, 1) 0%,
+				rgba(51, 51, 51, 1) 33%,
+				rgb(19, 148, 79)
+					calc(calc(var(--percent-renewable) * 100%) - 1px),
+				rgb(255, 255, 255)
+					calc(calc(var(--percent-renewable) * 100%) - 1px),
+				rgb(255, 255, 255)
+					calc(calc(var(--percent-renewable) * 100%) + 1px),
+				rgb(203, 95, 95)
+					calc(calc(var(--percent-renewable) * 100%) + 1px)
+			);
+		}
+
 		margin-bottom: 1.5rem;
 
-		.clean-power, .dirty-power {
-			position: absolute;
+		.clean-power,
+		.dirty-power {
+			position: fixed;
 			color: #fff;
 			font-size: 1.5rem;
 			font-weight: bold;
 			padding: 0.5rem;
 			background: #333;
+			box-sizing: content-box;
 		}
 		.clean-power {
 			right: calc(calc(1 - var(--percent-renewable)) * 100%);
 			text-align: right;
-			border-right: 2px solid white;
+			border-right: 1px solid white;
 		}
 		.dirty-power {
 			left: calc(var(--percent-renewable) * 100%);
@@ -114,7 +134,8 @@
 		}
 
 		@media screen and (max-width: 1000px) {
-			.clean-power, .dirty-power {
+			.clean-power,
+			.dirty-power {
 				display: none;
 			}
 			background: #333;
