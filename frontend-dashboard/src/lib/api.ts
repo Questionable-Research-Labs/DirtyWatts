@@ -22,9 +22,6 @@ export interface ConnectionPoint {
     mwh_price: number,
     latitude: number,
     longitude: number,
-    network_region_id: number,
-    network_region_name: string,
-    network_region_zone: string,
     address: string
 }
 
