@@ -46,7 +46,7 @@ function update() {
             // pseudo data (comment/uncomment during testing)
             power_types.battery.generation_mw       = 0        //max 1
             power_types.co_gen.generation_mw        = 118        //max 216
-            power_types.coal.generation_mw          = 100        //max 750
+            power_types.coal.generation_mw          = 10        //max 750
             power_types.gas.generation_mw           = 197        //max 1280
             power_types.geothermal.generation_mw    = 933        //max 1062
             power_types.hydro.generation_mw         = 2950        //max 5415
