@@ -11,6 +11,14 @@
     });
 </script>
 
+<svelte:head>
+    <title>Dirty Watts</title>
+    <meta name="author" content="Questionable Research Labs">
+    <meta name="keywords" content="power,gas,liquid,energy,dirty,watts,govhack">
+    <meta property="og:url" content="https://dirtywatts.nz/">
+    <meta property="og:image" content="https://dirtywatts.nz/logo.png">
+</svelte:head>
+
 <Modal classWindow={"modal-window"}>
     <Header/>
 
