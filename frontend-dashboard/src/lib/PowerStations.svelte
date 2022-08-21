@@ -130,6 +130,7 @@
                         left: { scaleType: "labels", title: "Type" },
                         bottom: { stacked: true, title: "MW" },
                     },
+                    title: ""
                 }}
             />
         </div>
@@ -145,6 +146,7 @@
                         left: { scaleType: "labels", title: "Type" },
                         bottom: { stacked: true, title: "MW" },
                     },
+                    title: ""
                 }}
                 />
             </div>
@@ -178,6 +180,7 @@
                     },
                 },
                 curve: "curveMonotoneX",
+                title: ""
             }}
             />
         {:else}
