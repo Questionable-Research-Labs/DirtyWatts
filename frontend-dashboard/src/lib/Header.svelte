@@ -65,11 +65,14 @@
                     href="https://api.dirtywatts.nz/"
                     rel="noreferrer nooppener"
                     class="nav__link"
+					target="_blank"
             >API</a>
             <a
                     href="https://wiki.dirtywatts.nz/"
                     rel="noreferrer nooppener"
-                    class="nav__link">WIKI</a
+                    class="nav__link"
+					target="_blank"
+			>WIKI</a
             >
         </nav>
     </div>
