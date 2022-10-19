@@ -31,11 +31,13 @@ struct PowerStations
   PowerStats hydro;
   PowerStats diesel;
   PowerStats wind;
+  const char* timestamp;
 };
 
 struct InstructionPoint
 {
   int color[3];
+  float percentRenewable;
   bool powerSocketEnabled;
 };
 
@@ -78,10 +80,7 @@ bool updatePowerStats()
       Serial.println((unsigned int)sizeof(payload));
       return false;
     }
-    Serial.println("Got json");
-    const char *timestamp = doc["timestamp"];
-    Serial.println("Got timestamp");
-    Serial.println(timestamp);
+    currentPowerStats.timestamp = doc["timestamp"];
 
     currentPowerStats.battery.generation_mw = doc["power_types"]["battery"]["generation_mw"];
     currentPowerStats.battery.capacity_mw = doc["power_types"]["battery"]["capacity_mw"];
@@ -135,10 +134,25 @@ void setup()
 InstructionPoint calculateLightRGB(PowerStations currentPowerStats)
 {
   InstructionPoint output;
+
+  output.color[0] = 0;
+  output.color[1] = 0;
+  output.color[2] = 0;
+  output.percentRenewable = 0;
+  output.powerSocketEnabled = true;
+
   double totalRenewable = currentPowerStats.battery.generation_mw + currentPowerStats.geothermal.generation_mw + currentPowerStats.hydro.generation_mw + currentPowerStats.wind.generation_mw;
   double totalNonRenewable = currentPowerStats.co_gen.generation_mw + currentPowerStats.coal.generation_mw + currentPowerStats.gas.generation_mw + currentPowerStats.diesel.generation_mw;
   double totalGeneration = totalRenewable + totalNonRenewable;
+  if (totalGeneration == 0)
+  {
+    Serial.println("No generation?!?");
+    output.color[2] = 255;
+
+    return output;
+  }
   double percentageRenewable = totalRenewable / totalGeneration;
+  output.percentRenewable = percentageRenewable;
 
   if (currentPowerStats.coal.generation_mw > 0 || currentPowerStats.diesel.generation_mw > 0) {
     double halfMaxCoal = round(currentPowerStats.coal.capacity_mw / 2 + currentPowerStats.diesel.capacity_mw / 2);
@@ -166,12 +180,8 @@ InstructionPoint calculateLightRGB(PowerStations currentPowerStats)
   return output;
 }
 
-void loop()
-{
-  bool connectionResult = updatePowerStats();
-  if (connectionResult)
-  {
-    Serial.println("Got power stations");
+void printStats(InstructionPoint instructionPoint) {
+    Serial.println("Got power stations:");
 
     Serial.print("Battery generation: ");
     Serial.println(currentPowerStats.battery.generation_mw);
@@ -190,19 +200,33 @@ void loop()
     Serial.print("Wind generation: ");
     Serial.println(currentPowerStats.wind.generation_mw);
 
-    InstructionPoint instructionPoint = calculateLightRGB(currentPowerStats);
+    Serial.println("\nCalculations:");
+    Serial.print("Percent renewable: ");
+    Serial.println(instructionPoint.percentRenewable);
     Serial.print("Color: ");
     Serial.print(instructionPoint.color[0]);
     Serial.print(", ");
-    Serial.println(instructionPoint.color[1]);
+    Serial.print(instructionPoint.color[1]);
+    Serial.print(", ");
+    Serial.println(instructionPoint.color[2]);
     Serial.print("Power socket: ");
     Serial.println(instructionPoint.powerSocketEnabled);
 
+}
+
+void loop()
+{
+  Serial.println("\n\n######################\n");
+  bool connectionResult = updatePowerStats();
+  if (connectionResult)
+  {
+    InstructionPoint instructionPoint = calculateLightRGB(currentPowerStats);
+    printStats(instructionPoint);
   }
   else
   {
-    Serial.println("Failed to get power stations");
+    Serial.println("Failed to get power stations!!");
   }
 
-  delay(3000);
+  delay(10000);
 }
