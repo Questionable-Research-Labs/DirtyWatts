@@ -1,9 +1,12 @@
+
+
+
 #include <Arduino.h>
 
-#include <DNSServer.h>
-#ifdef ARDUINO_ESP8266_NODEMCU
-#include <ESP8266WiFi.h> //https://github.com/esp8266/Arduino
+#include <Adafruit_NeoPixel.h>
 
+#if defined(ARDUINO_ESP8266_NODEMCU) || defined(ARDUINO_ESP8266_NODEMCU_ESP12E)
+#include <ESP8266WiFi.h> //https://github.com/esp8266/Arduino
 #include <ESP8266WebServer.h>
 #include <ESP8266HTTPClient.h>
 #endif
@@ -14,6 +17,23 @@
 #endif
 #include <WiFiManager.h> //https://github.com/tzapu/WiFiManager
 #include <ArduinoJson.h>
+
+
+#define NeoPixelPin 2 // D4 on esp8266
+#define NeoPixelCount 30
+
+#define APIRequestInterval 2000 // 10 seconds
+
+// Parameter 1 = number of pixels in strip
+// Parameter 2 = Arduino pin number (most are valid)
+// Parameter 3 = pixel type flags, add together as needed:
+//   NEO_KHZ800  800 KHz bitstream (most NeoPixel products w/WS2812 LEDs)
+//   NEO_KHZ400  400 KHz (classic 'v1' (not v2) FLORA pixels, WS2811 drivers)
+//   NEO_GRB     Pixels are wired for GRB bitstream (most NeoPixel products)
+//   NEO_RGB     Pixels are wired for RGB bitstream (v1 FLORA pixels, not v2)
+//   NEO_RGBW    Pixels are wired for RGBW bitstream (NeoPixel RGBW products)
+Adafruit_NeoPixel pixels(NeoPixelCount, NeoPixelPin, NEO_GRB + NEO_KHZ400);
+
 
 struct PowerStats
 {
@@ -64,9 +84,15 @@ bool updatePowerStats()
     return false;
   }
 
-  http.begin(client, url);
+  bool connectionSuccess =  http.begin(client, url);
+  if (!connectionSuccess) {
+    Serial.println("SSL Failed to configure?!");
+    return false;
+  }
 
-  if (http.GET() == HTTP_CODE_OK)
+  int responseCode = http.GET();
+
+  if (responseCode == HTTP_CODE_OK)
   {
     String payload = http.getString();
     auto error = deserializeJson(doc, payload);
@@ -102,6 +128,8 @@ bool updatePowerStats()
   }
   else
   {
+    Serial.print("Failed to get power stats from server. Response code: ");
+    Serial.println(responseCode);
     return false;
   }
 }
@@ -113,20 +141,20 @@ void setup()
   Serial.begin(115200);
   Serial.println("Booting");
 
+  pixels.begin(); // INITIALIZE NeoPixel strip object
+  delay(500);
+  pixels.clear(); // Set all pixel colors to 'off'
+  pixels.show();
+  pixels.rainbow(0, 5);
+  pixels.show();
+
   // WiFiManager
   // Local intialization. Once its business is done, there is no need to keep it around
   WiFiManager wifiManager;
 
   // reset saved settings
   // wifiManager.resetSettings();
-
-  // set custom ip for portal
-  // wifiManager.setAPStaticIPConfig(IPAddress(10,0,1,1), IPAddress(10,0,1,1), IPAddress(255,255,255,0));
-
-  // fetches ssid and pass from eeprom and tries to connect
-  // if it does not connect it starts an access point with the specified name
-  // here  "AutoConnectAP"
-  // and goes into a blocking loop awaiting configuration
+  
   wifiManager.autoConnect();
   Serial.println("Wifi manager complete");
 }
@@ -214,19 +242,28 @@ void printStats(InstructionPoint instructionPoint) {
 
 }
 
+void updateNeoPixels(InstructionPoint instructionPoint) {
+  pixels.fill(pixels.Color(instructionPoint.color[0], instructionPoint.color[1], instructionPoint.color[2]), 0, NeoPixelCount);
+  pixels.show();
+}
+
 void loop()
 {
-  Serial.println("\n\n######################\n");
   bool connectionResult = updatePowerStats();
   if (connectionResult)
   {
     InstructionPoint instructionPoint = calculateLightRGB(currentPowerStats);
     printStats(instructionPoint);
+    updateNeoPixels(instructionPoint);
   }
   else
   {
     Serial.println("Failed to get power stations!!");
   }
-
-  delay(10000);
+  Serial.println("\n");
+  for (int i = 0; i < 20; i++) {
+    delay(APIRequestInterval / 20);
+    Serial.print("#");
+  }
+  Serial.println("\n");
 }
