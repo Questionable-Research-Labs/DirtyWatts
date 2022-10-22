@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 
 pub async fn get_current_power() -> Result<PowerStationUpdatePackage, Box<dyn std::error::Error>> {
     let api_url = format!(
-        "https://www.transpower.co.nz/aws/data/current_generation/{}",
+        "https://www.transpower.co.nz/em6/data/current_generation/{}",
         Local::now().timestamp()
     );
 
