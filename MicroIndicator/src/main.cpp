@@ -74,7 +74,7 @@ void setup() {
 #endif
 
 #ifdef OUTPUT_TWATCH
-    twatch = TWatch();
+    twatch.setupWatch();
 #endif
 
     // WiFiManager
@@ -85,6 +85,10 @@ void setup() {
     // wifiManager.resetSettings();
     wifiManager.setConnectRetries(6);
     wifiManager.setDarkMode(true);
+    wifiManager.setCountry("NZ");
+
+    Serial.println("Starting WiFiManager");
+
     wifiManager.autoConnect();
     Serial.println("Wifi Setup Complete");
 

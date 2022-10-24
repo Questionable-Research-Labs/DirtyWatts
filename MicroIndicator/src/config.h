@@ -8,4 +8,4 @@
 
 #define APIRequestInterval 2000	 // 10 seconds
 
-#define ApiErrorColour 0, 0, 255  // Blue
+#define ApiErrorColour 150, 150, 255  // Blue

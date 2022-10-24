@@ -1,23 +1,10 @@
 #ifdef OUTPUT_TWATCH
 #include <twatch.h>
-#include <config.h>
-#include <Arduino.h>
-#include <powerstations.h>
-
-#include <board/twatch2020_v1.h>
-#if defined( LILYGO_WATCH_2020_V1 )
-    #define RES_X_MAX       240
-    #define RES_Y_MAX       240
-#endif
-#define LILYGO_WATCH_LVGL
-#include <LilyGoWatch.h>
-
-#include <TTGO.h>
 
 TTGOClass *ttgo;
 extern lv_font_t jetbrains_mono_64;
 
-TWatch::TWatch() {
+void TWatch::setupWatch() {
     Serial.println("Setting up TTGO");
     ttgo = TTGOClass::getWatch();
     ttgo->begin();
@@ -53,7 +40,7 @@ void TWatch::writeScreenMetaInfo() {
     // Display Battery Voltage top center
     lv_obj_t *batteryVoltageLabel = lv_label_create(lv_scr_act(), NULL);
     // Check if battery is plugged in
-    if (ttgo->power->getBattVoltage() > 0.5) {
+    if (ttgo->power->getBattVoltage() > 1.0) {
         char *batteryVoltageFormatted;
         if (0 > asprintf(&batteryVoltageFormatted, "%.2fv", (ttgo->power->getBattVoltage() / 1000.0))) return;
         lv_label_set_text(batteryVoltageLabel, batteryVoltageFormatted);
