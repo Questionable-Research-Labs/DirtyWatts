@@ -14,3 +14,7 @@
     #define NeoPixelPin 2 // D4 on esp8266
     #define NeoPixelCount 30
 #endif
+
+#define APIRequestInterval 2000	 // 10 seconds
+
+#define ApiErrorColour 0, 0, 255  // Blue
