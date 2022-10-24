@@ -1,8 +1,18 @@
+#ifdef OUTPUT_TWATCH
 #include <twatch.h>
 #include <config.h>
 #include <Arduino.h>
-#include <TTGO.h>
 #include <powerstations.h>
+
+#include <board/twatch2020_v1.h>
+#if defined( LILYGO_WATCH_2020_V1 )
+    #define RES_X_MAX       240
+    #define RES_Y_MAX       240
+#endif
+#define LILYGO_WATCH_LVGL
+#include <LilyGoWatch.h>
+
+#include <TTGO.h>
 
 TTGOClass *ttgo;
 extern lv_font_t jetbrains_mono_64;
@@ -39,24 +49,37 @@ void TWatch::writeScreenMetaInfo() {
     lv_label_set_text(chargingIndicator, LV_SYMBOL_CHARGE);
     lv_obj_align(chargingIndicator, NULL, LV_ALIGN_IN_TOP_LEFT, 16, 16);
 
-    char *batteryVoltageFormatted;
-    if (0 > asprintf(&batteryVoltageFormatted, "%.2fv", (ttgo->power->getBattVoltage() / 1000.0))) return;
-
+    
+    // Display Battery Voltage top center
     lv_obj_t *batteryVoltageLabel = lv_label_create(lv_scr_act(), NULL);
-    lv_label_set_text(batteryVoltageLabel, batteryVoltageFormatted);
+    // Check if battery is plugged in
+    if (ttgo->power->getBattVoltage() > 0.5) {
+        char *batteryVoltageFormatted;
+        if (0 > asprintf(&batteryVoltageFormatted, "%.2fv", (ttgo->power->getBattVoltage() / 1000.0))) return;
+        lv_label_set_text(batteryVoltageLabel, batteryVoltageFormatted);
+
+        // Battery is plugged in, so we will add the battery percentage while we are at it
+        char *percentBatteryFormatted;
+        if (0 > asprintf(&percentBatteryFormatted, "%d%%", ttgo->power->getBattPercentage())) return;
+
+        lv_obj_t *batteryPercentLabel = lv_label_create(lv_scr_act(), NULL);
+        lv_label_set_text(batteryPercentLabel, percentBatteryFormatted);
+        lv_obj_add_style(batteryPercentLabel, LV_LABEL_PART_MAIN, &metaTextStyle);
+        lv_obj_align(batteryPercentLabel, NULL, LV_ALIGN_IN_TOP_RIGHT, -16, 16);
+    } else {
+        lv_label_set_text(batteryVoltageLabel, "NO BATTERY");
+    }
     lv_obj_add_style(batteryVoltageLabel, LV_LABEL_PART_MAIN, &metaTextStyle);
     lv_obj_align(batteryVoltageLabel, NULL, LV_ALIGN_IN_TOP_MID, 0, 16);
 
-    char *percentBatteryFormatted;
-    if (0 > asprintf(&percentBatteryFormatted, "%d%%", ttgo->power->getBattPercentage())) return;
-
-    lv_obj_t *batteryPercentLabel = lv_label_create(lv_scr_act(), NULL);
-    lv_label_set_text(batteryPercentLabel, percentBatteryFormatted);
-    lv_obj_add_style(batteryPercentLabel, LV_LABEL_PART_MAIN, &metaTextStyle);
-    lv_obj_align(batteryPercentLabel, NULL, LV_ALIGN_IN_TOP_RIGHT, -16, 16);
+    // Project and group branding
+    lv_obj_t *projectLabel = lv_label_create(lv_scr_act(), NULL);
+    lv_label_set_text(projectLabel, "DirtyWatts");
+    lv_obj_add_style(projectLabel, LV_LABEL_PART_MAIN, &metaTextStyle);
+    lv_obj_align(projectLabel, NULL, LV_ALIGN_IN_BOTTOM_MID, 0, -22);
 
     lv_obj_t *orgLabel = lv_label_create(lv_scr_act(), NULL);
-    lv_label_set_text(orgLabel, "DirtyWatts - QRL");
+    lv_label_set_text(orgLabel, "Questionable Research Labs");
     lv_obj_add_style(orgLabel, LV_LABEL_PART_MAIN, &metaTextStyle);
     lv_obj_align(orgLabel, NULL, LV_ALIGN_IN_BOTTOM_MID, 0, -8);
 }
@@ -112,9 +135,7 @@ void TWatch::refreshStats(InstructionPoint instructionPoint) {
 }
 
 void TWatch::apiError() {
-    	// Clear screen
-	lv_obj_clean(lv_scr_act());
-	// Write percent to lvgl
+	clearScreen();
 
 	lv_style_t titleTextStyle;
 	lv_style_init(&titleTextStyle);
@@ -142,3 +163,4 @@ void TWatch::writeScreen() {
 void TWatch::clearScreen() {
 	lv_obj_clean(lv_scr_act());
 }
+#endif
