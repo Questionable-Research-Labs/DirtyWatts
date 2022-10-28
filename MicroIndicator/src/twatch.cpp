@@ -2,7 +2,6 @@
 #include <twatch.h>
 
 TTGOClass *ttgo;
-extern lv_font_t jetbrains_mono_64;
 
 void TWatch::setupWatch() {
     Serial.println("Setting up TTGO");
@@ -27,15 +26,9 @@ void TWatch::powerOff() {
 }
 
 void TWatch::writeScreenMetaInfo() {
-    lv_style_t metaTextStyle;
+    static lv_style_t metaTextStyle;
     lv_style_init(&metaTextStyle);
     lv_style_set_text_font(&metaTextStyle, LV_STATE_DEFAULT, &lv_font_montserrat_14);
-
-    // Charging Indicator
-    lv_obj_t *chargingIndicator = lv_label_create(lv_scr_act(), NULL);
-    lv_label_set_text(chargingIndicator, LV_SYMBOL_CHARGE);
-    lv_obj_align(chargingIndicator, NULL, LV_ALIGN_IN_TOP_LEFT, 16, 16);
-
     
     // Display Battery Voltage top center
     lv_obj_t *batteryVoltageLabel = lv_label_create(lv_scr_act(), NULL);
@@ -59,9 +52,18 @@ void TWatch::writeScreenMetaInfo() {
     lv_obj_add_style(batteryVoltageLabel, LV_LABEL_PART_MAIN, &metaTextStyle);
     lv_obj_align(batteryVoltageLabel, NULL, LV_ALIGN_IN_TOP_MID, 0, 16);
 
+    // Display the temperature
+    lv_obj_t *temperatureLabel = lv_label_create(lv_scr_act(), NULL);
+    char *temperatureFormatted;
+    if (0 > asprintf(&temperatureFormatted, "%.1fC", ttgo->power->getTemp())) return;
+    lv_label_set_text(temperatureLabel, temperatureFormatted);
+    lv_obj_add_style(temperatureLabel, LV_LABEL_PART_MAIN, &metaTextStyle);
+    lv_obj_align(temperatureLabel, NULL, LV_ALIGN_IN_TOP_LEFT, 16, 16);
+
+
     // Project and group branding
     lv_obj_t *projectLabel = lv_label_create(lv_scr_act(), NULL);
-    lv_label_set_text(projectLabel, "DirtyWatts");
+    lv_label_set_text(projectLabel, "DirtyWatts.nz");
     lv_obj_add_style(projectLabel, LV_LABEL_PART_MAIN, &metaTextStyle);
     lv_obj_align(projectLabel, NULL, LV_ALIGN_IN_BOTTOM_MID, 0, -22);
 
@@ -74,7 +76,7 @@ void TWatch::writeScreenMetaInfo() {
 void TWatch::postWifiConnect() {
     lv_obj_clean(lv_scr_act());
 
-    lv_style_t titleTextStyle;
+    static lv_style_t titleTextStyle;
     lv_style_init(&titleTextStyle);
     lv_style_set_text_font(&titleTextStyle, LV_STATE_DEFAULT, &lv_font_montserrat_16);
     lv_obj_t *titleText = lv_label_create(lv_scr_act(), NULL);
@@ -93,7 +95,7 @@ void TWatch::refreshStats(InstructionPoint instructionPoint) {
 	char *percentRenewableFormatted;
 	if (0 > asprintf(&percentRenewableFormatted, "%d%%", percentRenewable)) return;
 
-	lv_style_t percentRenewableStyle;
+	static lv_style_t percentRenewableStyle;
 	lv_style_init(&percentRenewableStyle);
 	lv_style_set_text_font(&percentRenewableStyle, LV_STATE_DEFAULT, &jetbrains_mono_64);
 	lv_obj_t *renewableLabel = lv_label_create(lv_scr_act(), NULL);
@@ -102,7 +104,7 @@ void TWatch::refreshStats(InstructionPoint instructionPoint) {
 	lv_obj_add_style(renewableLabel, LV_LABEL_PART_MAIN, &percentRenewableStyle);
 	lv_obj_align(renewableLabel, NULL, LV_ALIGN_CENTER, 0, 0);
 
-	lv_style_t titleTextStyle;
+	static lv_style_t titleTextStyle;
 	lv_style_init(&titleTextStyle);
 	lv_style_set_text_font(&titleTextStyle, LV_STATE_DEFAULT, &lv_font_montserrat_16);
 	lv_obj_t *titleText = lv_label_create(lv_scr_act(), NULL);
@@ -124,7 +126,7 @@ void TWatch::refreshStats(InstructionPoint instructionPoint) {
 void TWatch::apiError() {
 	clearScreen();
 
-	lv_style_t titleTextStyle;
+	static lv_style_t titleTextStyle;
 	lv_style_init(&titleTextStyle);
 	lv_style_set_text_font(&titleTextStyle, LV_STATE_DEFAULT, &lv_font_montserrat_16);
 	lv_obj_t *titleText = lv_label_create(lv_scr_act(), NULL);
@@ -150,4 +152,28 @@ void TWatch::writeScreen() {
 void TWatch::clearScreen() {
 	lv_obj_clean(lv_scr_act());
 }
+
+void my_log_cb(lv_log_level_t level, const char * file, uint32_t line, const char * fn_name, const char * dsc)
+{
+  /*Send the logs via serial port*/
+  if(level == LV_LOG_LEVEL_ERROR) Serial.print("ERROR: ");
+  if(level == LV_LOG_LEVEL_WARN)  Serial.print("WARNING: ");
+  if(level == LV_LOG_LEVEL_INFO)  Serial.print("INFO: ");
+  if(level == LV_LOG_LEVEL_TRACE) Serial.print("TRACE: ");
+
+  Serial.print("File: ");
+  Serial.print(file);
+
+  char line_str[8];
+  sprintf(line_str,"%d", line);
+  Serial.print("#");
+  Serial.print(line_str);
+
+  Serial.print(": ");
+  Serial.print(fn_name);
+  Serial.print(": ");
+  Serial.println(dsc);
+}
+
+
 #endif
