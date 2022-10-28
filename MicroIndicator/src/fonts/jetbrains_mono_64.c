@@ -1,3 +1,5 @@
+#ifdef OUTPUT_TWATCH
+
 /*******************************************************************************
  * Size: 64 px
  * Bpp: 4
@@ -1221,3 +1223,4 @@ lv_font_t jetbrains_mono_64 = {
 
 #endif /*#if JETBRAINS_MONO_64*/
 
+#endif
