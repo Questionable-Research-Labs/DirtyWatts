@@ -1,35 +1,64 @@
 <script lang="ts">
     import { browser } from "$app/environment";
+    import { calculateLightColour } from "$lib/calculateLightColour";
     import { generateFakeData } from "$lib/calculatePowerstationData";
+    import type { PowerTypes, PowerTypesResponse } from "$lib/powerstation";
+    import { onMount } from "svelte";
 	import RangeSlider from "svelte-range-slider-pips";
     import { derived, writable } from "svelte/store";
+	
+	import "../app.scss";
 
 	let sliderValue = writable([50]);
-	if (browser) {
-		setInterval(() => {
-		fetch("/api", {
-			method: 'POST',
-			body: JSON.stringify(generateFakeData($sliderValue[0]))
-		});
-	}, 1000);
+
+	function cssRGBFormatter(colour: RGBColor) {
+		return "rgb("+colour[0]+","+colour[1]+","+colour[2]+")";
 	}
 
-	function colorChannelMixer(colorChannelA: number, colorChannelB: number, amountToMix: number){
-		var channelA = colorChannelA*amountToMix;
-		var channelB = colorChannelB*(1-amountToMix);
-		return Math.round(channelA+channelB);
-	}
-	type RGBColor = [number, number, number];
-	function colorMixer(rgbA: RGBColor, rgbB: RGBColor, amountToMix: number){
-		var r = colorChannelMixer(rgbA[0],rgbB[0],amountToMix);
-		var g = colorChannelMixer(rgbA[1],rgbB[1],amountToMix);
-		var b = colorChannelMixer(rgbA[2],rgbB[2],amountToMix);
-		return "rgb("+r+","+g+","+b+")";
-	}
+	let fakeData = derived(sliderValue, (value)=>generateFakeData(100-value[0]))
 
-	let highlightColour = derived(sliderValue, (value) => {
-		return colorMixer([203, 95, 95], [19, 148, 79], value[0]/100)
+	let highlightColour = derived(fakeData, (data) => {
+		return cssRGBFormatter(calculateLightColour(data.power_types))
 	});
+
+	function calculatePercentRenewable(data: PowerTypesResponse) {
+		const power_types = data.power_types;
+		let total_generation_mw = 0   // total up power usage
+		for(let key in power_types){
+			let power_type = power_types[key];
+			total_generation_mw += power_type.generation_mw;
+		}
+
+		if (total_generation_mw === 0) {
+			console.log("No generation?!")
+			return -1
+		}
+		const bad_generation_mw = power_types.coal.generation_mw + power_types.gas.generation_mw + power_types.diesel.generation_mw // + power_types.co_gen.generation_mw
+		
+		return ((total_generation_mw - bad_generation_mw) / total_generation_mw)  // calculate % non-renewable
+
+	}
+
+	let percentRenewable = derived(fakeData, calculatePercentRenewable)
+
+	let serverState: PowerTypesResponse | {timestamp: ""} = {timestamp: ""};
+	onMount(()=>{
+		if (browser) {
+			setInterval(() => {
+				if ($fakeData.timestamp != serverState.timestamp) {
+					fetch("/api", {
+						method: 'POST',
+						body: JSON.stringify($fakeData)
+					});
+					serverState = $fakeData
+				}
+			}, 500);
+		}
+	})
+	
+	function pipFormatter(value: number, pipIndex: number, percent: number): string {
+		return Math.round(calculatePercentRenewable(generateFakeData(100-value)) * 100) + "%"
+	}
 
 </script>
 
@@ -47,10 +76,16 @@
 		max={100}
 		step={1}
 		pips={true}
-		suffix="%"
+		float
+		pipstep=10
+		first="label"
+		last="label"
+		rest="label"
+		formatter={pipFormatter}
 		bind:values={$sliderValue}
 	/>
-	<h2>{$sliderValue[0]}%</h2>
+	<h2>{Math.round($percentRenewable * 100)}%</h2>
+	<h3>Percent Renewable</h3>
 
 	</div>
 </div>
@@ -74,13 +109,20 @@
 		h1 {
 			font-weight: bold;
 			color: white;
+			font-size: 6rem;
 		}
 		h2 {
 			font-size: 8rem;
 			text-align: center;
 			color: var(--highlight-color);
-			text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+			text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
 			filter: drop-shadow(0 0 0.75rem var(--highlight-color));
+			margin: 0;
+		}
+		h3 {
+			text-align: center;
+			color: white;
+			margin: 0;
 		}
 	}
 </style>

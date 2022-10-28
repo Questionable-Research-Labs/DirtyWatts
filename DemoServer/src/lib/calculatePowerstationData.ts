@@ -1,9 +1,13 @@
+import type { PowerTypesResponse } from "./powerstation";
 
-export function generateFakeData(slider: number) {
-    let scale = (min: number,max: number) => Math.floor((slider/100) * (max - min + 1)) + min;
+export function generateFakeData(slider: number): PowerTypesResponse {
+    let scale = (min: number,max: number, start: number = 0) => {
+        let virtualSliderPos = (Math.max((slider/100)-start,0))/(1-start)
+        return Math.floor(virtualSliderPos * (max - min + 1)) + min
+    };
 
     return {
-        "timestamp": "2022-10-28T06:30:00+00:00",
+        "timestamp": (new Date()).toISOString(),
         "power_types": {
             "battery": {
                 "generation_mw": 0,
@@ -14,11 +18,11 @@ export function generateFakeData(slider: number) {
                 "capacity_mw": 216
             },
             "coal": {
-                "generation_mw": scale(0, 150),
+                "generation_mw": scale(0, 300, 0.5),
                 "capacity_mw": 750
             },
             "gas": {
-                "generation_mw": scale(20,500),
+                "generation_mw": scale(0,600),
                 "capacity_mw": 1280
             },
             "geothermal": {
@@ -26,11 +30,11 @@ export function generateFakeData(slider: number) {
                 "capacity_mw": 1062
             },
             "hydro": {
-                "generation_mw": scale(4000, 2000),
+                "generation_mw": 4000,
                 "capacity_mw": 5415
             },
             "diesel": {
-                "generation_mw": scale(0, 50),
+                "generation_mw": scale(0, 50, 0.5),
                 "capacity_mw": 156
             },
             "wind": {
