@@ -1,0 +1,37 @@
+{
+    "timestamp": "2022-10-18T21:30:00+00:00",
+    "power_types": {
+        "battery": {
+            "generation_mw": 0.0,
+            "capacity_mw": 1.0
+        },
+        "co_gen": {
+            "generation_mw": 95.0,
+            "capacity_mw": 216.0
+        },
+        "coal": {
+            "generation_mw": 0.0,
+            "capacity_mw": 750.0
+        },
+        "gas": {
+            "generation_mw": 332.0,
+            "capacity_mw": 1280.0
+        },
+        "geothermal": {
+            "generation_mw": 830.0,
+            "capacity_mw": 1062.0
+        },
+        "hydro": {
+            "generation_mw": 3675.0,
+            "capacity_mw": 5415.0
+        },
+        "diesel": {
+            "generation_mw": 0.0,
+            "capacity_mw": 156.0
+        },
+        "wind": {
+            "generation_mw": 402.0,
+            "capacity_mw": 1040.0
+        }
+    }
+}
