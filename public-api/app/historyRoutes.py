@@ -40,7 +40,6 @@ async def power_stations(start: datetime = datetime.min, end: datetime = datetim
     )
     session.close()
     allPowerTypes = list(chunks(query.all(), power_type_count))
-    print(len(allPowerTypes))
 
     outputSlices = []
 

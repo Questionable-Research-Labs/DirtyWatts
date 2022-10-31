@@ -5,25 +5,29 @@
   import Footer from "$lib/Footer.svelte";
   import { derived } from "svelte/store";
   import { powerTypes } from "$lib/stores";
-import CoalPower from "$lib/CoalPower.svelte";
+  import CoalPower from "$lib/CoalPower.svelte";
+  import type { PowerStationsResponse } from "$lib/api";
 
   const description =
     "Ever wanted to see where the power you're using is coming from? Want to make sure you reduce the amount of power you're using when Coal is being burned for power? Dirty Watts is the answer to all these problems.";
 
-  let coalPercent = derived(powerTypes, (powerTypes) => {
-    if (!powerTypes) {
-      return 0
-    }
-    // get total power from power types
-    let total = 0;
-    for (const key in powerTypes?.power_types) {
-      if (!powerTypes?.power_types[key]) continue
-      const { generation_mw } = powerTypes?.power_types[key];
-      total += generation_mw;
-    }
+  let coalPercent = derived(
+    powerTypes,
+    (powerTypes: PowerStationsResponse | null) => {
+      if (!powerTypes) {
+        return 0;
+      }
+      // get total power from power types
+      let total = 0;
+      for (const key in powerTypes?.power_types) {
+        if (!powerTypes?.power_types[key]) continue;
+        const { generation_mw } = powerTypes?.power_types[key];
+        total += generation_mw;
+      }
 
-    return (powerTypes?.power_types["coal"].generation_mw / total) * 100;
-  });
+      return (powerTypes?.power_types["coal"].generation_mw / total) * 100;
+    }
+  );
 </script>
 
 <div class="heading section section--fit">
@@ -37,11 +41,11 @@ import CoalPower from "$lib/CoalPower.svelte";
   <div>
     <h1 class="section__title">Dirty Watts</h1>
     {#if $coalPercent > 0}
-  <CoalPower
-    percent={$coalPercent}
-    coalMW={$powerTypes?.power_types["coal"]?.generation_mw}
-  />
-{/if}
+      <CoalPower
+        percent={$coalPercent}
+        coalMW={$powerTypes?.power_types["coal"]?.generation_mw || 0}
+      />
+    {/if}
     <p class="section__text">
       Ever wanted to see where the power you're using is coming from? Want to
       make sure you reduce the amount of power you're using when Coal is being

@@ -3,7 +3,6 @@ import { connectionPoints, powerTypes, powerTypesHistory } from "./stores";
 const API_URL = "https://api.dirtywatts.nz";
 const OFFSET_HRS = 72;
 const OFFSET = OFFSET_HRS * 3600 * 1000;
-const INTERVAL = 45;
 
 export type PowerTypes = Record<string, PowerType>;
 
@@ -39,9 +38,11 @@ export async function getPowerStations(): Promise<PowerStationsResponse> {
 export async function getPowerStationsHistory(): Promise<
   PowerStationsResponse[]
 > {
-  let now = Date.now() - OFFSET;
+  let now = new Date(Date.now() - OFFSET);
+  const INTERVAL = 60;
+
   return fetchAPI<PowerStationsResponse[]>(
-    `history/power_stations?start=${now}&interval=${INTERVAL}`
+    `history/power_stations?start=${now.toISOString()}&time_interval_minutes=${INTERVAL}`
   );
 }
 
@@ -51,9 +52,11 @@ export async function getConnectionPoints(): Promise<ConnectionPoint[]> {
 export async function getConnectionPointHistory(
   point_code: string
 ): Promise<ConnectionPoint[]> {
-  let now = Date.now() - OFFSET;
+  let now = new Date(Date.now() - OFFSET);
+  const INTERVAL = 30;
+
   return fetchAPI<ConnectionPoint[]>(
-    `history/grid_connection_points/${point_code}?start=${now}&interval=${INTERVAL}`
+    `history/grid_connection_points/${point_code}?start=${now.toISOString()}&time_interval_minutes=${INTERVAL}`
   );
 }
 

@@ -21,7 +21,7 @@ database = databases.Database(DATABASE_URL)
 
 
 engine = sqlalchemy.create_engine(
-    DATABASE_URL
+    DATABASE_URL, pool_pre_ping=True
 )
 db.metadata.create_all(engine)
 
