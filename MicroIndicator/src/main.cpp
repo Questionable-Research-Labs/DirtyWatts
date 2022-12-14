@@ -19,6 +19,10 @@
 #include <neolights.h>
 #endif
 
+#ifdef OUTPUT_VFD
+#include <vfd.h>
+#endif
+
 #ifdef OUTPUT_TWATCH
 #include <twatch.h>
 TWatch twatch;
@@ -73,6 +77,10 @@ void setup() {
     setupNeoPixels();
 #endif
 
+#ifdef OUTPUT_VFD
+    setupVFDs();
+#endif
+
 #ifdef OUTPUT_TWATCH
     twatch.setupWatch();
 #endif
@@ -109,6 +117,9 @@ void loop() {
 #ifdef OUTPUT_NEOPIXEL
         updateNeoPixels(currentPowerStats.instructionPoint);
 #endif
+#ifdef OUTPUT_VFD
+        updateVFDs(currentPowerStats.instructionPoint);
+#endif
 
 #ifdef OUTPUT_TWATCH
         twatch.refreshStats(currentPowerStats.instructionPoint);
@@ -118,6 +129,9 @@ void loop() {
         Serial.println("Failed to get power stations!!");
 #ifdef OUTPUT_NEOPIXEL
         showNeoPixelsError();
+#endif
+#ifdef OUTPUT_VFD
+        showVFDError();
 #endif
 #ifdef OUTPUT_TWATCH
         twatch.apiError();
