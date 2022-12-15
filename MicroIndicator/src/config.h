@@ -2,7 +2,7 @@
 
 
 #ifdef OUTPUT_NEOPIXEL
-    #define NeoPixelPin 2 // D4 on esp8266
+    #define NeoPixelPin D4 // D4 on esp8266
     #define NeoPixelCount 30
 #endif
 
