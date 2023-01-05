@@ -10,6 +10,7 @@ from starlette.responses import RedirectResponse
 import db
 import liveRoutes
 import historyRoutes
+import statusRoutes
 from fastapi.openapi.utils import get_openapi
 
 import os
@@ -64,3 +65,4 @@ async def redirect_to_docs():
 
 app.include_router(liveRoutes.router)
 app.include_router(historyRoutes.router)
+app.include_router(statusRoutes.router)

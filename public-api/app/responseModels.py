@@ -36,3 +36,6 @@ class ConnectionPoint(BaseModel):
     latitude: float
     longitude: float
     address: str
+
+class StatusTest(BaseModel):
+    healthy: bool
