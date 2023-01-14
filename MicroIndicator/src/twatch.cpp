@@ -2,6 +2,7 @@
 #include <twatch.h>
 
 TTGOClass *ttgo;
+struct tm timeinfo;
 
 void TWatch::setupWatch() {
     Serial.println("Setting up TTGO");
@@ -29,28 +30,42 @@ void TWatch::writeScreenMetaInfo() {
     static lv_style_t metaTextStyle;
     lv_style_init(&metaTextStyle);
     lv_style_set_text_font(&metaTextStyle, LV_STATE_DEFAULT, &lv_font_montserrat_14);
+
+    static lv_style_t metaTextLargeStyle;
+    lv_style_init(&metaTextLargeStyle);
+    lv_style_set_text_font(&metaTextLargeStyle, LV_STATE_DEFAULT, &lv_font_montserrat_22);
+
     
     // Display Battery Voltage top center
     lv_obj_t *batteryVoltageLabel = lv_label_create(lv_scr_act(), NULL);
     // Check if battery is plugged in
-    if (ttgo->power->getBattVoltage() > 1.0) {
+    if (ttgo->power->getBattVoltage() / 1000.0 > 1.0) {
         char *batteryVoltageFormatted;
         if (0 > asprintf(&batteryVoltageFormatted, "%.2fv", (ttgo->power->getBattVoltage() / 1000.0))) return;
         lv_label_set_text(batteryVoltageLabel, batteryVoltageFormatted);
-
-        // Battery is plugged in, so we will add the battery percentage while we are at it
-        char *percentBatteryFormatted;
-        if (0 > asprintf(&percentBatteryFormatted, "%d%%", ttgo->power->getBattPercentage())) return;
-
-        lv_obj_t *batteryPercentLabel = lv_label_create(lv_scr_act(), NULL);
-        lv_label_set_text(batteryPercentLabel, percentBatteryFormatted);
-        lv_obj_add_style(batteryPercentLabel, LV_LABEL_PART_MAIN, &metaTextStyle);
-        lv_obj_align(batteryPercentLabel, NULL, LV_ALIGN_IN_TOP_RIGHT, -16, 16);
     } else {
-        lv_label_set_text(batteryVoltageLabel, "NO BATTERY");
+        lv_label_set_text(batteryVoltageLabel, "N/A");
     }
     lv_obj_add_style(batteryVoltageLabel, LV_LABEL_PART_MAIN, &metaTextStyle);
-    lv_obj_align(batteryVoltageLabel, NULL, LV_ALIGN_IN_TOP_MID, 0, 16);
+    lv_obj_align(batteryVoltageLabel, NULL, LV_ALIGN_IN_TOP_RIGHT, -16, 16);
+
+    // Not a spykids watch, we have space for the time
+    getLocalTime(&timeinfo); // Use sync time + tz offset + ms since sync to produce updated time
+    char currentTime[40];
+    if (0 > strftime(currentTime, 40, "%I:%M %p", &timeinfo)) return;
+    lv_obj_t *currentTimeLabel = lv_label_create(lv_scr_act(), NULL);
+    lv_label_set_text(currentTimeLabel, currentTime);
+    lv_obj_add_style(currentTimeLabel, LV_LABEL_PART_MAIN, &metaTextLargeStyle);
+    lv_obj_align(currentTimeLabel, NULL, LV_ALIGN_IN_TOP_MID, 0, 48);
+
+    // We even have space for the date!
+    char currentDate[11];
+    if (0 > strftime(currentDate, 11, "%Y-%m-%d", &timeinfo)) return;
+    lv_obj_t *currentDateLabel = lv_label_create(lv_scr_act(), NULL);
+    lv_label_set_text(currentDateLabel, currentDate);
+    lv_obj_add_style(currentDateLabel, LV_LABEL_PART_MAIN, &metaTextStyle);
+    lv_obj_align(currentDateLabel, NULL, LV_ALIGN_IN_TOP_MID, 0, 16);
+
 
     // Display the temperature
     lv_obj_t *temperatureLabel = lv_label_create(lv_scr_act(), NULL);
@@ -74,6 +89,9 @@ void TWatch::writeScreenMetaInfo() {
 }
 
 void TWatch::postWifiConnect() {
+    syncTime();
+
+    // Clear the screen
     lv_obj_clean(lv_scr_act());
 
     static lv_style_t titleTextStyle;
@@ -90,11 +108,12 @@ void TWatch::postWifiConnect() {
 }
 
 void TWatch::refreshStats(InstructionPoint instructionPoint) {
-	// Write percent to lvgl
-	int percentRenewable = round(instructionPoint.percentRenewable * 100);
+	// Format percent into 00.0%
+	float percentRenewable = instructionPoint.percentRenewable * 100;
 	char *percentRenewableFormatted;
-	if (0 > asprintf(&percentRenewableFormatted, "%d%%", percentRenewable)) return;
+	if (0 > asprintf(&percentRenewableFormatted, "%.1f%%", percentRenewable)) return;
 
+    // The percent is done in a custom Jetbrains mono font, massively, to make it as easy as possible to read
 	static lv_style_t percentRenewableStyle;
 	lv_style_init(&percentRenewableStyle);
 	lv_style_set_text_font(&percentRenewableStyle, LV_STATE_DEFAULT, &jetbrains_mono_64);
@@ -175,5 +194,33 @@ void my_log_cb(lv_log_level_t level, const char * file, uint32_t line, const cha
   Serial.println(dsc);
 }
 
+char TWatch::ntpServer[] = "pool.ntp.org";
+long  TWatch::gmtOffset_sec = 13 * 60 * 60; // Hardlocked to NZ time
+int   TWatch::daylightOffset_sec = 3600;
+
+void TWatch::syncTime() {
+    Serial.println("Syncing time...");
+    configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
+    if (!getLocalTime(&timeinfo)) {
+        Serial.println("Failed to obtain time, retrying in 3 seconds");
+        clearScreen();
+        // Write error to screen
+        static lv_style_t titleTextStyle;
+        lv_style_init(&titleTextStyle);
+        lv_style_set_text_font(&titleTextStyle, LV_STATE_DEFAULT, &lv_font_montserrat_16);
+        lv_obj_t *titleText = lv_label_create(lv_scr_act(), NULL);
+
+        lv_label_set_text(titleText, "Time Error");
+        lv_obj_add_style(titleText, LV_LABEL_PART_MAIN, &titleTextStyle);
+        lv_obj_align(titleText, NULL, LV_ALIGN_CENTER, 0, 48);
+
+        delay(3000);
+        syncTime();
+    }
+    
+    Serial.println("Time synced!");
+    Serial.println(&timeinfo, "%A, %B %d %Y %H:%M:%S");
+
+}
 
 #endif

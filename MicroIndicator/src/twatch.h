@@ -24,6 +24,11 @@ extern lv_font_t jetbrains_mono_64;
 class TWatch {
     private:
         TTGOClass *ttgo;
+        struct tm timeinfo;
+        static char ntpServer[];
+        // GMT offset in seconds:
+        static long  gmtOffset_sec;
+        static int   daylightOffset_sec;
     public:
         void powerOff();
         void writeScreenMetaInfo();
@@ -33,6 +38,7 @@ class TWatch {
         void apiError();
         void writeScreen();
         void clearScreen();
+        void syncTime();
 };
 
 void my_log_cb(lv_log_level_t level, const char * file, uint32_t line, const char * fn_name, const char * dsc);
