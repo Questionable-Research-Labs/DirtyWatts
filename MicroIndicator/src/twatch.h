@@ -24,6 +24,7 @@ extern lv_font_t jetbrains_mono_64;
 class TWatch {
     private:
         TTGOClass *ttgo;
+        lv_color_t textColor;
         struct tm timeinfo;
         static char ntpServer[];
         // GMT offset in seconds:

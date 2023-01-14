@@ -13,6 +13,9 @@ void TWatch::setupWatch() {
 
     // ttgo->powerAttachInterrupt(powerOff);
 
+    // Setup default text color
+    TWatch::textColor = LV_COLOR_BLACK;
+
     lv_obj_t *text = lv_label_create(lv_scr_act(), NULL);
     lv_label_set_text(text, "Connecting to wifi...");
     lv_obj_align(text, NULL, LV_ALIGN_CENTER, 0, 0);
@@ -30,10 +33,14 @@ void TWatch::writeScreenMetaInfo() {
     static lv_style_t metaTextStyle;
     lv_style_init(&metaTextStyle);
     lv_style_set_text_font(&metaTextStyle, LV_STATE_DEFAULT, &lv_font_montserrat_14);
+    lv_style_set_text_color(&metaTextStyle, LV_STATE_DEFAULT, TWatch::textColor);
+
 
     static lv_style_t metaTextLargeStyle;
     lv_style_init(&metaTextLargeStyle);
     lv_style_set_text_font(&metaTextLargeStyle, LV_STATE_DEFAULT, &lv_font_montserrat_22);
+    lv_style_set_text_color(&metaTextLargeStyle, LV_STATE_DEFAULT, TWatch::textColor);
+
 
     
     // Display Battery Voltage top center
@@ -108,6 +115,21 @@ void TWatch::postWifiConnect() {
 }
 
 void TWatch::refreshStats(InstructionPoint instructionPoint) {
+    // Decide font color: 
+    // If the background is dark, use white text
+    // If the background is light, use black text
+    TWatch::textColor = (instructionPoint.color[0] + instructionPoint.color[1] + instructionPoint.color[2]) / 3 > 127 ? LV_COLOR_BLACK : LV_COLOR_WHITE;
+
+    // Set background colour
+	lv_obj_t *screen = lv_scr_act();
+	lv_obj_set_style_local_bg_color(screen, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(instructionPoint.color[0] << 16 | instructionPoint.color[1] << 8 | instructionPoint.color[2]));
+	lv_obj_set_style_local_bg_opa(screen, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, LV_OPA_COVER);
+	lv_obj_set_style_local_bg_grad_color(screen, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(instructionPoint.color[0] << 16 | instructionPoint.color[1] << 8 | instructionPoint.color[2]));
+	lv_obj_set_style_local_bg_grad_dir(screen, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, LV_GRAD_DIR_VER);
+	lv_obj_set_style_local_bg_main_stop(screen, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, 0);
+	lv_obj_set_style_local_bg_grad_stop(screen, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, 255);
+
+
 	// Format percent into 00.0%
 	float percentRenewable = instructionPoint.percentRenewable * 100;
 	char *percentRenewableFormatted;
@@ -117,6 +139,7 @@ void TWatch::refreshStats(InstructionPoint instructionPoint) {
 	static lv_style_t percentRenewableStyle;
 	lv_style_init(&percentRenewableStyle);
 	lv_style_set_text_font(&percentRenewableStyle, LV_STATE_DEFAULT, &jetbrains_mono_64);
+    lv_style_set_text_color(&percentRenewableStyle, LV_STATE_DEFAULT, TWatch::textColor);
 	lv_obj_t *renewableLabel = lv_label_create(lv_scr_act(), NULL);
 
 	lv_label_set_text(renewableLabel, percentRenewableFormatted);
@@ -126,20 +149,12 @@ void TWatch::refreshStats(InstructionPoint instructionPoint) {
 	static lv_style_t titleTextStyle;
 	lv_style_init(&titleTextStyle);
 	lv_style_set_text_font(&titleTextStyle, LV_STATE_DEFAULT, &lv_font_montserrat_16);
+    lv_style_set_text_color(&titleTextStyle, LV_STATE_DEFAULT, TWatch::textColor);
 	lv_obj_t *titleText = lv_label_create(lv_scr_act(), NULL);
 
 	lv_label_set_text(titleText, "Renewable Energy");
 	lv_obj_add_style(titleText, LV_LABEL_PART_MAIN, &titleTextStyle);
 	lv_obj_align(titleText, NULL, LV_ALIGN_CENTER, 0, 48);
-
-	// Set background colour
-	lv_obj_t *screen = lv_scr_act();
-	lv_obj_set_style_local_bg_color(screen, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(instructionPoint.color[0] << 16 | instructionPoint.color[1] << 8 | instructionPoint.color[2]));
-	lv_obj_set_style_local_bg_opa(screen, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, LV_OPA_COVER);
-	lv_obj_set_style_local_bg_grad_color(screen, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(instructionPoint.color[0] << 16 | instructionPoint.color[1] << 8 | instructionPoint.color[2]));
-	lv_obj_set_style_local_bg_grad_dir(screen, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, LV_GRAD_DIR_VER);
-	lv_obj_set_style_local_bg_main_stop(screen, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, 0);
-	lv_obj_set_style_local_bg_grad_stop(screen, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, 255);
 }
 
 void TWatch::apiError() {
@@ -148,6 +163,7 @@ void TWatch::apiError() {
 	static lv_style_t titleTextStyle;
 	lv_style_init(&titleTextStyle);
 	lv_style_set_text_font(&titleTextStyle, LV_STATE_DEFAULT, &lv_font_montserrat_16);
+    lv_style_set_text_color(&titleTextStyle, LV_STATE_DEFAULT, TWatch::textColor);
 	lv_obj_t *titleText = lv_label_create(lv_scr_act(), NULL);
 
 	lv_label_set_text(titleText, "API Error");
