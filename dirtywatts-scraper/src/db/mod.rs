@@ -1,15 +1,28 @@
-use diesel::prelude::*;
-use std::env;
+use futures::stream;
+use influxdb2::{models::DataPoint, Client, RequestError};
+use serde::Deserialize;
 
-pub use emi_stats::add_emi_stats;
-pub use power_stations::add_readings;
+use crate::{emi_stats::ConnectionPoint, power_station::PowerStationUpdatePackage, BUCKET_NAME};
 
-mod emi_stats;
-mod models;
-mod power_stations;
-mod schema;
+#[derive(Debug, Deserialize)]
+pub struct InfluxConfig {
+    pub url: String,
+    pub org: String,
+    pub auth_token: String,
+}
 
-pub fn create_connection() -> anyhow::Result<PgConnection> {
-    let addr = env::var("DATABASE_URL")?;
-    Ok(PgConnection::establish(&addr)?)
+pub async fn add_emi_stats(
+    connection_points: Vec<ConnectionPoint>,
+    client: &Client,
+) -> Result<(), RequestError> {
+    client
+        .write(BUCKET_NAME.into(), stream::iter(connection_points))
+        .await
+}
+
+pub async fn add_readings(
+    readings: PowerStationUpdatePackage,
+    client: &Client,
+) -> Result<(), RequestError> {
+    todo!()
 }

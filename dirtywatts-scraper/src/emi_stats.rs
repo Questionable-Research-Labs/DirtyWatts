@@ -1,5 +1,8 @@
+use std::collections::BTreeMap;
+
 use chrono::{DateTime, Local, NaiveDateTime, TimeZone, Utc};
 use dotenv;
+use influxdb2::models::{data_point::DataPointBuilder, DataPoint, WriteDataPoint};
 use serde::{Deserialize, Serialize};
 use serde_json;
 
@@ -23,10 +26,11 @@ pub async fn get_emi_stats() -> Result<Vec<ConnectionPoint>, Box<dyn std::error:
         .map(|x| ConnectionPoint {
             connection_code: x.connection_code.clone(),
             timestamp: Local
-                .from_utc_datetime(
+                .from_local_datetime(
                     &NaiveDateTime::parse_from_str(&x.datetime, "%Y-%m-%dT%H:%M:%S")
                         .unwrap_or(NaiveDateTime::from_timestamp(0, 0)),
                 )
+                .unwrap()
                 .with_timezone(&Utc),
             generation_mw: if x.load_mw < 0.0 { -x.load_mw } else { 0.0 } + x.generation_mw,
             load_mw: if x.load_mw < 0.0 { 0.0 } else { x.load_mw },
@@ -62,4 +66,21 @@ pub struct ConnectionPoint {
     pub load_mw: f64,
     pub generation_mw: f64,
     pub mwh_price: f64,
+}
+
+impl WriteDataPoint for ConnectionPoint {
+    fn write_data_point_to<W>(&self, mut w: W) -> std::io::Result<()>
+    where
+        W: std::io::Write,
+    {
+        writeln!(
+            w,
+            "emi_stat,code={} generation_mw={},load_mw={},mwh_price={} {}",
+            self.connection_code.replace(" ", "\\ "),
+            self.generation_mw,
+            self.load_mw,
+            self.mwh_price,
+            self.timestamp.timestamp_nanos()
+        )
+    }
 }
