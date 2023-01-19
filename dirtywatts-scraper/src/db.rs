@@ -20,13 +20,11 @@ pub async fn add_emi_stats(
     client
         .write(
             BUCKET_NAME.into(),
-            stream::iter(connection_points.into_iter().filter(|x| {
-                let z = POWER_SITES.contains(&x.connection_code.as_str());
-                if !z {
-                    println!("Removing {}", x.connection_code);
-                }
-                z
-            })),
+            stream::iter(
+                connection_points
+                    .into_iter()
+                    .filter(|x| POWER_SITES.contains(&x.connection_code.as_str())),
+            ),
         )
         .await
 }
@@ -35,5 +33,7 @@ pub async fn add_readings(
     readings: PowerStationUpdatePackage,
     client: &Client,
 ) -> Result<(), RequestError> {
-    todo!()
+    client
+        .write(BUCKET_NAME.into(), stream::iter(readings.into_array()))
+        .await
 }
