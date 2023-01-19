@@ -8,8 +8,7 @@ pub async fn get_current_power() -> Result<PowerStationUpdatePackage, Box<dyn st
         Local::now().timestamp()
     );
 
-    let transpower_api_raw = reqwest::get(api_url).await?.text().await?;
-    let mut data: ApiJson = serde_json::from_str(&transpower_api_raw)?;
+    let data: ApiJson = reqwest::get(api_url).await?.json().await?;
 
     let update: PowerStationUpdatePackage = PowerStationUpdatePackage {
         timestamp: Local

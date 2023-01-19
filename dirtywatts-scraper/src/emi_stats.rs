@@ -2,7 +2,6 @@ use chrono::{DateTime, Local, NaiveDateTime, TimeZone, Utc};
 use dotenv;
 use influxdb2::models::WriteDataPoint;
 use serde::{Deserialize, Serialize};
-use serde_json;
 
 pub async fn get_emi_stats() -> Result<Vec<ConnectionPoint>, Box<dyn std::error::Error>> {
     let api_key = dotenv::var("EMI_API_KEY").unwrap();
@@ -10,15 +9,14 @@ pub async fn get_emi_stats() -> Result<Vec<ConnectionPoint>, Box<dyn std::error:
     let api_url = "https://emi.azure-api.net/real-time-dispatch";
     let client = reqwest::Client::new();
 
-    let raw_data = client
+    let data: Vec<ConnectionPointAPI> = client
         .get(api_url)
         .header("Ocp-Apim-Subscription-Key", api_key)
         .send()
         .await?
-        .text()
+        .json()
         .await?;
 
-    let data: Vec<ConnectionPointAPI> = serde_json::from_str(&raw_data)?;
     let formatted: Vec<ConnectionPoint> = data
         .iter()
         .map(|x| ConnectionPoint {

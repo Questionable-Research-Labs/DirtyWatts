@@ -1,0 +1,16 @@
+name = ""                         # todo
+main = "build/worker/shim.mjs"
+compatibility_date = "2022-01-20"
+
+[vars]
+WORKERS_RS_VERSION = "0.0.12"
+INFLUXDB_URL = "http://localhost:8086"
+INFLUXDB_ORG = "QRL"
+INFLUXDB_AUTH_TOKEN = "P6mxlAGK35kxvxs9220c5TrAAiJ2x4sMGrXXjdQkkxc-hjwAyncXp98XkERI01KtBBG0iNmoMpAKkisUBd0evw=="
+
+[build]
+command = "cargo install -q worker-build --version 0.0.7 && worker-build --release"
+
+# [miniflare]
+# presist = true
+# kv_persist = "./data/"
