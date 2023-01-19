@@ -2,7 +2,7 @@
 name = "dirtywatts-scraper"
 version = "0.1.0"
 edition = "2021"
-
+default-run = "dirtywatts-scraper"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
@@ -18,3 +18,7 @@ envy = "0.4.2"
 futures = "0.3.25"
 influxdb2-structmap = "0.2.0"
 num-traits = "0.2.15"
+
+[build-dependencies]
+csv = "*"
+serde = { version = "1.0", features = ["derive"] }

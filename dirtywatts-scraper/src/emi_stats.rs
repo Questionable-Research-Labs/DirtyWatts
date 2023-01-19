@@ -1,8 +1,6 @@
-use std::collections::BTreeMap;
-
 use chrono::{DateTime, Local, NaiveDateTime, TimeZone, Utc};
 use dotenv;
-use influxdb2::models::{data_point::DataPointBuilder, DataPoint, WriteDataPoint};
+use influxdb2::models::WriteDataPoint;
 use serde::{Deserialize, Serialize};
 use serde_json;
 

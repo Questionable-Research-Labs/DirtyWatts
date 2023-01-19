@@ -1,15 +1,9 @@
-use chrono::{NaiveDate, NaiveDateTime};
-use db::InfluxConfig;
-use influxdb2::api::buckets::ListBucketsRequest;
-use influxdb2::api::organization::ListOrganizationRequest;
-use influxdb2::models::{DataPoint, PostBucketRequest, WriteDataPoint};
-use influxdb2::{Client, RequestError};
-use reqwest::StatusCode;
-use std::fs::File;
-use std::time::Duration;
-
 use crate::db::{add_emi_stats, add_readings};
 use crate::{emi_stats::get_emi_stats, power_station::get_current_power};
+use chrono::{NaiveDate, NaiveDateTime};
+use db::InfluxConfig;
+use influxdb2::Client;
+use std::time::Duration;
 
 mod db;
 mod emi_stats;
@@ -55,7 +49,7 @@ async fn run_emi_stats(client: &Client) {
             }
         }
 
-        tokio::time::sleep(Duration::from_secs(30)).await;
+        tokio::time::sleep(Duration::from_secs(1800)).await;
     }
 }
 
@@ -72,6 +66,16 @@ async fn main() -> anyhow::Result<()> {
         .expect("Please set the variables INFLUXDB_URL, INFLUXDB_ORG, INFLUXDB_AUTH_TOKEN");
 
     let client = Client::new(url, org.clone(), auth_token);
+
+    client
+        .delete(
+            "Dirty Watts",
+            NaiveDate::from_ymd(2020, 1, 1).and_hms(0, 0, 0),
+            NaiveDate::from_ymd(2024, 1, 1).and_hms(0, 0, 0),
+            Some(r#"_measurement = "emi_stat""#.into()),
+        )
+        .await
+        .unwrap();
 
     tokio::select! {
         // _ = run_power_sources(&client) => {}
