@@ -12,7 +12,7 @@ pub async fn get_current_power() -> Result<PowerStationUpdatePackage, Box<dyn st
 
     let update: PowerStationUpdatePackage = PowerStationUpdatePackage {
         timestamp: Local
-            .from_utc_datetime(&NaiveDateTime::from_timestamp(data.timestamp, 0))
+            .from_utc_datetime(&NaiveDateTime::from_timestamp_opt(data.timestamp, 0).unwrap())
             .with_timezone(&Utc),
         power_types: data.data.new_zealand,
     };

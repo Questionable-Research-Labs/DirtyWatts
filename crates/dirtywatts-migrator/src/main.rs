@@ -1,9 +1,10 @@
-use chrono::{DateTime, Utc};
+use chrono::{DateTime, Utc, FixedOffset};
+use dirtywatts_common::{PowerReading, ConnectionPoint};
 use futures::stream;
-use influxdb2::{models::WriteDataPoint, Client};
+use influxdb2::{Client};
 use serde::Deserialize;
 use sqlx::query_as;
-use bigdecimal::BigDecimal;
+use bigdecimal::{BigDecimal, ToPrimitive};
 
 const BUCKET_NAME: &'static str = "Dirty Watts";
 
@@ -14,6 +15,7 @@ pub struct InfluxConfig {
     pub auth_token: String,
 }
 
+
 #[derive(Debug)]
 struct PowerReadings {
     name: String,
@@ -22,15 +24,14 @@ struct PowerReadings {
     timestamp: DateTime<Utc>,
 }
 
-impl WriteDataPoint for PowerReadings {
-    fn write_data_point_to<W>(&self, mut w: W) -> std::io::Result<()>
-    where
-        W: std::io::Write {
-        writeln!(
-            w,
-            "power_station,type={} generation_mw={},capacity_mw={} {}",
-            self.name, self.generation, self.capacity, self.timestamp.timestamp_nanos()
-        )
+impl Into<PowerReading> for self::PowerReadings {
+    fn into(self) -> PowerReading {
+        dirtywatts_common::PowerReading {
+            capacity: self.capacity.to_f64().unwrap(),
+            generation: self.generation.to_f64().unwrap(),
+            name: self.name,
+            timestamp: self.timestamp
+        }
     }
 }
 
@@ -42,20 +43,16 @@ struct EmiStat {
     mwh_price: BigDecimal,
     load: BigDecimal 
 }
-impl WriteDataPoint for EmiStat {
-    fn write_data_point_to<W>(&self, mut w: W) -> std::io::Result<()>
-    where
-        W: std::io::Write,
-    {
-        writeln!(
-            w,
-            "emi_stat,code={} generation_mw={},load_mw={},mwh_price={} {}",
-            self.code.replace(" ", "\\ "),
-            self.generation,
-            self.load,
-            self.mwh_price,
-            self.timestamp.timestamp_nanos()
-        )
+
+impl Into<ConnectionPoint> for EmiStat {
+    fn into(self) -> ConnectionPoint {
+        ConnectionPoint { 
+            connection_code: self.code,
+            time: self.timestamp.with_timezone(&FixedOffset::east_opt(0).unwrap()),
+            load_mw: self.load.to_f64().unwrap(),
+            generation_mw: self.generation.to_f64().unwrap(),
+            mwh_price: self.mwh_price.to_f64().unwrap() 
+        }
     }
 }
 
@@ -90,9 +87,9 @@ async fn app() {
     let client = Client::new(url, org, auth_token);
     
     println!("Uploading power readings");
-    client.write(BUCKET_NAME.into(), stream::iter(power_readings)).await.unwrap();
+    client.write(BUCKET_NAME.into(), stream::iter(power_readings.into_iter().map(Into::<PowerReading>::into))).await.unwrap();
     println!("Done!\nUploading emi stats");
-    client.write(BUCKET_NAME.into(), stream::iter(emi_stats)).await.unwrap();
+    client.write(BUCKET_NAME.into(), stream::iter(emi_stats.into_iter().map(Into::<ConnectionPoint>::into))).await.unwrap();
     println!("Done!");
 }
 

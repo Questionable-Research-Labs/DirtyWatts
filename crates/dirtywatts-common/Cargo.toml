@@ -1,0 +1,26 @@
+[package]
+name = "dirtywatts-common"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+chrono = { version = "*", features = ["serde"] }
+influxdb2 = "0.3"
+influxdb2-structmap = "0.2"
+num-traits = "0.2"
+rocket_okapi = { version = "0.8.0-rc.1", features = [
+    "swagger",
+    "rapidoc",
+], optional = true }
+schemars = { version = "0.8.10", optional = true, features = ["chrono"] }
+
+
+[features]
+openapi = ["rocket_okapi", "schemars"]
+
+[build-dependencies]
+csv = "*"
+serde = { version = "1", features = ["derive"] }

@@ -1,0 +1,26 @@
+[package]
+name = "dirtywatts-migrator"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+chrono = "0.4.22"
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+anyhow = "*"
+dotenv = "0.15.0"
+influxdb2 = "0.3.5"
+envy = "0.4.2"
+futures = "0.3.25"
+influxdb2-structmap = "0.2.0"
+num-traits = "0.2.15"
+sqlx = { version = "*", features = [
+    "postgres",
+    "runtime-tokio-rustls",
+    "chrono",
+    "bigdecimal",
+] }
+bigdecimal = { version = "*" }
+dirtywatts-common = { path = "../dirtywatts-common" }

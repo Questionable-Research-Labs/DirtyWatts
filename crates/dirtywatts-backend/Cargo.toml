@@ -1,0 +1,17 @@
+[package]
+name = "dirtywatts-backend"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tokio = { version = "*", features = ["full"] }
+rocket = { version = "0.5.0-rc.2", features = ["json"] }
+influxdb2 = "*"
+serde = { version = "1", features = ["derive"] }
+rocket_okapi = { version = "0.8.0-rc.1", features = ["swagger", "rapidoc"] }
+schemars = "0.8.10"
+dotenv = "0.15.0"
+dirtywatts-common = { path = "../dirtywatts-common", features = ["openapi"] }
+envy = "0.4.2"

@@ -10,10 +10,9 @@ struct PowerSite {
 }
 
 fn main() {
-    println!("cargo:rerun-if-changed=../power_sites.csv");
     // Generate static list of all available connection sites at compile time, bloats binary, but will speeds runtime
-    println!("cargo:rerun-if-change=../power_sites.csv");
-    let mut csv_file = csv::Reader::from_path("../power_sites.csv")
+    println!("cargo:rerun-if-change=../../power_sites.csv");
+    let mut csv_file = csv::Reader::from_path("../../power_sites.csv")
         .expect("Please make sure the power_sites.csv is in the root of the repo");
 
     let sites = csv_file
@@ -37,35 +36,73 @@ fn main() {
         }
     }
 
-    let mut output_list = format!(
-        "#[derive(serde::Serialize)]pub struct PointData {{ pub lng: f64,pub lat: f64,address: &'static str}}const ADDRESSES:[PointData; {}]=[",
+    let mut connection_points_list = format!(
+        "#[derive(serde::Serialize)]
+pub struct PointData {{
+    pub lng: f64,
+    pub lat: f64,
+    address: &'static str
+}}
+
+pub const CONNECTION_POINTS: [PointData; {}] = [",
         sites_map.len()
     );
-    let mut output_map = "fn get_index(code: &str)->usize{match code{".to_string();
+    let mut get_index_fn = "pub fn get_index(code: &str) -> Option<usize> {
+    match code {\n"
+        .to_string();
+
+    let mut get_connection_code_fn =
+        "pub fn get_connection_points(index: usize) -> Option<Vec<&'static str>> {
+    match index {\n"
+            .to_string();
 
     for (index, ((lng, lat), sites)) in sites_map.iter().enumerate() {
-        output_list += &format!(
-            "PointData{{lng:{}f64, lat:{}f64, address:\"{}\"}},",
+        connection_points_list += &format!(
+            "\n   PointData {{ lng: {}f64, lat: {}f64, address: \"{}\" }},",
             (*lng as f64) / 100.0,
             (*lat as f64) / 100.0,
             sites[0].address
         );
 
-        output_map += &format!(
-            "{}=>{},",
+        get_index_fn += &format!(
+            "       {} => Some({}),\n",
             sites
                 .iter()
                 .map(|site| format!("\"{}\"", site.connection_code))
                 .collect::<Vec<_>>()
-                .join("|"),
+                .join(" | "),
             index
+        );
+
+        get_connection_code_fn += &format!(
+            "       {} => Some(vec![{}]),\n",
+            index,
+            sites
+                .iter()
+                .map(|site| format!("\"{}\"", site.connection_code))
+                .collect::<Vec<_>>()
+                .join(", "),
         );
     }
 
-    output_list += "];";
-    output_map += "_=>unreachable!()}}";
+    connection_points_list += "\n];";
+    get_index_fn += "\n       _ => None
+    }
+}";
 
+    get_connection_code_fn += "\n       _ => None
+    }
+}";
     let mut power_sites_file = File::create(out_path.join("power_sites.rs")).unwrap();
 
-    write!(power_sites_file, "{output_list}{output_map}").unwrap();
+    write!(
+        power_sites_file,
+        "{connection_points_list}
+
+{get_index_fn}
+
+{get_connection_code_fn}
+"
+    )
+    .unwrap();
 }

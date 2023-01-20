@@ -1,14 +1,12 @@
 use crate::{db::*, emi_stats::get_emi_stats, power_station::get_current_power};
 // use chrono::NaiveDate;
-use db::InfluxConfig;
+use dirtywatts_common::InfluxConfig;
 use influxdb2::Client;
 use std::time::Duration;
 
 mod db;
 mod emi_stats;
 mod power_station;
-
-const BUCKET_NAME: &'static str = "Dirty Watts";
 
 async fn run_power_sources(client: &Client) {
     loop {

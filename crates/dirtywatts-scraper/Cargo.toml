@@ -2,13 +2,7 @@
 name = "dirtywatts-scraper"
 version = "0.1.0"
 edition = "2021"
-default-run = "dirtywatts-scraper"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[[bin]]
-name = "migrator"
-path = "src/bin/migrator.rs"
-required-features = ["migrator"]
 
 [dependencies]
 chrono = "0.4.22"
@@ -29,6 +23,7 @@ sqlx = { version = "*", optional = true, features = [
 ] }
 bigdecimal = { version = "*", optional = true }
 reqwest = { version = "0.11.13", features = ["json"] }
+dirtywatts-common = { path = "../dirtywatts-common" }
 
 [features]
 # default = ["migrator"]
