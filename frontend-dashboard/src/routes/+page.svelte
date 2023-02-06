@@ -34,8 +34,6 @@
   <img
     class="heading__logo"
     src={Logo}
-    width="512"
-    height="512"
     alt="Dirty Watts Logo"
   />
   <div>
@@ -88,6 +86,7 @@
   .heading__logo {
     width: 100%;
     max-width: 512px;
+    max-height: 512px;
     margin: 1rem auto;
     @media screen and (max-width: 500px) {
       margin: 0 auto;
@@ -99,6 +98,10 @@
     display: block;
     width: 100%;
     max-width: 256px;
+    @media screen and (max-width: 500px) {
+      margin: 3rem auto 3rem;
+      max-width: 180px;
+    }
   }
 
   @media all and (max-width: 1000px) {

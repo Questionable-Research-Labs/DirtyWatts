@@ -74,7 +74,7 @@
     </nav>
   </div>
   {#if $percentRenewable !== null}
-    <div class="power-percent clean-power" transition:fade={{ duration: 200 }}>
+    <div class="power-percent clean-power" transition:fade={{ duration: 200 }} title={`${($percentRenewable*100).toPrecision(3)}% Renewable Energy`}>
       {Math.round($percentRenewable * 100)}% Clean
     </div>
     {#if $percentRenewable <= 0.95}
@@ -210,7 +210,7 @@
         font-weight: bold;
         padding: 0.5rem 0.5rem 0 0.5rem;
         text-align: center;
-        border-top: 1px solid white;
+        border-top: 2px solid white;
       }
     }
 </style>

@@ -13,6 +13,26 @@ body {
   font-family: 'Roboto', Arial, sans-serif !important;
 }
 
+// Scrollbar styles
+* {
+  // Firefox
+	scrollbar-color: #fff rgb(255 255 255 / 10%);
+	scrollbar-width: auto;
+	
+	// Webkit
+	&::-webkit-scrollbar {
+		width: 5px;
+		height: 5px;
+		&-track {
+			background-color: rgb(255 255 255 / 10%);
+			border-radius: 10px;
+		}
+		&-thumb {
+			background-color: #fff;
+			border-radius: 10px;
+		}
+	}
+}
 
 .loader {
   margin: 4rem auto;
