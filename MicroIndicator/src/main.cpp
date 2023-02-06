@@ -32,6 +32,8 @@ TWatch twatch;
 
 PowerStations currentPowerStats;
 
+unsigned int updateFailCounter = 0;
+
 bool updatePowerStats() {
     HTTPClient http;
     WiFiClientSecure client;
@@ -85,19 +87,23 @@ void setup() {
     twatch.setupWatch();
 #endif
 
-    // WiFiManager
-    // Local intialization. Once its business is done, there is no need to keep it around
-    WiFiManager wifiManager;
-
-    // reset saved settings
-    // wifiManager.resetSettings();
-    wifiManager.setConnectRetries(6);
-    wifiManager.setDarkMode(true);
-    wifiManager.setCountry("NZ");
-
     Serial.println("Starting WiFiManager");
 
-    wifiManager.autoConnect();
+    #ifdef OUTPUT_TWATCH
+        twatch.wifiSetup();
+    #else
+        // WiFiManager
+        // Local intialization. Once its business is done, there is no need to keep it around
+        WiFiManager wifiManager;
+
+        // reset saved settings
+        // wifiManager.resetSettings();
+        wifiManager.setConnectRetries(6);
+        wifiManager.setDarkMode(true);
+        wifiManager.setCountry("NZ");
+        wifiManager.autoConnect();
+    #endif
+
     Serial.println("Wifi Setup Complete");
 
 #ifdef OUTPUT_TWATCH
@@ -112,6 +118,8 @@ void loop() {
 
     bool connectionResult = updatePowerStats();
     if (connectionResult) {
+        updateFailCounter = 0;
+
         currentPowerStats.SerialLogData();
 
 #ifdef OUTPUT_NEOPIXEL
@@ -136,6 +144,14 @@ void loop() {
 #ifdef OUTPUT_TWATCH
         twatch.apiError();
 #endif
+        updateFailCounter++;
+        if (updateFailCounter > 5) {
+            Serial.println("Failed to get power stations 5 times in a row. Restarting ESP");
+            #ifdef OUTPUT_TWATCH
+                twatch.rebootMessage();
+            #endif
+            ESP.restart();
+        }
     }
 
 #ifdef OUTPUT_TWATCH

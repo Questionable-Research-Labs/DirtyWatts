@@ -4,14 +4,25 @@
 TTGOClass *ttgo;
 struct tm timeinfo;
 
+bool buttonDown = false;
+
+void userButtonPressed()
+{
+    buttonDown = true;
+}
+
+void userButtonReleased()
+{
+    buttonDown = false;
+}
+
+
 void TWatch::setupWatch() {
     Serial.println("Setting up TTGO");
     ttgo = TTGOClass::getWatch();
     ttgo->begin();
     ttgo->openBL();
     ttgo->lvgl_begin();
-
-    // ttgo->powerAttachInterrupt(powerOff);
 
     // Setup default text color
     TWatch::textColor = LV_COLOR_BLACK;
@@ -229,6 +240,7 @@ void TWatch::syncTime() {
         lv_label_set_text(titleText, "Time Error");
         lv_obj_add_style(titleText, LV_LABEL_PART_MAIN, &titleTextStyle);
         lv_obj_align(titleText, NULL, LV_ALIGN_CENTER, 0, 48);
+        writeScreen();
 
         delay(3000);
         syncTime();
@@ -237,6 +249,60 @@ void TWatch::syncTime() {
     Serial.println("Time synced!");
     Serial.println(&timeinfo, "%A, %B %d %Y %H:%M:%S");
 
+}
+
+void TWatch::wifiSetup() {
+    WiFi.mode(WIFI_STA);
+    // WiFiManager
+    // Local intialization. Once its business is done, there is no need to keep it around
+    WiFiManager wifiManager;
+
+    // reset saved settings
+    // wifiManager.resetSettings();
+    wifiManager.setDarkMode(true);
+    wifiManager.setCountry("NZ");
+    wifiManager.setConnectRetries(10);
+    wifiManager.setConfigPortalTimeout(360);
+
+    bool connected = true;
+
+    if (buttonDown) {
+        static lv_style_t titleTextStyle;
+        lv_style_init(&titleTextStyle);
+        lv_style_set_text_font(&titleTextStyle, LV_STATE_DEFAULT, &lv_font_montserrat_16);
+        lv_obj_t *titleText = lv_label_create(lv_scr_act(), NULL);
+
+        lv_label_set_text(titleText, "Setting up config portal...");
+        lv_obj_add_style(titleText, LV_LABEL_PART_MAIN, &titleTextStyle);
+        lv_obj_align(titleText, NULL, LV_ALIGN_CENTER, 0, 48);
+        writeScreen();
+
+        connected = wifiManager.startConfigPortal();
+    } else {
+        connected = wifiManager.autoConnect();
+    }
+
+    if (!connected) {
+        Serial.println("Config portal timedout, rebooting...");
+        rebootMessage();
+        ESP.restart();
+    }
+}
+
+void TWatch::rebootMessage() {
+    clearScreen();
+    // Write error to screen
+    static lv_style_t titleTextStyle;
+    lv_style_init(&titleTextStyle);
+    lv_style_set_text_font(&titleTextStyle, LV_STATE_DEFAULT, &lv_font_montserrat_16);
+    lv_obj_t *titleText = lv_label_create(lv_scr_act(), NULL);
+
+    lv_label_set_text(titleText, "Failed to connect to server 5 times, rebooting...");
+    lv_obj_add_style(titleText, LV_LABEL_PART_MAIN, &titleTextStyle);
+    lv_obj_align(titleText, NULL, LV_ALIGN_CENTER, 0, 48);
+    writeScreen();
+
+    delay(3000);
 }
 
 #endif

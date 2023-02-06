@@ -5,6 +5,8 @@
 #include <config.h>
 
 #include <powerstations.h>
+#include <WiFiManager.h>  //https://github.com/tzapu/WiFiManager
+
 
 #define LILYGO_WATCH_LVGL
 #define LV_LOG_LEVEL LV_LOG_LEVEL_INFO
@@ -40,6 +42,8 @@ class TWatch {
         void writeScreen();
         void clearScreen();
         void syncTime();
+        void wifiSetup();
+        void rebootMessage();
 };
 
 void my_log_cb(lv_log_level_t level, const char * file, uint32_t line, const char * fn_name, const char * dsc);
