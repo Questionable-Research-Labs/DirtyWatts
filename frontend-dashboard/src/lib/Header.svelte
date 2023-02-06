@@ -74,16 +74,26 @@
     </nav>
   </div>
   {#if $percentRenewable !== null}
-    <div class="clean-power" transition:fade={{ duration: 200 }}>
+    <div class="power-percent clean-power" transition:fade={{ duration: 200 }}>
       {Math.round($percentRenewable * 100)}% Clean
     </div>
     {#if $percentRenewable <= 0.95}
-      <div class="dirty-power" transition:fade={{ duration: 200 }}>
+      <div
+        class="power-percent dirty-power"
+        transition:fade={{ duration: 200 }}
+      >
         {Math.round((1 - $percentRenewable) * 100)}% Dirty
       </div>
     {/if}
+
+
   {/if}
 </header>
+{#if $percentRenewable !== null}
+  <div class="mobile-banner clean-power" transition:fade={{ duration: 200 }}>
+    {Math.round($percentRenewable * 100)}% Clean Power
+  </div>
+{/if}
 
 <style lang="scss">
   .header {
@@ -107,8 +117,7 @@
       );
     }
 
-    .clean-power,
-    .dirty-power {
+    .power-percent {
       position: fixed;
       color: #fff;
       font-size: 1.5rem;
@@ -116,35 +125,30 @@
       padding: 0.5rem;
       background: #333;
       box-sizing: content-box;
-    }
 
-    .clean-power {
-      right: calc(calc(1 - var(--percent-renewable)) * 100%);
-      text-align: right;
-      border-right: 1px solid white;
-    }
-
-    .dirty-power {
-      left: calc(var(--percent-renewable) * 100%);
-      text-align: left;
-      border-left: 1px solid white;
-    }
-    @media screen and (max-width: 1500px) {
-      .dirty-power {
-        display: none;
+      &.clean-power {
+        right: calc(calc(1 - var(--percent-renewable)) * 100%);
+        text-align: right;
+        border-right: 1px solid white;
       }
-      .clean-power,
-      .dirty-power {
+
+      &.dirty-power {
+        left: calc(var(--percent-renewable) * 100%);
+        text-align: left;
+        border-left: 1px solid white;
+      }
+
+      @media screen and (max-width: 1500px) {
         position: absolute;
+        &.dirty-power {
+          display: none;
+        }
       }
-    }
-
-    @media screen and (max-width: 1000px) {
-      .clean-power,
-      .dirty-power {
-        display: none;
+      @media screen and (max-width: 600px) {
+        &.clean-power {
+          display: none;
+        }
       }
-      background: #333;
     }
   }
 
@@ -166,7 +170,7 @@
     color: white;
     font-weight: 900;
     letter-spacing: 2px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     text-transform: uppercase;
   }
 
@@ -184,18 +188,29 @@
     padding: 0.5rem;
 
     transition: color 0.5s ease, background-color 0.25s ease, transform 0.2s;
+
+    &:hover {
+      background: #646464;
+    }
+    &.active {
+      background: #d5d5d5;
+      color: #111;
+      &:hover {
+        background: #ffffff;
+      }
+    }
   }
 
-  .active.nav__link {
-    background: #d5d5d5;
-    color: #111;
-  }
-
-  .nav__link:hover {
-    background: #646464;
-  }
-
-  .active.nav__link:hover {
-    background: #ffffff;
-  }
+  .mobile-banner {
+      display: none;
+      @media screen and (max-width: 600px) {
+        display: block;
+        color: #fff;
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding: 0.5rem 0.5rem 0 0.5rem;
+        text-align: center;
+        border-top: 1px solid white;
+      }
+    }
 </style>
