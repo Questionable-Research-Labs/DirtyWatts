@@ -1,5 +1,5 @@
 use serde::Deserialize;
-use std::{collections::HashMap, env, fs::File, io::Write, path::PathBuf};
+use std::{collections::BTreeMap, env, fs::File, io::Write, path::PathBuf};
 
 #[derive(Deserialize)]
 struct PowerSite {
@@ -22,7 +22,7 @@ fn main() {
 
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
 
-    let mut sites_map: HashMap<(i32, i32), Vec<PowerSite>> = HashMap::new();
+    let mut sites_map: BTreeMap<(i32, i32), Vec<PowerSite>> = BTreeMap::new();
 
     for site in sites {
         let lng = (site.longitude * 100.0).round() as i32;

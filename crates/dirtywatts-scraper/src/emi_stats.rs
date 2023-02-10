@@ -20,8 +20,9 @@ pub async fn get_emi_stats() -> Result<Vec<ConnectionPoint>, Box<dyn std::error:
     let formatted: Vec<ConnectionPoint> = data
         .iter()
         .filter_map(|x| {
-            get_index(x.connection_code.as_str()).map(|_| ConnectionPoint {
+            get_index(x.connection_code.as_str()).map(|group_index| ConnectionPoint {
                 connection_code: x.connection_code.clone(),
+                group_index,
                 time: Local
                     .from_local_datetime(
                         &NaiveDateTime::parse_from_str(&x.datetime, "%Y-%m-%dT%H:%M:%S")

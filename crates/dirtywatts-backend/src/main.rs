@@ -1,79 +1,55 @@
-mod status;
+mod db;
+mod error;
+mod routes;
 
+use crate::routes::status;
+use actix_web::{middleware::Logger, web::Data, App, HttpServer};
 use dirtywatts_common::InfluxConfig;
+use dotenv::dotenv;
+use env_logger::Env;
 use influxdb2::Client;
-use rocket::{get, launch, routes, serde::json::Json};
-use rocket_okapi::{
-    openapi, openapi_get_routes,
-    rapidoc::{make_rapidoc, GeneralConfig, HideShowConfig, RapiDocConfig},
-    settings::UrlObject,
-    swagger_ui::{make_swagger_ui, SwaggerUIConfig},
-    JsonSchema,
-};
-use serde::Serialize;
-use status::{alive, okapi_add_operation_for_alive_};
+use std::io;
+use utoipa::OpenApi;
+use utoipa_swagger_ui::SwaggerUi;
 
-#[derive(Serialize, JsonSchema)]
-/// Info about the current server
-struct ApiInfo {
-    /// Server name
-    name: String,
-    /// Server version
-    version: String,
-}
+#[derive(OpenApi)]
+#[openapi(
+    paths(
+        routes::status::info,
+        routes::status::alive,
+        routes::status::data_current
+    ),
+    components(schemas(
+        routes::status::ApiStatus,
+        routes::status::ApiAlive,
+        error::InternalServerError
+    ))
+)]
+struct ApiDoc;
 
-impl Default for ApiInfo {
-    fn default() -> Self {
-        Self {
-            name: env!("CARGO_PKG_NAME").into(),
-            version: env!("CARGO_PKG_VERSION").into(),
-        }
-    }
-}
+#[tokio::main]
+async fn main() -> io::Result<()> {
+    _ = dotenv();
+    env_logger::init_from_env(Env::default().default_filter_or("info"));
 
-#[openapi(tag = "Status")]
-#[get("/status/info")]
-fn index() -> Json<ApiInfo> {
-    Json(ApiInfo::default())
-}
+    HttpServer::new(|| {
+        App::new()
+            .wrap(Logger::new("%r %Ts %b"))
+            .app_data({
+                let InfluxConfig {
+                    url,
+                    org,
+                    auth_token,
+                } = envy::prefixed("INFLUXDB_")
+                    .from_env()
+                    .expect("Please set the environment variables for InfluxDB");
 
-#[launch]
-async fn launch() -> _ {
-    _ = dotenv::dotenv();
-
-    let InfluxConfig {
-        url,
-        org,
-        auth_token,
-    } = envy::prefixed("INFLUXDB_")
-        .from_env()
-        .expect("Please set the variables INFLUXDB_URL, INFLUXDB_ORG, INFLUXDB_AUTH_TOKEN");
-
-    let client = Client::new(url, org, auth_token);
-
-    rocket::build()
-        // .mount("/", routes![index])
-        .mount("/", openapi_get_routes![alive, index])
-        .mount(
-            "/",
-            make_swagger_ui(&SwaggerUIConfig {
-                url: "/openapi.json".to_string(),
-                ..Default::default()
-            }),
-        )
-        .mount(
-            "/rapidoc/",
-            make_rapidoc(&RapiDocConfig {
-                general: GeneralConfig {
-                    spec_urls: vec![UrlObject::new("General", "/openapi.json")],
-                    ..Default::default()
-                },
-                hide_show: HideShowConfig {
-                    allow_spec_url_load: false,
-                    allow_spec_file_load: false,
-                    ..Default::default()
-                },
-                ..Default::default()
-            }),
-        )
+                Data::new(Client::new(url, org, auth_token))
+            })
+            .service(status::setup_routes())
+            .service(SwaggerUi::new("/{_:.*}").url("/openapi.json", ApiDoc::openapi()))
+    })
+    .bind("0.0.0.0:8080")?
+    .run()
+    .await
 }

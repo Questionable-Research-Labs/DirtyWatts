@@ -1,5 +1,5 @@
-use chrono::{DateTime, Local, NaiveDateTime, TimeZone, Utc};
-use influxdb2::models::WriteDataPoint;
+use chrono::{DateTime, Local, TimeZone, Utc, FixedOffset};
+use dirtywatts_common::PowerReading;
 use serde::{Deserialize, Serialize};
 
 pub async fn get_current_power() -> Result<PowerStationUpdatePackage, Box<dyn std::error::Error>> {
@@ -11,11 +11,11 @@ pub async fn get_current_power() -> Result<PowerStationUpdatePackage, Box<dyn st
     let data: ApiJson = reqwest::get(api_url).await?.json().await?;
 
     let update: PowerStationUpdatePackage = PowerStationUpdatePackage {
-        timestamp: Local
-            .from_utc_datetime(&NaiveDateTime::from_timestamp_opt(data.timestamp, 0).unwrap())
-            .with_timezone(&Utc),
+        timestamp: 
+            Utc.timestamp_opt(data.timestamp, 0 ).unwrap().with_timezone(&FixedOffset::east_opt(0).unwrap()),
         power_types: data.data.new_zealand,
     };
+
     return Ok(update);
 }
 
@@ -49,82 +49,63 @@ pub struct PowerTypes {
 
 #[derive(Debug)]
 pub struct PowerStationUpdatePackage {
-    pub timestamp: DateTime<Utc>,
+    pub timestamp: DateTime<FixedOffset>,
     pub power_types: PowerTypes,
 }
 
 impl PowerStationUpdatePackage {
-    pub fn into_array(self) -> [PowerTypeUpdate; 8] {
+    pub fn into_array(self) -> [PowerReading; 8] {
         [
-            PowerTypeUpdate {
+            PowerReading {
                 name: "battery".into(),
                 capacity_mw: self.power_types.battery.capacity_mw,
                 generation_mw: self.power_types.battery.generation_mw,
-                timestamp: self.timestamp.timestamp_nanos(),
+                time: self.timestamp,
             },
-            PowerTypeUpdate {
+            PowerReading {
                 name: "co-gen".into(),
                 capacity_mw: self.power_types.co_gen.capacity_mw,
                 generation_mw: self.power_types.co_gen.generation_mw,
-                timestamp: self.timestamp.timestamp_nanos(),
+                time: self.timestamp,
             },
-            PowerTypeUpdate {
+            PowerReading {
+
                 name: "coal".into(),
                 capacity_mw: self.power_types.coal.capacity_mw,
                 generation_mw: self.power_types.coal.generation_mw,
-                timestamp: self.timestamp.timestamp_nanos(),
+                time: self.timestamp,
             },
-            PowerTypeUpdate {
+            PowerReading {
                 name: "gas".into(),
                 capacity_mw: self.power_types.gas.capacity_mw,
                 generation_mw: self.power_types.gas.generation_mw,
-                timestamp: self.timestamp.timestamp_nanos(),
+                time: self.timestamp,
             },
-            PowerTypeUpdate {
+            PowerReading {
                 name: "geothermal".into(),
                 capacity_mw: self.power_types.geothermal.capacity_mw,
                 generation_mw: self.power_types.geothermal.generation_mw,
-                timestamp: self.timestamp.timestamp_nanos(),
+                time: self.timestamp,
             },
-            PowerTypeUpdate {
+            PowerReading {
                 name: "hydro".into(),
                 capacity_mw: self.power_types.hydro.capacity_mw,
                 generation_mw: self.power_types.hydro.generation_mw,
-                timestamp: self.timestamp.timestamp_nanos(),
+                time: self.timestamp,
             },
-            PowerTypeUpdate {
+            PowerReading {
                 name: "diesel".into(),
                 capacity_mw: self.power_types.diesel.capacity_mw,
                 generation_mw: self.power_types.diesel.generation_mw,
-                timestamp: self.timestamp.timestamp_nanos(),
+                time: self.timestamp,
             },
-            PowerTypeUpdate {
+            PowerReading {
                 name: "wind".into(),
                 capacity_mw: self.power_types.wind.capacity_mw,
                 generation_mw: self.power_types.wind.generation_mw,
-                timestamp: self.timestamp.timestamp_nanos(),
+                time: self.timestamp,
             },
         ]
-    }
-}
-
-pub struct PowerTypeUpdate {
-    name: String,
-    generation_mw: f64,
-    capacity_mw: f64,
-    timestamp: i64,
-}
-
-impl WriteDataPoint for PowerTypeUpdate {
-    fn write_data_point_to<W>(&self, mut w: W) -> std::io::Result<()>
-    where
-        W: std::io::Write,
-    {
-        writeln!(
-            w,
-            "power_station,type={} generation_mw={},capacity_mw={} {}",
-            self.name, self.generation_mw, self.capacity_mw, self.timestamp
-        )
     }
 }
 

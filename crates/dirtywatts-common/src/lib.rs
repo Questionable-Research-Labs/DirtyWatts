@@ -1,4 +1,4 @@
-use chrono::{DateTime, FixedOffset, Utc};
+use chrono::{DateTime, FixedOffset};
 use influxdb2::models::WriteDataPoint;
 use serde::Deserialize;
 
@@ -14,6 +14,8 @@ pub struct InfluxConfig {
 #[derive(Clone, Debug, influxdb2::FromDataPoint, Default)]
 pub struct ConnectionPoint {
     pub connection_code: String,
+    pub lng: i64,
+    pub lat: i64,
     pub time: DateTime<FixedOffset>,
     pub load_mw: f64,
     pub generation_mw: f64,
@@ -37,12 +39,12 @@ impl WriteDataPoint for ConnectionPoint {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, influxdb2::FromDataPoint, Default)]
 pub struct PowerReading {
     pub name: String,
-    pub generation: f64,
-    pub capacity: f64,
-    pub timestamp: DateTime<Utc>,
+    pub generation_mw: f64,
+    pub capacity_mw: f64,
+    pub time: DateTime<FixedOffset>,
 }
 
 impl WriteDataPoint for PowerReading {
@@ -52,11 +54,11 @@ impl WriteDataPoint for PowerReading {
     {
         writeln!(
             w,
-            "power_station,type={} generation_mw={},capacity_mw={} {}",
+            "power_station,name={} generation_mw={},capacity_mw={} {}",
             self.name,
-            self.generation,
-            self.capacity,
-            self.timestamp.timestamp_nanos()
+            self.generation_mw,
+            self.capacity_mw,
+            self.time.timestamp_nanos()
         )
     }
 }

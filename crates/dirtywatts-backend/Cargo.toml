@@ -7,11 +7,16 @@ edition = "2021"
 
 [dependencies]
 tokio = { version = "*", features = ["full"] }
-rocket = { version = "0.5.0-rc.2", features = ["json"] }
 influxdb2 = "*"
 serde = { version = "1", features = ["derive"] }
-rocket_okapi = { version = "0.8.0-rc.1", features = ["swagger", "rapidoc"] }
-schemars = "0.8.10"
 dotenv = "0.15.0"
 dirtywatts-common = { path = "../dirtywatts-common", features = ["openapi"] }
 envy = "0.4.2"
+actix-web = {version = "*"}
+thiserror = "1.0.38"
+utoipa = { version = "3.0.0", features = ["actix_extras"] }
+utoipa-swagger-ui = { version = "3.0.2", features = ["actix-web"] }
+derive_more = "0.99.17"
+serde_json = "1.0.91"
+env_logger = { version = "*" }
+log = "*"
