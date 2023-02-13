@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Logo from "$assets/img/logo-nb.svg";
+  import DynamicLogo from "$lib/DynamicLogo.svelte";
   import Prints from "$assets/img/prints.svg";
   import PowerStations from "$lib/PowerStations.svelte";
   import Footer from "$lib/Footer.svelte";
@@ -28,14 +28,13 @@
       return (powerTypes?.power_types["coal"].generation_mw / total) * 100;
     }
   );
+
 </script>
 
 <div class="heading section section--fit">
-  <img
-    class="heading__logo"
-    src={Logo}
-    alt="Dirty Watts Logo"
-  />
+  <div class="heading__logo" >
+    <DynamicLogo powerTypes={$powerTypes?.power_types}/>
+  </div>
   <div>
     <h1 class="section__title">Dirty Watts</h1>
     {#if $coalPercent > 0}
