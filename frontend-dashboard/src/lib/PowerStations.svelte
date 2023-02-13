@@ -20,6 +20,7 @@
 
     import type { PowerType } from "$lib/api";
     import { powerTypes, powerTypesHistory } from "$lib/stores";
+    import { AVERAGE_NZ_LOAD_MW } from "./consts";
 
 
     interface Group {
@@ -192,6 +193,14 @@
                         title: "Generation (MW)",
                         scaleType: ScaleTypes.LINEAR,
                         stacked: true,
+                        thresholds: [
+                            {
+                                value: AVERAGE_NZ_LOAD_MW,
+                                label: "Yearly Average",
+                                fillColor: "#ca5f5f",
+                                valueFormatter: (value) => `${value} MW`,
+                            }
+                        ]
                     },
                     bottom: {
                         title: "Date",
