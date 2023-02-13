@@ -39,4 +39,6 @@ class ConnectionPoint(BaseModel):
 
 class StatusTest(BaseModel):
     healthy: bool
+    
+class CurrentData(StatusTest):
     latest_update: datetime
