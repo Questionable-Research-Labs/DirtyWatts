@@ -38,11 +38,15 @@ export async function getPowerStations(): Promise<PowerStationsResponse> {
 export async function getPowerStationsHistory(): Promise<
   PowerStationsResponse[]
 > {
-  let now = new Date(Date.now() - OFFSET);
+  
   const INTERVAL = 60;
+  const INTERVAL_MS = INTERVAL * 60 * 1000;
+
+  // Round the date to the nearest interval to make the API call easier to cache
+  let startDate = new Date(Math.round((Date.now() - OFFSET)/INTERVAL_MS)*INTERVAL_MS);
 
   return fetchAPI<PowerStationsResponse[]>(
-    `history/power_stations?start=${now.toISOString()}&time_interval_minutes=${INTERVAL}`
+    `history/power_stations?start=${startDate.toISOString()}&time_interval_minutes=${INTERVAL}`
   );
 }
 
@@ -52,11 +56,15 @@ export async function getConnectionPoints(): Promise<ConnectionPoint[]> {
 export async function getConnectionPointHistory(
   point_code: string
 ): Promise<ConnectionPoint[]> {
-  let now = new Date(Date.now() - OFFSET);
+
   const INTERVAL = 30;
+  const INTERVAL_MS = INTERVAL * 60 * 1000;
+
+  // Round the date to the nearest interval to make the API call easier to cache
+  let startDate = new Date(Math.round((Date.now() - OFFSET)/INTERVAL_MS)*INTERVAL_MS);
 
   return fetchAPI<ConnectionPoint[]>(
-    `history/grid_connection_points/${point_code}?start=${now.toISOString()}&time_interval_minutes=${INTERVAL}`
+    `history/grid_connection_points/${point_code}?start=${startDate.toISOString()}&time_interval_minutes=${INTERVAL}`
   );
 }
 
