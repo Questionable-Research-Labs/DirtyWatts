@@ -1,10 +1,13 @@
 from datetime import datetime, timedelta
 from fastapi import APIRouter
+from refreshCache import refreshCache
 
 from responseModels import PowerStationStats, PowerstationUpdatePackage, power_type_count, StatusTest
 from typing import List
 from sqlalchemy import func
 import db
+
+import asyncio
 
 router = APIRouter(
     prefix="/status",
@@ -24,8 +27,13 @@ async def power_stations():
     updateTime = latestRow["reading_timestamp"]
     session.close()
     healthy = updateTime > datetime.now(updateTime.tzinfo) - timedelta(minutes=120)
+
+    # Use as opportunity to test if there is a need to clear the cache
+    asyncio.create_task(refreshCache(updateTime.isoformat()))
+
     return {
-        "healthy": healthy
+        "healthy": healthy,
+        "latest_update": updateTime.isoformat(),
     }
 
 

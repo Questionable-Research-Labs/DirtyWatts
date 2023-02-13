@@ -5,14 +5,19 @@ from typing import List
 from sqlalchemy import func
 import db
 
+from starlette.requests import Request
+from starlette.responses import Response
+from fastapi_cache.decorator import cache
+
+
 router = APIRouter(
     prefix="/live",
     tags=["Live Data"],
     responses={404: {"description": "Not found"}},
 )
 
-
 @router.get("/power_stations", response_model=PowerstationUpdatePackage)
+@cache(namespace="generation-levels", expire=60*15)
 async def power_stations():
     session = db.sessionMaker()
     query = (
@@ -37,8 +42,8 @@ async def power_stations():
     print(powerTypes)
     return PowerstationUpdatePackage(timestamp=updateTime, power_types=powerTypes)
 
-
 @router.get("/grid_connection_points", response_model=List[ConnectionPoint])
+@cache(namespace="network-supply", expire=60)
 async def power_stations():
     session = db.sessionMaker()
 

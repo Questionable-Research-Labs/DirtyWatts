@@ -7,6 +7,13 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import RedirectResponse
 
+from fastapi_cache import FastAPICache
+from fastapi_cache.backends.redis import RedisBackend
+from fastapi_cache.decorator import cache
+from redis.asyncio.connection import ConnectionPool
+import redis.asyncio as redis
+
+
 import db
 import liveRoutes
 import historyRoutes
@@ -19,6 +26,8 @@ load_dotenv()
 
 DATABASE_URL = os.environ.get("DATABASE_URL")
 database = databases.Database(DATABASE_URL)
+
+REDIS_URL = os.environ.get("REDIS_URL")
 
 
 engine = sqlalchemy.create_engine(
@@ -49,10 +58,15 @@ def custom_openapi():
 app.openapi = custom_openapi
 
 
+
 @app.on_event("startup")
 async def startup():
     db.sessionMaker = sessionmaker(autocommit=False, autoflush=False, bind=engine)
     await database.connect()
+    pool = ConnectionPool.from_url(url=REDIS_URL)
+    r = redis.Redis(connection_pool=pool)
+    FastAPICache.init(RedisBackend(r), prefix="fastapi-cache")
+
 
 
 @app.on_event("shutdown")

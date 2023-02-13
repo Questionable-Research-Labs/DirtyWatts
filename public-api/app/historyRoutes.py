@@ -6,7 +6,11 @@ from typing import List, Dict
 import db
 from utils import chunks
 from sqlalchemy import func, desc, or_
-import math
+
+from starlette.requests import Request
+from starlette.responses import Response
+from fastapi_cache.decorator import cache
+
 
 router = APIRouter(
     prefix="/history",
@@ -14,8 +18,8 @@ router = APIRouter(
     responses={404: {"description": "Not found"}},
 )
 
-
 @router.get("/power_stations", response_model=List[PowerstationUpdatePackage])
+@cache(namespace="generation-levels", expire=60*90)
 async def power_stations(start: datetime = datetime.min, end: datetime = datetime.max,
                          time_interval_minutes: float = 30):
     """
@@ -54,8 +58,8 @@ async def power_stations(start: datetime = datetime.min, end: datetime = datetim
         outputSlices.append(PowerstationUpdatePackage(timestamp=updateTime, power_types=powerTypes))
     return outputSlices
 
-
 @router.get("/grid_connection_points/{connection_code}", response_model=List[ConnectionPoint])
+@cache(namespace="network-supply", expire=60*15)
 async def power_stations(connection_code: str, start: datetime = datetime.min, end: datetime = datetime.max,
                          time_interval_minutes: float = 60):
     """

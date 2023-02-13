@@ -4,3 +4,5 @@ gunicorn
 databases[postgresql]
 python-dotenv
 psycopg2
+fastapi-cache2[redis]
+redis
