@@ -4,9 +4,10 @@
   import PowerStations from "$lib/PowerStations.svelte";
   import Footer from "$lib/Footer.svelte";
   import { derived } from "svelte/store";
-  import { powerTypes } from "$lib/stores";
+  import { percentRenewable, powerTypes } from "$lib/stores";
   import CoalPower from "$lib/CoalPower.svelte";
   import type { PowerStationsResponse } from "$lib/api";
+  import { fade } from "svelte/transition";
 
   const description =
     "Ever wanted to see where the power you're using is coming from? Want to make sure you reduce the amount of power you're using when Coal is being burned for power? Dirty Watts is the answer to all these problems.";
@@ -28,12 +29,17 @@
       return (powerTypes?.power_types["coal"].generation_mw / total) * 100;
     }
   );
-
 </script>
 
+{#if $percentRenewable !== null}
+  <div class="mobile-banner clean-power" transition:fade={{ duration: 200 }}>
+    {Math.round($percentRenewable * 100)}% Clean Power
+  </div>
+{/if}
+
 <div class="heading section section--fit">
-  <div class="heading__logo" >
-    <DynamicLogo powerTypes={$powerTypes?.power_types}/>
+  <div class="heading__logo">
+    <DynamicLogo powerTypes={$powerTypes?.power_types} />
   </div>
   <div>
     <h1 class="section__title">Dirty Watts</h1>
@@ -106,6 +112,19 @@
   @media all and (max-width: 1000px) {
     .heading {
       flex-flow: column;
+    }
+  }
+
+  .mobile-banner {
+    display: none;
+    @media screen and (max-width: 600px) {
+      display: block;
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: bold;
+      padding: 0.5rem 0.5rem 0 0.5rem;
+      text-align: center;
+      border-top: 2px solid white;
     }
   }
 </style>

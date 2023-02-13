@@ -1,27 +1,28 @@
 <script context="module" lang="ts">
     // @carbon/charts/interfaces/enums.d.ts cannot be imported in modern ts
     enum ScaleTypes {
-		TIME = "time",
-		LINEAR = "linear",
-		LOG = "log",
-		LABELS = "labels",
-		LABELS_RATIO = "labels-ratio"
-	}
-
+        TIME = "time",
+        LINEAR = "linear",
+        LOG = "log",
+        LABELS = "labels",
+        LABELS_RATIO = "labels-ratio",
+    }
 </script>
+
 <script lang="ts">
     // Carbon Imports
     import "@carbon/styles/css/styles.css";
     import "@carbon/charts/styles.css";
-    import { BarChartStacked, StackedAreaChart} from "@carbon/charts-svelte";
-    import type {AxesOptions, AxisOptions} from "@carbon/charts/interfaces";
+    import { BarChartStacked, StackedAreaChart } from "@carbon/charts-svelte";
+    import type { AxesOptions, AxisOptions } from "@carbon/charts/interfaces";
 
     import { writable } from "svelte/store";
 
     import type { PowerType } from "$lib/api";
     import { powerTypes, powerTypesHistory } from "$lib/stores";
     import { AVERAGE_NZ_LOAD_MW } from "./consts";
-
+    import Loader from "./Loader.svelte";
+    import LazyLoader from "./LazyLoader.svelte";
 
     interface Group {
         group: string;
@@ -35,7 +36,6 @@
         value: number;
     }
 
-
     const prettyNames: Record<string, string> = {
         battery: "Battery",
         co_gen: "CoGen",
@@ -47,8 +47,8 @@
         wind: "Wind",
     };
 
-    const cleanPower: string[] = ['hydro', 'wind', 'geothermal']
-    const dirtyPower: string[] = ['batter', 'co_gen', 'coal', 'gas', 'diesel']
+    const cleanPower: string[] = ["hydro", "wind", "geothermal"];
+    const dirtyPower: string[] = ["batter", "co_gen", "coal", "gas", "diesel"];
 
     const cleanGraphData = writable<Group[]>();
     const dirtyGraphData = writable<Group[]>();
@@ -64,10 +64,9 @@
         let total = 0;
         let coalValue = 0;
         for (const key in powerTypes?.power_types) {
-            const {generation_mw, capacity_mw}: PowerType =
+            const { generation_mw, capacity_mw }: PowerType =
                 powerTypes?.power_types[key];
             const name = prettyNames[key] ?? key;
-
 
             total += generation_mw;
             if (key === "coal") {
@@ -99,18 +98,17 @@
                     value: capacity_mw - generation_mw,
                 });
             }
-
         }
 
-        $cleanGraphData = cleanGroups
-        $dirtyGraphData = dirtyGroups
+        $cleanGraphData = cleanGroups;
+        $dirtyGraphData = dirtyGroups;
     });
 
     powerTypesHistory.subscribe((powerTypesHistory) => {
         let historyGroups: HistoryGroup[] = [];
-        for (let {timestamp, power_types} of powerTypesHistory) {
+        for (let { timestamp, power_types } of powerTypesHistory) {
             for (const key in power_types) {
-                const {generation_mw}: PowerType = power_types[key];
+                const { generation_mw }: PowerType = power_types[key];
                 const name = prettyNames[key] ?? key;
                 historyGroups.push({
                     date: timestamp,
@@ -125,112 +123,118 @@
     let windowWidth = 0;
     $: mobileMode = windowWidth < 450;
     let generationCapacityAxes: AxesOptions<AxisOptions>;
-    $: generationCapacityAxes = mobileMode ? {
-        bottom: { scaleType: ScaleTypes.LABELS, title: "Type" },
-        left: { stacked: true, title: "MW" },
-    } : {
-        left: { scaleType: ScaleTypes.LABELS, title: "Type" },
-        bottom: { stacked: true, title: "MW" },
-    };
+    $: generationCapacityAxes = mobileMode
+        ? {
+              bottom: { scaleType: ScaleTypes.LABELS, title: "Type" },
+              left: { stacked: true, title: "MW" },
+          }
+        : {
+              left: { scaleType: ScaleTypes.LABELS, title: "Type" },
+              bottom: { stacked: true, title: "MW" },
+          };
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />
 
 <section class="section section--fit">
     <h1 class="section__title">Generation & Capacity</h1>
-    <p class="section__text">The graphs below show the different power sources the purple bar indicates how much power
-        is currently being
-        generated in MW (Megawatts) and the cyan bar indicates the extra capacity </p>
-    {#if $cleanGraphData != null}
-        <div class="chart-wrapper">
-            <h2 class="chart__title">Clean Power</h2>
+    <p class="section__text">
+        The graphs below show the different power sources the purple bar
+        indicates how much power is currently being generated in MW (Megawatts)
+        and the cyan bar indicates the extra capacity
+    </p>
+    <div class="chart-wrapper">
+        <h2 class="chart__title">Clean Power</h2>
+        <LazyLoader height={400} ready={!!$cleanGraphData}>
             {#key mobileMode}
                 <BarChartStacked
-                        theme="g90"
-                        data={$cleanGraphData}
-                        options={{
+                    theme="g90"
+                    data={$cleanGraphData}
+                    options={{
                         height: "400px",
                         axes: generationCapacityAxes,
-                        title: `Last Updated: ${new Date($powerTypes?.timestamp || "").toLocaleString()}`,
+                        title: `Last Updated: ${new Date(
+                            $powerTypes?.timestamp || ""
+                        ).toLocaleString()}`,
                     }}
                 />
             {/key}
-        </div>
-        {#if $dirtyGraphData != null}
-            <div class="chart-wrapper">
-                <h2 class="chart__title">Dirty Power</h2>
-                {#key mobileMode}
-                    <BarChartStacked
-                            theme="g90"
-                            data={$dirtyGraphData}
-                            options={{
+        </LazyLoader>
+    </div>
+    <div class="chart-wrapper">
+        <h2 class="chart__title">Dirty Power</h2>
+        <LazyLoader height={400} ready={!!$dirtyGraphData}>
+            {#key mobileMode}
+                <BarChartStacked
+                    theme="g90"
+                    data={$dirtyGraphData}
+                    options={{
                         height: "400px",
                         axes: generationCapacityAxes,
-                        title: `Last Updated: ${new Date($powerTypes?.timestamp || "").toLocaleString()}`
+                        title: `Last Updated: ${new Date(
+                            $powerTypes?.timestamp || ""
+                        ).toLocaleString()}`,
                     }}
-                    />
-                {/key}
-            </div>
-        {/if}
-    {:else}
-        <span class="loader"></span>
-    {/if}
+                />
+            {/key}
+        </LazyLoader>
+    </div>
 
     <div class="chart-wrapper">
         <h1 class="section__title">NZ Power draw</h1>
-        <p class="section__text">The graph below shows historical data for what the power generation for each source
-            was
-            at different dates and times </p>
-        {#if $historyData != null}
+        <p class="section__text">
+            The graph below shows historical data for what the power generation
+            for each source was at different dates and times
+        </p>
+        <LazyLoader height={400} ready={$historyData != null && $historyData.length > 0}>
             <StackedAreaChart
-                    theme="g90"
-                    data={$historyData}
-                    options={{
-                height: "600px",
-                axes: {
-                    left: {
-                        mapsTo: "value",
-                        title: "Generation (MW)",
-                        scaleType: ScaleTypes.LINEAR,
-                        stacked: true,
-                        thresholds: [
-                            {
-                                value: AVERAGE_NZ_LOAD_MW,
-                                label: "Yearly Average",
-                                fillColor: "#ca5f5f",
-                                valueFormatter: (value) => `${value} MW`,
-                            }
-                        ]
+                theme="g90"
+                data={$historyData}
+                options={{
+                    height: "600px",
+                    axes: {
+                        left: {
+                            mapsTo: "value",
+                            title: "Generation (MW)",
+                            scaleType: ScaleTypes.LINEAR,
+                            stacked: true,
+                            thresholds: [
+                                {
+                                    value: AVERAGE_NZ_LOAD_MW,
+                                    label: "Yearly Average",
+                                    fillColor: "#ca5f5f",
+                                },
+                            ],
+                        },
+                        bottom: {
+                            title: "Date",
+                            mapsTo: "date",
+                            scaleType: ScaleTypes.TIME,
+                        },
                     },
-                    bottom: {
-                        title: "Date",
-                        mapsTo: "date",
-                        scaleType: ScaleTypes.TIME,
-                    },
-                },
-                curve: "curveMonotoneX",
-                title: `Last Updated: ${new Date($powerTypes?.timestamp || "").toLocaleString()}`
-            }}
+                    curve: "curveMonotoneX",
+                    title: `Last Updated: ${new Date(
+                        $powerTypes?.timestamp || ""
+                    ).toLocaleString()}`,
+                }}
             />
-        {:else}
-            <span class="loader"></span>
-        {/if}
+        </LazyLoader>
     </div>
 </section>
 
 <style lang="scss">
-  .chart-wrapper {
-    max-width: 1000px;
-    margin: 1rem auto;
-    overflow: hidden;
-    padding: 1rem;
-    text-align: left;
-  }
+    .chart-wrapper {
+        max-width: 1000px;
+        margin: 1rem auto;
+        overflow: hidden;
+        padding: 1rem;
+        text-align: left;
+    }
 
-  .chart__title {
-    font-size: 1.5rem;
-    color: white;
-    font-weight: bold;
-    text-align: center;
-  }
+    .chart__title {
+        font-size: 1.5rem;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+    }
 </style>

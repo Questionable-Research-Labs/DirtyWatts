@@ -1,39 +1,8 @@
 <script lang="ts">
   import LogoNB from "$assets/img/logo-nb.svg";
   import { page } from "$app/stores";
-  import { derived } from "svelte/store";
-  import { powerTypes } from "./stores";
-  import type { PowerType } from "./api";
+  import { percentRenewable } from "./stores";
   import { fade } from "svelte/transition";
-
-  const cleanPowerIndex: Record<string, boolean> = {
-    battery: true,
-    co_gen: false,
-    coal: false,
-    gas: false,
-    geothermal: true,
-    hydro: true,
-    diesel: false,
-    wind: true,
-  };
-
-  let percentRenewable = derived(powerTypes, (powerTypes) => {
-    if (!powerTypes) {
-      return null;
-    }
-    let total_clean = 0;
-    let total_dirty = 0;
-    for (const key in powerTypes?.power_types) {
-      const { generation_mw }: PowerType = powerTypes?.power_types[key];
-      if (cleanPowerIndex[key]) {
-        total_clean += generation_mw;
-      } else {
-        total_dirty += generation_mw;
-      }
-    }
-    let output = total_clean / (total_clean + total_dirty);
-    return output;
-  });
 </script>
 
 <header
@@ -89,11 +58,6 @@
 
   {/if}
 </header>
-{#if $percentRenewable !== null}
-  <div class="mobile-banner clean-power" transition:fade={{ duration: 200 }}>
-    {Math.round($percentRenewable * 100)}% Clean Power
-  </div>
-{/if}
 
 <style lang="scss">
   .header {
@@ -200,17 +164,4 @@
       }
     }
   }
-
-  .mobile-banner {
-      display: none;
-      @media screen and (max-width: 600px) {
-        display: block;
-        color: #fff;
-        font-size: 1.5rem;
-        font-weight: bold;
-        padding: 0.5rem 0.5rem 0 0.5rem;
-        text-align: center;
-        border-top: 2px solid white;
-      }
-    }
 </style>
