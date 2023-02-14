@@ -1,14 +1,11 @@
-use dirtywatts_common::{BUCKET_NAME, PowerReading};
-use influxdb2::{
-    models::Query,
-    Client, RequestError,
-};
+use dirtywatts_common::{PowerReading, BUCKET_NAME};
+use influxdb2::{models::Query, Client, RequestError};
 use log::debug;
 
 pub async fn get_alive(client: &Client) -> Result<bool, RequestError> {
     let query = Query::new(format!(
         r#"from(bucket: "{BUCKET_NAME}")
-    |> range(start: -1h)
+    |> range(start: -2h)
     |> filter(fn: (r) => r._measurement == "power_station")
     |> last()"#
     ));

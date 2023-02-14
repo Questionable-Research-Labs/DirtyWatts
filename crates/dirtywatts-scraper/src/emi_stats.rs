@@ -1,5 +1,5 @@
 use chrono::{FixedOffset, Local, NaiveDateTime, TimeZone};
-use dirtywatts_common::{connection_points::get_index, ConnectionPoint};
+use dirtywatts_common::{connection_points::{get_index, CONNECTION_POINTS}, ConnectionPoint};
 use dotenv;
 use serde::{Deserialize, Serialize};
 
@@ -22,7 +22,8 @@ pub async fn get_emi_stats() -> Result<Vec<ConnectionPoint>, Box<dyn std::error:
         .filter_map(|x| {
             get_index(x.connection_code.as_str()).map(|group_index| ConnectionPoint {
                 connection_code: x.connection_code.clone(),
-                group_index,
+                lat: CONNECTION_POINTS[group_index].lat,
+                lng: CONNECTION_POINTS[group_index].lng,
                 time: Local
                     .from_local_datetime(
                         &NaiveDateTime::parse_from_str(&x.datetime, "%Y-%m-%dT%H:%M:%S")

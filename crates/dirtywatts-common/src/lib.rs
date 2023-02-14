@@ -14,8 +14,8 @@ pub struct InfluxConfig {
 #[derive(Clone, Debug, influxdb2::FromDataPoint, Default)]
 pub struct ConnectionPoint {
     pub connection_code: String,
-    pub lng: i64,
-    pub lat: i64,
+    pub lng: f64,
+    pub lat: f64,
     pub time: DateTime<FixedOffset>,
     pub load_mw: f64,
     pub generation_mw: f64,
@@ -29,8 +29,10 @@ impl WriteDataPoint for ConnectionPoint {
     {
         writeln!(
             w,
-            "emi_stat,code={} generation_mw={},load_mw={},mwh_price={} {}",
+            "emi_stat,code={},lat={},lng={} generation_mw={},load_mw={},mwh_price={} {}",
             self.connection_code.replace(" ", "\\ "),
+            self.lat,
+            self.lng,
             self.generation_mw,
             self.load_mw,
             self.mwh_price,
