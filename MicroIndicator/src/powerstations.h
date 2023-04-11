@@ -1,5 +1,9 @@
 #pragma once
 
+#include <Arduino.h>
+#include <ArduinoJson.h>
+#include <config.h>
+
 struct PowerStats {
     float generation_mw;
     float capacity_mw;

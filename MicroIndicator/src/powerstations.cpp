@@ -1,12 +1,65 @@
-#include <Arduino.h>
-#include <ArduinoJson.h>
 #include <powerstations.h>
 
-bool PowerStations::deserializePowerStations(char *httpBody) {
+static int errorColor[3] = {ApiErrorColour};
+
+void PowerStations::calculateInstructionPoint()
+{
+    // Initialise the instruction point
+    memset(instructionPoint.color, 0, sizeof(instructionPoint.color)); // fill the array with zeros
+    instructionPoint.percentRenewable = 0;
+    instructionPoint.powerSocketEnabled = true;
+
+    // Calculate the total generation
+    double totalRenewable = battery.generation_mw + geothermal.generation_mw + hydro.generation_mw + wind.generation_mw;
+    double totalNonRenewable = co_gen.generation_mw + coal.generation_mw + gas.generation_mw + diesel.generation_mw;
+    
+    double totalGeneration = totalRenewable + totalNonRenewable;
+
+
+    // Check for problems in source data
+    if (totalGeneration == 0)
+    {
+        Serial.println("No generation?!?");
+        memcpy(instructionPoint.color, errorColor, sizeof(instructionPoint.color));
+        return;
+    }
+
+
+    double percentageRenewable = totalRenewable / totalGeneration;
+    instructionPoint.percentRenewable = percentageRenewable;
+
+    
+    if (coal.generation_mw > 0 || diesel.generation_mw > 0)
+    {
+        // Calculate the color if coal or diesel power is in use
+
+        double halfMaxCoal = round(coal.capacity_mw / 2 + diesel.capacity_mw / 2);
+        double badGeneration = min((coal.generation_mw + diesel.generation_mw) / halfMaxCoal, (double)1);
+
+        instructionPoint.color[0] = 150 + round(105 * badGeneration);
+        instructionPoint.color[1] = round(95 - (95 * badGeneration));
+        instructionPoint.powerSocketEnabled = false;
+    }
+    else
+    {
+        // Calculate the color if both coal and diesel power is not in use
+
+        double halfMaxGas = round(gas.capacity_mw / 2);
+        double mediumGeneration = min(gas.generation_mw / halfMaxGas, (double)1);
+
+        instructionPoint.color[0] = round(160 * mediumGeneration);
+        instructionPoint.color[1] = round(255 - (127 * mediumGeneration));
+        instructionPoint.powerSocketEnabled = true;
+    }
+}
+
+bool PowerStations::deserializePowerStations(char *httpBody)
+{
     DynamicJsonDocument doc(2048);
     auto error = deserializeJson(doc, httpBody);
-    
-    if (error) {
+
+    if (error)
+    {
         Serial.print(F("deserializeJson() failed with code "));
         Serial.println(error.c_str());
         Serial.println("Got this json from server:");
@@ -33,53 +86,14 @@ bool PowerStations::deserializePowerStations(char *httpBody) {
     diesel.capacity_mw = doc["power_types"]["diesel"]["capacity_mw"];
     wind.generation_mw = doc["power_types"]["wind"]["generation_mw"];
     wind.capacity_mw = doc["power_types"]["wind"]["capacity_mw"];
-    
+
     calculateInstructionPoint();
 
     return true;
 }
 
-void PowerStations::calculateInstructionPoint() {
-    instructionPoint.color[0] = 0;
-    instructionPoint.color[1] = 0;
-    instructionPoint.color[2] = 0;
-    instructionPoint.percentRenewable = 0;
-    instructionPoint.powerSocketEnabled = true;
-
-    double totalRenewable = battery.generation_mw + geothermal.generation_mw + hydro.generation_mw + wind.generation_mw;
-    double totalNonRenewable = co_gen.generation_mw + coal.generation_mw + gas.generation_mw + diesel.generation_mw;
-    double totalGeneration = totalRenewable + totalNonRenewable;
-    if (totalGeneration == 0) {
-	Serial.println("No generation?!?");
-	instructionPoint.color[2] = 255;
-    }
-    double percentageRenewable = totalRenewable / totalGeneration;
-    instructionPoint.percentRenewable = percentageRenewable;
-
-    if (coal.generation_mw > 0 || diesel.generation_mw > 0) {
-	double halfMaxCoal = round(coal.capacity_mw / 2 + diesel.capacity_mw / 2);
-	double badGeneration = (coal.generation_mw + diesel.generation_mw) / halfMaxCoal;
-	if (badGeneration > 1) {
-	    badGeneration = 1;
-	}
-
-	instructionPoint.color[0] = 150 + round(105 * badGeneration);
-	instructionPoint.color[1] = round(95 - (95 * badGeneration));
-	instructionPoint.powerSocketEnabled = false;
-    } else {
-	double halfMaxGas = round(gas.capacity_mw / 2);
-	double mediumGeneration = gas.generation_mw / halfMaxGas;
-	if (mediumGeneration > 1) {
-	    mediumGeneration = 1;
-	}
-
-	instructionPoint.color[0] = round(160 * mediumGeneration);
-	instructionPoint.color[1] = round(255 - (127 * mediumGeneration));
-	instructionPoint.powerSocketEnabled = true;
-    }
-}
-
-void PowerStations::SerialLogData() {
+void PowerStations::SerialLogData()
+{
     Serial.println("Got power stations:");
 
     Serial.print("Battery generation: ");
