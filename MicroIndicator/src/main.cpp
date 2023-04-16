@@ -123,7 +123,7 @@ void loop() {
         currentPowerStats.SerialLogData();
 
 #ifdef OUTPUT_NEOPIXEL
-        updateNeoPixels(currentPowerStats.instructionPoint);
+        updateNeoPixels(currentPowerStats);
 #endif
 #ifdef OUTPUT_VFD
         updateVFDs(currentPowerStats.instructionPoint);

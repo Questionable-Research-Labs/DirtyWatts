@@ -3,7 +3,7 @@
 #include <powerstations.h>
 
 void setupNeoPixels();
-void updateNeoPixels(InstructionPoint instructionPoint);
+void updateNeoPixels(PowerStations powerstationData);
 void showNeoPixelsError();
 
 #endif
