@@ -2,7 +2,8 @@ mod db;
 mod error;
 mod routes;
 
-use crate::routes::status;
+use crate::routes::{live, status};
+
 use actix_web::{middleware::Logger, web::Data, App, HttpServer};
 use dirtywatts_common::InfluxConfig;
 use dotenv::dotenv;
@@ -12,17 +13,21 @@ use std::io;
 use utoipa::OpenApi;
 use utoipa_swagger_ui::SwaggerUi;
 
+
 #[derive(OpenApi)]
 #[openapi(
     paths(
         routes::status::info,
         routes::status::alive,
-        routes::status::data_current
+        routes::status::data_current,
+        routes::live::power_stations
     ),
     components(schemas(
         routes::status::ApiStatus,
         routes::status::ApiAlive,
-        error::InternalServerError
+        error::InternalServerError,
+        routes::live::PowerStationPoint,
+        routes::live::PowerStation
     ))
 )]
 struct ApiDoc;
@@ -47,6 +52,7 @@ async fn main() -> io::Result<()> {
                 Data::new(Client::new(url, org, auth_token))
             })
             .service(status::setup_routes())
+            .service(live::setup_routes())
             .service(SwaggerUi::new("/{_:.*}").url("/openapi.json", ApiDoc::openapi()))
     })
     .bind("0.0.0.0:8080")?

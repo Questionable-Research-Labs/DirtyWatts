@@ -41,6 +41,8 @@ struct EmiStat {
     timestamp: DateTime<Utc>,
     mwh_price: BigDecimal,
     load: BigDecimal,
+    lat: BigDecimal,
+    lng: BigDecimal
 }
 
 impl Into<ConnectionPoint> for EmiStat {
@@ -53,6 +55,8 @@ impl Into<ConnectionPoint> for EmiStat {
             load_mw: self.load.to_f64().unwrap(),
             generation_mw: self.generation.to_f64().unwrap(),
             mwh_price: self.mwh_price.to_f64().unwrap(),
+            lat: self.lat.to_f64().unwrap(),
+            lng: self.lng.to_f64().unwrap()
         }
     }
 }
@@ -71,7 +75,7 @@ async fn app() {
         "#).fetch_all(&connection).await.unwrap();
     println!("Done!\nFetching EMI stats");
     let emi_stats = query_as!(EmiStat, r#"
-    select r.generation as generation, r.timestamp as "timestamp", r.load as "load", r.mwh_price as mwh_price, ns.connection_code as code
+    select r.generation as generation, r.timestamp as "timestamp", r.load as "load", r.mwh_price as mwh_price, ns.connection_code as code, ns.latitude as lat, ns.longitude as lng
     from network_supply_reading as r
         join network_supply ns on r.connection_code = ns.connection_code;"#).fetch_all(&connection).await.unwrap();
 

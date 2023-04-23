@@ -1,6 +1,7 @@
 use chrono::{DateTime, FixedOffset};
 use influxdb2::models::WriteDataPoint;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
+
 
 pub const BUCKET_NAME: &'static str = "Dirty Watts";
 
@@ -41,7 +42,7 @@ impl WriteDataPoint for ConnectionPoint {
     }
 }
 
-#[derive(Debug, influxdb2::FromDataPoint, Default)]
+#[derive(Debug, influxdb2::FromDataPoint, Default, Serialize)]
 pub struct PowerReading {
     pub name: String,
     pub generation_mw: f64,

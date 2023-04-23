@@ -16,3 +16,17 @@ pub async fn get_alive(client: &Client) -> Result<bool, RequestError> {
     debug!("{:?}", result);
     Ok(!result.is_empty())
 }
+
+pub async fn get_live_powerstations(client: &Client) -> Result<Vec<PowerReading>, RequestError> {
+    let query = Query::new(format!(
+        r#"from(bucket: "{BUCKET_NAME}")
+        |> range(start: -10h)
+        |> filter(fn: (r) => r["_measurement"] == "power_station")"#
+    ));
+
+    dbg!(&query);
+
+    let result = client.query::<PowerReading>(Some(query)).await?;
+    debug!("Debug: {:?}", result);
+    Ok(result)
+}

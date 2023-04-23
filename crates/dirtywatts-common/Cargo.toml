@@ -8,7 +8,7 @@ edition = "2021"
 [dependencies]
 serde = { version = "1", features = ["derive"] }
 chrono = { version = "*", features = ["serde"] }
-influxdb2 = "0.3"
+influxdb2 = "0.4.0"
 influxdb2-structmap = "0.2"
 num-traits = "0.2"
 rocket_okapi = { version = "0.8.0-rc.1", features = [
@@ -16,6 +16,8 @@ rocket_okapi = { version = "0.8.0-rc.1", features = [
     "rapidoc",
 ], optional = true }
 schemars = { version = "0.8.10", optional = true, features = ["chrono"] }
+utoipa = { version = "3.0.0", features = ["actix_extras"] }
+utoipa-swagger-ui = { version = "3.0.2", features = ["actix-web"] }
 
 
 [features]
