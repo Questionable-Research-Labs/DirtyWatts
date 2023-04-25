@@ -1,6 +1,6 @@
 use bigdecimal::{BigDecimal, ToPrimitive};
 use chrono::{DateTime, FixedOffset, Utc};
-use dirtywatts_common::{ConnectionPoint, PowerReading};
+use dirtywatts_common::{ConnectionPoint, PowerMeasurement, PowerReadingPoint};
 use futures::stream;
 use influxdb2::Client;
 use serde::Deserialize;
@@ -16,23 +16,23 @@ pub struct InfluxConfig {
 }
 
 #[derive(Debug)]
-struct PowerReadings {
+struct PowerReadingsPostgres {
     name: String,
     generation: BigDecimal,
     capacity: BigDecimal,
     timestamp: DateTime<Utc>,
 }
 
-impl Into<PowerReading> for self::PowerReadings {
-    fn into(self) -> PowerReading {
-        dirtywatts_common::PowerReading {
-            capacity_mw: self.capacity.to_f64().unwrap(),
-            generation_mw: self.generation.to_f64().unwrap(),
-            name: self.name,
-            time: self.timestamp.into(),
-        }
-    }
-}
+// impl Into<PowerReading> for self::PowerReadings {
+//     fn into(self) -> PowerReading {
+//         dirtywatts_common::PowerReading {
+//             capacity_mw: self.capacity.to_f64().unwrap(),
+//             generation_mw: self.generation.to_f64().unwrap(),
+//             name: self.name,
+//             time: self.timestamp.into(),
+//         }
+//     }
+// }
 
 #[derive(Debug)]
 struct EmiStat {
@@ -67,12 +67,13 @@ async fn app() {
     let connection = sqlx::PgPool::connect(db_url.as_str()).await.unwrap();
 
     println!("Fetching power readings");
-    let power_readings = query_as!(PowerReadings,
+    let power_readings = query_as!(PowerReadingsPostgres,
         r#"
         select r.generation as generation, r.capacity as capacity, r.reading_timestamp as "timestamp", s.kind as "name"
         from generation_levels as r
             join power_sources s on s.id = r.source_id
         "#).fetch_all(&connection).await.unwrap();
+
     println!("Done!\nFetching EMI stats");
     let emi_stats = query_as!(EmiStat, r#"
     select r.generation as generation, r.timestamp as "timestamp", r.load as "load", r.mwh_price as mwh_price, ns.connection_code as code, ns.latitude as lat, ns.longitude as lng
@@ -91,11 +92,34 @@ async fn app() {
 
     let client = Client::new(url, org, auth_token);
 
+    println!("Converting power readings");
+
+    let chunked_readings: Vec<PowerReadingPoint> = power_readings.chunks(8).map(|reading_group| {
+        let mut measurements = reading_group.iter().map(|x| (PowerMeasurement {
+            capacity_mw: x.capacity.to_f64().unwrap(),
+            generation_mw: x.generation.to_f64().unwrap(),
+        }));
+
+        return PowerReadingPoint{
+            battery: measurements.next().unwrap(),
+            co_gen: measurements.next().unwrap(),
+            gas: measurements.next().unwrap(),
+            coal: measurements.next().unwrap(),
+            hydro: measurements.next().unwrap(),
+            geothermal: measurements.next().unwrap(),
+            diesel: measurements.next().unwrap(),
+            wind: measurements.next().unwrap(),
+            timestamp: reading_group[0].timestamp.into(),
+        };
+    }).collect();
+
+
+
     println!("Uploading power readings");
     client
         .write(
             BUCKET_NAME.into(),
-            stream::iter(power_readings.into_iter().map(Into::<PowerReading>::into)),
+            stream::iter(chunked_readings.into_iter()),
         )
         .await
         .unwrap();

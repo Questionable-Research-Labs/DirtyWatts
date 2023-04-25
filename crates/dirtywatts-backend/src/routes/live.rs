@@ -40,11 +40,8 @@ pub struct PowerStation {
     )]
 #[get("/power_stations")]
 pub async fn power_stations(db: Data<Client>) -> impl Responder {
-    println!("Wjat");
     let response = get_live_powerstations(db.get_ref()).await;
-    println!("yes {}",response.is_ok());
 
-    println!("{:?}", response);
     web::Json(group_results(response.unwrap()))
 }
 
