@@ -9,6 +9,7 @@ use dirtywatts_common::InfluxConfig;
 use dotenv::dotenv;
 use env_logger::Env;
 use influxdb2::Client;
+use routes::history;
 use std::io;
 use utoipa::OpenApi;
 use utoipa_swagger_ui::SwaggerUi;
@@ -20,14 +21,17 @@ use utoipa_swagger_ui::SwaggerUi;
         routes::status::info,
         routes::status::alive,
         routes::status::data_current,
-        routes::live::power_stations
+        routes::history::power_stations,
+        routes::history::grid_connection_points,
+        routes::live::power_stations,
+        routes::live::grid_connection_points
     ),
     components(schemas(
         routes::status::ApiStatus,
         routes::status::ApiAlive,
         error::InternalServerError,
-        routes::live::PowerStationPoint,
-        routes::live::PowerStation
+        routes::util::PowerStationPoint,
+        routes::util::PowerStation
     ))
 )]
 struct ApiDoc;
@@ -52,6 +56,7 @@ async fn main() -> io::Result<()> {
                 Data::new(Client::new(url, org, auth_token))
             })
             .service(status::setup_routes())
+            .service(history::setup_routes())
             .service(live::setup_routes())
             .service(SwaggerUi::new("/{_:.*}").url("/openapi.json", ApiDoc::openapi()))
     })

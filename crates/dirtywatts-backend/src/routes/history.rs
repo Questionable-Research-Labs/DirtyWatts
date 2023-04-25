@@ -5,26 +5,29 @@ use actix_web::{
 };
 use influxdb2::Client;
 
-use crate::{db::get_live_powerstations, routes::util::group_results};
+use crate::{db::get_history_powerstations, routes::util::group_results};
 
 pub fn setup_routes() -> Scope {
-    Scope::new("/live")
+    Scope::new("/history")
         .service(power_stations)
         .service(grid_connection_points)
 }
 
+use chrono::{DateTime, FixedOffset};
+
+
 
 
 #[utoipa::path(get,
-    path = "/live/power_stations",
-    tag = "Live",
+    path = "/history/power_stations",
+    tag = "History",
     responses(
-        (status = 200, description = "Live power data", body = PowerStationPoint),
+        (status = 200, description = "History power data", body = PowerStationPoint),
     ),
     )]
 #[get("/power_stations")]
 pub async fn power_stations(db: Data<Client>) -> impl Responder {
-    let response = get_live_powerstations(db.get_ref()).await;
+    let response = get_history_powerstations(db.get_ref(), DateTime::default(),DateTime::default()).await;
 
     web::Json(group_results(response.unwrap()).unwrap())
 }
@@ -32,8 +35,8 @@ pub async fn power_stations(db: Data<Client>) -> impl Responder {
 
 
 #[utoipa::path(get,
-    path = "/live/grid_connection_points",
-    tag = "Live",
+    path = "/history/grid_connection_points",
+    tag = "History",
     responses(
         (status = 200, description = "Todo", body = PowerStationPoint),
     ),

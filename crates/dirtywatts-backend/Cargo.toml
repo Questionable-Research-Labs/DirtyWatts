@@ -14,9 +14,10 @@ dirtywatts-common = { path = "../dirtywatts-common", features = ["openapi"] }
 envy = "0.4.2"
 actix-web = {version = "*"}
 thiserror = "1.0.38"
-utoipa = { version = "3.0.0", features = ["actix_extras"] }
+utoipa = { version = "3.0.0", features = ["actix_extras", "preserve_order"] }
 utoipa-swagger-ui = { version = "3.0.2", features = ["actix-web"] }
 derive_more = "0.99.17"
 serde_json = "1.0.91"
-env_logger = { version = "*" }
-log = "*"
+env_logger = { version = "0.10.0" }
+log = "0.4.17"
+chrono = "0.4.24"
