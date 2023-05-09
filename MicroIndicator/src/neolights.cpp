@@ -1,4 +1,4 @@
-// #ifdef OUTPUT_NEOPIXEL
+#ifdef OUTPUT_NEOPIXEL
 #include <Adafruit_NeoPixel.h>
 #include <config.h>
 #include <neolights.h>
@@ -66,4 +66,4 @@ void showNeoPixelsError() {
     pixels.fill(pixels.Color(ApiErrorColour), 0, NeoPixelCount);
 	pixels.show();
 }
-// #endif
+#endif
