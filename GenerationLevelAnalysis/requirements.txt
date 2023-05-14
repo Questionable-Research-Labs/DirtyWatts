@@ -5,3 +5,4 @@ dash
 plotly
 nbformat
 requests
+scipy
