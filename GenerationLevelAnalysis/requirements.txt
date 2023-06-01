@@ -6,3 +6,4 @@ plotly
 nbformat
 requests
 scipy
+scikit-learn
