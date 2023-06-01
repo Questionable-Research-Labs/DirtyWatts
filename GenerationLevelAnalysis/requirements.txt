@@ -7,3 +7,4 @@ nbformat
 requests
 scipy
 scikit-learn
+colour
