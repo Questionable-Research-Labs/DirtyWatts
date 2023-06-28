@@ -3,7 +3,7 @@
 
 #ifdef OUTPUT_NEOPIXEL
     // Pin that the Neo Pixels are connected to
-    #define NeoPixelPin D1
+    #define NeoPixelPin 11
 
     // Number of LEDs in chaine
     #define NeoPixelCount 30
