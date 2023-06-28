@@ -12,10 +12,9 @@ fn check_for_network_supply(cc: &str, connection: &PgConnection) -> bool {
         .is_ok()
 }
 
-fn check_for_read_ts(cc: &str, ts: &DateTime<Utc>, connection: &PgConnection) -> bool {
+fn check_for_read_ts(ts: &DateTime<Utc>, connection: &PgConnection) -> bool {
     use super::schema::network_supply_reading::dsl::*;
     network_supply_reading
-        .filter(connection_code.like(cc))
         .filter(timestamp.eq(ts))
         .first::<NetworkSupplyReading>(connection)
         .is_ok()
@@ -26,11 +25,18 @@ pub fn add_emi_stats(points: Vec<ConnectionPoint>, connection: &PgConnection) {
 
     println!("----------------------------------------");
 
+    let group_timestamp = points[0].timestamp;
+
+    if check_for_read_ts( &group_timestamp, connection) {
+        println!("Data already uploaded for {}", group_timestamp);
+        return;
+    }
+
     for point in points {
         let trimed_connection_code = point.connection_code.split(" ").next().unwrap();
 
+
         if check_for_network_supply(trimed_connection_code, connection) {
-            if !check_for_read_ts(trimed_connection_code, &point.timestamp, connection) {
                 match diesel::insert_into(network_supply_reading::table)
                     .values(NewNetworkSupplyReading {
                         connection_code: trimed_connection_code.to_string(),
@@ -48,7 +54,6 @@ pub fn add_emi_stats(points: Vec<ConnectionPoint>, connection: &PgConnection) {
                         println!("Error uploading data for {}: {ex}", trimed_connection_code);
                     }
                 };
-            }
         } else {
             println!("Skipped {trimed_connection_code}")
         }

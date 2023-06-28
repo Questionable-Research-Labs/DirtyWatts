@@ -46,9 +46,8 @@ async def power_stations():
 @cache(namespace="network-supply", expire=60)
 async def power_stations():
     session = db.sessionMaker()
-
-    subquery = session.query(db.networkSupplyReading).distinct(db.networkSupplyReading.c.connection_code).order_by(
-        db.networkSupplyReading.c.connection_code, db.networkSupplyReading.c.timestamp.desc()).subquery()
+    latest_timestamp = session.query(func.max(db.networkSupplyReading.c.timestamp))
+    subquery = session.query(db.networkSupplyReading).order_by(db.networkSupplyReading.c.timestamp.desc()).filter(db.networkSupplyReading.c.timestamp==latest_timestamp).subquery()
 
     query = session.query(func.avg(subquery.c.mwh_price).label("mwh_price"),
                           func.sum(subquery.c.load).label("load"),
@@ -76,8 +75,10 @@ async def power_stations():
             if elm not in unique:
                 unique.append(elm)
 
+        normalised_connection_code = ",".join(set(i["connection_code"].split(",")))
+
         connectionPoints.append(ConnectionPoint(
-            connection_code=i["connection_code"],
+            connection_code=normalised_connection_code,
             timestamp=i["timestamp"],
             load_mw=i["load"],
             generation_mw=i["generation"],
