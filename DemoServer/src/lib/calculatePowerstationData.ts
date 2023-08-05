@@ -1,6 +1,6 @@
-import type { PowerTypesResponse } from "./powerstation";
+import type { PowerStationsResponse } from "./api";
 
-export function generateFakeData(slider: number): PowerTypesResponse {
+export function generateFakeData(slider: number): PowerStationsResponse {
   let scale = (min: number, max: number, start: number = 0) => {
     let virtualSliderPos = Math.max(slider / 100 - start, 0) / (1 - start);
     return Math.floor(virtualSliderPos * (max - min + 1)) + min;

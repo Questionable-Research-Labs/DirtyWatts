@@ -1,6 +1,7 @@
-import type { PowerTypes } from "./powerstation"
+import type { PowerTypes } from "./api"
+import type { RGBColor } from "./utils"
 
-export function calculateLightColour(power_types: PowerTypes): RGBColor {
+export function calculateLightColourOld(power_types: PowerTypes): RGBColor {
     // UPDATE LIGHT
     let red_value = 0
     let green_value = 0
