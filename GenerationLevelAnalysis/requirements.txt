@@ -8,3 +8,5 @@ requests
 scipy
 scikit-learn
 colour-science
+ipykernel
+networkx
