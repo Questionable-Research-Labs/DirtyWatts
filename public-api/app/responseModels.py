@@ -25,6 +25,8 @@ class PowerTypes(BaseModel):
 class PowerstationUpdatePackage(BaseModel):
     timestamp: datetime
     power_types: PowerTypes
+    co2e_tonnne_per_hour: float
+    co2e_grams_per_kwh: float
 
 
 class ConnectionPoint(BaseModel):

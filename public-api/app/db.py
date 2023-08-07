@@ -1,5 +1,5 @@
 import sqlalchemy
-from sqlalchemy.orm import Session
+
 sessionMaker = None
 
 metadata = sqlalchemy.MetaData()
@@ -43,4 +43,11 @@ generationLevels = sqlalchemy.Table(
     sqlalchemy.Column("capacity", sqlalchemy.NUMERIC, default=0),
     sqlalchemy.Column("reading_timestamp", sqlalchemy.TIMESTAMP,
                       default=sqlalchemy.func.now()),
+)
+
+emissionSources = sqlalchemy.Table(
+    "emission_sources",
+    metadata,
+    sqlalchemy.Column("id", sqlalchemy.Integer, sqlalchemy.ForeignKey("power_sources.id"), primary_key=True),
+    sqlalchemy.Column("gCO2e_per_kWh", sqlalchemy.NUMERIC, default=0),
 )
