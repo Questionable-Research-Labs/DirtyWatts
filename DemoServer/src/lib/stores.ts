@@ -1,7 +1,7 @@
 import { derived, writable, type Readable, type Writable } from "svelte/store";
 import type { ConnectionPoint, PowerStationsResponse, PowerType } from "./api";
-import type { RGBColor } from "./utils";
-import { calculateLightColourOld } from "./calculateLightColour";
+import { findClosest, type RGBColor } from "./utils";
+import { calculateLightColour, calculateLightColourOld } from "./calculateLightColour";
 
 export const powerTypes: Writable<PowerStationsResponse | null> = writable(null);
 export const connectionPoints: Writable<ConnectionPoint[]> = writable([]);
@@ -19,74 +19,9 @@ const cleanPowerIndex: Record<string, boolean> = {
 };
 
 
-export const previewPosition = writable(0);
-export const previewDatapoint: Readable<PowerStationsResponse | null> = derived([powerTypesHistory, previewPosition], ([powerTypesHistory, previewPosition]) => {
-        if (!powerTypesHistory.length) {
-            return null;
-        }
-        powerTypesHistory = powerTypesHistory.sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
-        console.log(powerTypesHistory, previewPosition);
-        // Get min and max dates in data
-        let minDate = new Date(powerTypesHistory[0].timestamp);
-        let maxDate = new Date(powerTypesHistory[powerTypesHistory.length - 1].timestamp);
-        // Get interpolated date
-        let date = new Date(
-            minDate.getTime() +
-                (maxDate.getTime() - minDate.getTime()) * previewPosition
-        );
-        // Find nearest datapoints and interpolate between them
-        let index = powerTypesHistory.findIndex(
-            (d) => new Date(d.timestamp) > date
-        );
-        let prev = powerTypesHistory[index - 1];
-        let next = powerTypesHistory[index];
-        console.log(prev, next, date)
-        if (!prev || !next) {
-            return powerTypesHistory[powerTypesHistory.length - 1];
-        }
+export const previewPosition = writable(0.5);
 
-        let prevDate = new Date(prev.timestamp);
-        let nextDate = new Date(next.timestamp);
-        let prevWeight = (date.getTime() - prevDate.getTime()) / (nextDate.getTime() - prevDate.getTime());
-        let nextWeight = 1 - prevWeight;
-        return {
-            timestamp: date.toISOString(),
-            power_types: {
-                battery: {
-                    generation_mw: prevWeight * prev.power_types.battery.generation_mw + nextWeight * next.power_types.battery.generation_mw,
-                    capacity_mw: prevWeight * prev.power_types.battery.capacity_mw + nextWeight * next.power_types.battery.capacity_mw,
-                },
-                co_gen: {
-                    generation_mw: prevWeight * prev.power_types.co_gen.generation_mw + nextWeight * next.power_types.co_gen.generation_mw,
-                    capacity_mw: prevWeight * prev.power_types.co_gen.capacity_mw + nextWeight * next.power_types.co_gen.capacity_mw,
-                },
-                coal: {
-                    generation_mw: prevWeight * prev.power_types.coal.generation_mw + nextWeight * next.power_types.coal.generation_mw,
-                    capacity_mw: prevWeight * prev.power_types.coal.capacity_mw + nextWeight * next.power_types.coal.capacity_mw,
-                },
-                gas: {
-                    generation_mw: prevWeight * prev.power_types.gas.generation_mw + nextWeight * next.power_types.gas.generation_mw,
-                    capacity_mw: prevWeight * prev.power_types.gas.capacity_mw + nextWeight * next.power_types.gas.capacity_mw,
-                },
-                geothermal: {
-                    generation_mw: prevWeight * prev.power_types.geothermal.generation_mw + nextWeight * next.power_types.geothermal.generation_mw,
-                    capacity_mw: prevWeight * prev.power_types.geothermal.capacity_mw + nextWeight * next.power_types.geothermal.capacity_mw,
-                },
-                hydro: {
-                    generation_mw: prevWeight * prev.power_types.hydro.generation_mw + nextWeight * next.power_types.hydro.generation_mw,
-                    capacity_mw: prevWeight * prev.power_types.hydro.capacity_mw + nextWeight * next.power_types.hydro.capacity_mw,
-                },
-                diesel: {
-                    generation_mw: prevWeight * prev.power_types.diesel.generation_mw + nextWeight * next.power_types.diesel.generation_mw,
-                    capacity_mw: prevWeight * prev.power_types.diesel.capacity_mw + nextWeight * next.power_types.diesel.capacity_mw,
-                },
-                wind: {
-                    generation_mw: prevWeight * prev.power_types.wind.generation_mw + nextWeight * next.power_types.wind.generation_mw,
-                    capacity_mw: prevWeight * prev.power_types.wind.capacity_mw + nextWeight * next.power_types.wind.capacity_mw,
-                },
-            },
-        };
-});
+export const previewDatapoint: Readable<PowerStationsResponse | null> = derived([powerTypesHistory, previewPosition], ([powerTypesHistory, previewPosition]) => findClosest(powerTypesHistory, previewPosition));
 
 export const percentRenewable = derived(previewDatapoint, (previewDatapoint) => {
     if (!previewDatapoint) {
@@ -108,7 +43,7 @@ export const percentRenewable = derived(previewDatapoint, (previewDatapoint) => 
 
 
 
-export const newLightColorSystem: Writable<boolean> = writable(false);
+export const newLightColorSystem: Writable<boolean> = writable(true);
 
 export const lightColour: Readable<RGBColor> = derived([previewDatapoint, newLightColorSystem], ([previewDatapoint, newLightColorSystem]) => {
     if (!previewDatapoint) {
@@ -116,7 +51,7 @@ export const lightColour: Readable<RGBColor> = derived([previewDatapoint, newLig
     }
 
     if (newLightColorSystem) {
-        return [255,200,0] as RGBColor;
+        return calculateLightColour(previewDatapoint);
     } else {
         return calculateLightColourOld(previewDatapoint.power_types);
     }

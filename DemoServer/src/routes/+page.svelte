@@ -7,7 +7,9 @@
   import "../app.scss";
     import PowerStations from "$lib/PowerStations.svelte";
     import { initialiseAPI, type PowerStationsResponse } from "$lib/api";
-    import { lightColour, percentRenewable, previewDatapoint } from "$lib/stores";
+    import { lightColour, newLightColorSystem, percentRenewable, previewDatapoint } from "$lib/stores";
+    import Switch from "$lib/Switch.svelte";
+    import ColourPreviewBar from "$lib/ColourPreviewBar.svelte";
 
 
   onMount(async () => {
@@ -22,6 +24,10 @@
 </svelte:head>
 
 <div class="container" style="--highlight-color: {cssRGBFormatter($lightColour)};">
+  <div class="switch-container">
+    <span class="switch-label">New Color Algorithm</span>
+    <Switch bind:checked={$newLightColorSystem} scale={1.5} />
+  </div>
   <h1>DirtyWatts Demo</h1>
   <PowerStations />
   <div class="slider-wrapper">
@@ -50,6 +56,7 @@
       font-weight: bold;
       color: white;
       font-size: 6rem;
+      margin: 2rem auto;
     }
     h2 {
       font-size: 8rem;
@@ -64,6 +71,20 @@
       text-align: center;
       color: white;
       margin: 0;
+    }
+    .switch-container {
+      position: absolute;
+      top: 1em;
+      right: 1em;
+      width: max-content;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+      .switch-label {
+        color: white;
+        margin-right: 1rem;
+      }
     }
   }
 </style>

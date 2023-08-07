@@ -5,6 +5,7 @@ const OFFSET_HRS = 24*5;
 const OFFSET = OFFSET_HRS * 3600 * 1000;
 
 const StuckHistoryEndPoint = new Date("2023-06-28T19:00:00");
+// const StuckHistoryEndPoint = new Date();
 const StuckHistoryStartPoint = new Date(StuckHistoryEndPoint - OFFSET);
 
 
@@ -13,6 +14,8 @@ export type PowerTypes = Record<string, PowerType>;
 export interface PowerStationsResponse {
   timestamp: string;
   power_types: PowerTypes;
+  co2e_tonnne_per_hour: number;
+  co2e_grams_per_kwh: number;
 }
 
 export interface PowerType {

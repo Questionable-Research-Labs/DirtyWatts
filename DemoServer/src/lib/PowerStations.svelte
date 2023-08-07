@@ -24,6 +24,7 @@
     import { lightColour, powerTypes, powerTypesHistory, previewPosition } from "$lib/stores";
     import { AVERAGE_NZ_LOAD_MW } from "./consts";
     import type { PowerType } from './api';
+    import ColourPreviewBar from './ColourPreviewBar.svelte';
     
     interface HistoryGroup {
         group: string;
@@ -60,13 +61,14 @@
         }
         $historyData = historyGroups;
     });
-    let chartHeight = 800;
+    let chartHeight = 600;
 
 
     let windowWidth = chartHeight;
 
     let mouseXPost = writable(0);
-    let mousePreviewLineStart = 41;
+    const mousePreviewLineStart = 41;
+    const chartMarginBottom = 20
 
     function updateMouseMove(event: MouseEvent) {
         mouseXPost.set(event.clientX);
@@ -84,8 +86,8 @@
 
     <div class="chart-wrapper" on:mousemove={updateMouseMove} on:mousedown={selectPosition}>
         <svg id="chart-pos-canvas" style="--highlight-color: {cssRGBFormatter($lightColour)}">
-            <line x1={$mouseXPost} y1={mousePreviewLineStart} x2={$mouseXPost} y2={chartHeight-mousePreviewLineStart/2} stroke="rgba(255,255,255,0.4)" stroke-width="2px"></line>
-            <line id="previewLine" x1={$previewPosition*windowWidth} y1={mousePreviewLineStart} x2={$previewPosition*windowWidth} y2={chartHeight-mousePreviewLineStart/2} stroke="rgba(255,255,255,1)" stroke-width="2px"></line>
+            <line x1={$mouseXPost} y1={mousePreviewLineStart} x2={$mouseXPost} y2={chartHeight+chartMarginBottom} stroke="rgba(255,255,255,0.4)" stroke-width="2px"></line>
+            <line id="previewLine" x1={$previewPosition*windowWidth} y1={mousePreviewLineStart} x2={$previewPosition*windowWidth} y2={chartHeight+chartMarginBottom} stroke="rgba(255,255,255,1)" stroke-width="2px"></line>
         </svg>
             <StackedAreaChart
                 data={$historyData}
@@ -128,6 +130,9 @@
                     theme: ChartTheme.G90
                 }}
             />
+    
+    <ColourPreviewBar width={windowWidth} height={20}/>
+
     </div>
 
 <style lang="scss">
