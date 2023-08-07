@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from utils import round_sig
 
 from responseModels import PowerStationStats, PowerstationUpdatePackage, ConnectionPoint, power_type_count
 from typing import List
@@ -21,8 +22,9 @@ router = APIRouter(
 async def power_stations():
     session = db.sessionMaker()
     query = (
-        session.query(db.generationLevels, db.powerSources)
+        session.query(db.generationLevels, db.powerSources, db.emissionSources)
         .join(db.powerSources, db.generationLevels.c.source_id == db.powerSources.c.id)
+        .join(db.emissionSources, db.powerSources.c.id == db.emissionSources.c.id)
         .order_by(db.generationLevels.c.reading_timestamp.desc())
         .limit(power_type_count)
     )
@@ -31,20 +33,35 @@ async def power_stations():
 
     session.close()
 
+    co2e_output = 0
+    cumulative_power_output = 0
+    co2e_intensity = 0
+
     print(allPowerTypes[0]["kind"])
     updateTime = allPowerTypes[0]["reading_timestamp"]
     powerTypes = {}
+
+    MW_TO_KW = 1000
+    TONNES_TO_GRAMS = 1000000
+
     for i in allPowerTypes:
+        co2e_output += (float(i["generation"]) * MW_TO_KW) * (float(i["gCO2e_per_kWh"]) / TONNES_TO_GRAMS)
+        cumulative_power_output += float(i["generation"])  * MW_TO_KW
         powerTypes[i["kind"]] = PowerStationStats(
             generation_mw=i["generation"],
-            capacity_mw=i["capacity"]
+            capacity_mw=i["capacity"],
         )
     print(powerTypes)
-    return PowerstationUpdatePackage(timestamp=updateTime, power_types=powerTypes)
+
+    if cumulative_power_output > 0:
+        co2e_intensity = (co2e_output*TONNES_TO_GRAMS) / cumulative_power_output
+    print(co2e_intensity, co2e_output, cumulative_power_output)
+
+    return PowerstationUpdatePackage(timestamp=updateTime, power_types=powerTypes, co2e_tonnne_per_hour=round_sig(co2e_output,5), co2e_grams_per_kwh=round_sig(co2e_intensity,5))
 
 @router.get("/grid_connection_points", response_model=List[ConnectionPoint])
 @cache(namespace="network-supply", expire=60)
-async def power_stations():
+async def network_supply():
     session = db.sessionMaker()
     latest_timestamp = session.query(func.max(db.networkSupplyReading.c.timestamp))
     subquery = session.query(db.networkSupplyReading).order_by(db.networkSupplyReading.c.timestamp.desc()).filter(db.networkSupplyReading.c.timestamp==latest_timestamp).subquery()

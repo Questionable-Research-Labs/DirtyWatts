@@ -4,7 +4,7 @@ from fastapi import APIRouter
 from responseModels import PowerStationStats, ConnectionPoint, PowerstationUpdatePackage, power_type_count
 from typing import List, Dict
 import db
-from utils import chunks
+from utils import chunks, round_sig
 from sqlalchemy import func, desc, or_
 
 from starlette.requests import Request
@@ -34,8 +34,9 @@ async def power_stations(start: datetime = datetime.min, end: datetime = datetim
     ).subquery()
 
     query = (
-        session.query(db.generationLevels, db.powerSources)
+        session.query(db.generationLevels, db.powerSources, db.emissionSources)
         .join(db.powerSources, db.generationLevels.c.source_id == db.powerSources.c.id)
+        .join(db.emissionSources, db.powerSources.c.id == db.emissionSources.c.id)
         .order_by(db.generationLevels.c.reading_timestamp.desc())
         .filter(db.generationLevels.c.reading_timestamp <= end)
         .filter(db.generationLevels.c.reading_timestamp >= start)
@@ -47,15 +48,27 @@ async def power_stations(start: datetime = datetime.min, end: datetime = datetim
 
     outputSlices = []
 
+    MW_TO_KW = 1000
+    TONNES_TO_GRAMS = 1000000
+
     for timeSlice in allPowerTypes:
+        co2e_output = 0
+        cumulative_power_output = 0
+        co2e_intensity = 0
         updateTime = timeSlice[0]["reading_timestamp"]
         powerTypes = {}
         for i in timeSlice:
+            co2e_output += (float(i["generation"]) * MW_TO_KW) * (float(i["gCO2e_per_kWh"]) / TONNES_TO_GRAMS)
+            cumulative_power_output += float(i["generation"])  * MW_TO_KW
             powerTypes[i["kind"]] = PowerStationStats(
                 generation_mw=i["generation"],
                 capacity_mw=i["capacity"]
             )
-        outputSlices.append(PowerstationUpdatePackage(timestamp=updateTime, power_types=powerTypes))
+        
+        if cumulative_power_output > 0:
+            co2e_intensity = (co2e_output*TONNES_TO_GRAMS) / cumulative_power_output
+
+        outputSlices.append(PowerstationUpdatePackage(timestamp=updateTime, power_types=powerTypes, co2e_tonnne_per_hour=round_sig(co2e_output,5), co2e_grams_per_kwh=round_sig(co2e_intensity,5)))
     return outputSlices
 
 @router.get("/grid_connection_points/{connection_code}", response_model=List[ConnectionPoint])

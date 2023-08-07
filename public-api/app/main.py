@@ -9,6 +9,7 @@ from starlette.responses import RedirectResponse
 
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.redis import RedisBackend
+from fastapi_cache.backends import Backend
 from fastapi_cache.decorator import cache
 from redis.asyncio.connection import ConnectionPool
 import redis.asyncio as redis
@@ -63,9 +64,13 @@ app.openapi = custom_openapi
 async def startup():
     db.sessionMaker = sessionmaker(autocommit=False, autoflush=False, bind=engine)
     await database.connect()
-    pool = ConnectionPool.from_url(url=REDIS_URL)
-    r = redis.Redis(connection_pool=pool)
-    FastAPICache.init(RedisBackend(r), prefix="fastapi-cache")
+    if REDIS_URL:
+        pool = ConnectionPool.from_url(url=REDIS_URL)
+        r = redis.Redis(connection_pool=pool)
+        FastAPICache.init(RedisBackend(r), prefix="fastapi-cache")
+    else:
+        # Disable cache on development
+        FastAPICache.init(Backend(), enable=False)
 
 
 

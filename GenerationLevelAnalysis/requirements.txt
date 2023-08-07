@@ -1,0 +1,12 @@
+matplotlib
+pandas
+numpy
+dash
+plotly
+nbformat
+requests
+scipy
+scikit-learn
+colour-science
+ipykernel
+networkx
