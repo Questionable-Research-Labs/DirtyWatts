@@ -11,7 +11,6 @@ export function findClosest(powerTypesHistory: PowerStationsResponse[], previewP
 		return null;
 	}
 	powerTypesHistory = powerTypesHistory.sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
-	console.log(powerTypesHistory, previewPosition);
 	// Get min and max dates in data
 	let minDate = new Date(powerTypesHistory[0].timestamp);
 	let maxDate = new Date(powerTypesHistory[powerTypesHistory.length - 1].timestamp);
@@ -26,7 +25,6 @@ export function findClosest(powerTypesHistory: PowerStationsResponse[], previewP
 	);
 	let prev = powerTypesHistory[index - 1];
 	let next = powerTypesHistory[index];
-	console.log(prev, next, date)
 	if (!prev || !next) {
 		return powerTypesHistory[powerTypesHistory.length - 1];
 	}

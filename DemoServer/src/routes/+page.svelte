@@ -2,20 +2,24 @@
   import { calculateLightColourOld } from "$lib/calculateLightColour";
   import { onMount } from "svelte";
   import { derived, writable } from "svelte/store";
-  import {cssRGBFormatter} from "$lib/utils";
+  import { cssRGBFormatter } from "$lib/utils";
 
   import "../app.scss";
-    import PowerStations from "$lib/PowerStations.svelte";
-    import { initialiseAPI, type PowerStationsResponse } from "$lib/api";
-    import { lightColour, newLightColorSystem, percentRenewable, previewDatapoint } from "$lib/stores";
-    import Switch from "$lib/Switch.svelte";
-    import ColourPreviewBar from "$lib/ColourPreviewBar.svelte";
-
+  import PowerStations from "$lib/PowerStations.svelte";
+  import { initialiseAPI, type PowerStationsResponse } from "$lib/api";
+  import {
+    lightColour,
+    newLightColorSystem,
+    percentRenewable,
+    previewDatapoint,
+  } from "$lib/stores";
+  import Switch from "$lib/Switch.svelte";
+  import ColourPreviewBar from "$lib/ColourPreviewBar.svelte";
+  import CalendarButton from "$lib/CalendarButton.svelte";
 
   onMount(async () => {
-		await initialiseAPI();
-	});
-
+    await initialiseAPI();
+  });
 </script>
 
 <svelte:head>
@@ -23,15 +27,25 @@
   <meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<div class="container" style="--highlight-color: {cssRGBFormatter($lightColour)};">
-  <div class="switch-container">
+<div
+  class="container"
+  style="--highlight-color: {cssRGBFormatter($lightColour)};"
+>
+  <div class="calendar-container floating-container">
+    <CalendarButton />
+  </div>
+  <div class="switch-container floating-container">
     <span class="switch-label">New Color Algorithm</span>
     <Switch bind:checked={$newLightColorSystem} scale={1.5} />
   </div>
   <h1>DirtyWatts Demo</h1>
   <PowerStations />
   <div class="slider-wrapper">
-    <h2>{#if $percentRenewable}{Math.round($percentRenewable * 100)}{:else}--{/if}%</h2>
+    <h2>
+      {#if $percentRenewable}{Math.round(
+          $percentRenewable * 100
+        )}{:else}--{/if}%
+    </h2>
     <h3>Percent Renewable</h3>
   </div>
 </div>
@@ -56,7 +70,7 @@
       font-weight: bold;
       color: white;
       font-size: 6rem;
-      margin: 2rem auto;
+      margin: 2rem auto 1rem auto;
     }
     h2 {
       font-size: 8rem;
@@ -72,18 +86,23 @@
       color: white;
       margin: 0;
     }
-    .switch-container {
+    .floating-container {
       position: absolute;
       top: 1em;
-      right: 1em;
       width: max-content;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 2rem;
+      color: white;
       .switch-label {
-        color: white;
         margin-right: 1rem;
+      }
+      &.switch-container {
+        right: 1em;
+      }
+      &.calendar-container {
+        left: 1em;
       }
     }
   }

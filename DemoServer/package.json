@@ -20,6 +20,7 @@
 		"@types/cookie": "^0.5.1",
 		"sass": "^1.55.0",
 		"svelte": "^3.46.0",
+		"svelte-calendar": "^3.1.6",
 		"svelte-check": "^2.7.1",
 		"svelte-preprocess": "^4.10.6",
 		"svelte-range-slider-pips": "^2.0.3",

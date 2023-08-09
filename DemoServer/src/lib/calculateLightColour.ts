@@ -41,6 +41,5 @@ export function calculateLightColour(data: PowerStationsResponse): RGBColor {
     let co2_output_percent = (co2_output - CO2_OUTPUT_RANGE[0]) / (CO2_OUTPUT_RANGE[1] - CO2_OUTPUT_RANGE[0])
 
     let index = Math.round(co2_output_percent * (COLOUR_MAP.length - 1))
-    console.log("MAP",co2_output, co2_output_percent)
     return COLOUR_MAP[index] as RGBColor
 }
