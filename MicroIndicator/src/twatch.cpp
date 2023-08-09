@@ -129,7 +129,7 @@ void TWatch::refreshStats(InstructionPoint instructionPoint) {
     // Decide font color: 
     // If the background is dark, use white text
     // If the background is light, use black text
-    TWatch::textColor = (instructionPoint.color[0] + instructionPoint.color[1] + instructionPoint.color[2]) / 3 > 127 ? LV_COLOR_BLACK : LV_COLOR_WHITE;
+    TWatch::textColor = (instructionPoint.color[0] + instructionPoint.color[1] + instructionPoint.color[2]) / 3 > 155 ? LV_COLOR_WHITE : LV_COLOR_WHITE;
 
     // Set background colour
 	lv_obj_t *screen = lv_scr_act();

@@ -2,12 +2,17 @@
 
 static int errorColor[3] = {ApiErrorColour};
 
+static int colourRange[][3] = {{24,219,0}, {73,216,0}, {99,212,0}, {119,208,0}, {136,204,0}, {153,200,0}, {169,195,0}, {183,190,0}, {195,185,0}, {208,179,0}, {219,174,0}, {230,167,0}, {243,159,0}, {255,150,19}, {255,139,31}, {255,126,40}, {255,112,47}, {255,94,53}, {255,71,58}, {255,28,63}};
+
 void PowerStations::calculateInstructionPoint()
 {
     // Initialise the instruction point
     memset(instructionPoint.color, 0, sizeof(instructionPoint.color)); // fill the array with zeros
     instructionPoint.percentRenewable = 0;
     instructionPoint.powerSocketEnabled = true;
+
+    instructionPoint.co2e_intensity_range =  { CO2E_INTENSITY_RANGE_MIN, CO2E_INTENSITY_RANGE_MAX };
+    instructionPoint.co2e_emissions_range =  { CO2E_EMISSIONS_RANGE_MIN, CO2E_EMISSIONS_RANGE_MAX };
 
     // Calculate the total generation
     double totalRenewable = battery.generation_mw + geothermal.generation_mw + hydro.generation_mw + wind.generation_mw;
@@ -28,29 +33,27 @@ void PowerStations::calculateInstructionPoint()
     double percentageRenewable = totalRenewable / totalGeneration;
     instructionPoint.percentRenewable = percentageRenewable;
 
-    
-    if (coal.generation_mw > 0 || diesel.generation_mw > 0)
-    {
-        // Calculate the color if coal or diesel power is in use
+    // Calculate colour using new scoring algorithm
+    double co2e_emissions_norm = max(min(co2e_emissions, instructionPoint.co2e_emissions_range.max), instructionPoint.co2e_emissions_range.min);
+    double co2e_emissions_percent = (co2e_emissions_norm - instructionPoint.co2e_emissions_range.min) / (instructionPoint.co2e_emissions_range.max - instructionPoint.co2e_emissions_range.min);
+    int index = round(co2e_emissions_percent * (sizeof(colourRange) / sizeof(colourRange[0]) - 1));
 
-        double halfMaxCoal = round(coal.capacity_mw / 2 + diesel.capacity_mw / 2);
-        double badGeneration = min((coal.generation_mw + diesel.generation_mw) / halfMaxCoal, (double)1);
+    Serial.println("CO2e emissions:");
+    Serial.println(co2e_emissions);
+    Serial.println("CO2e emissions norm:");
+    Serial.println(co2e_emissions_norm);
+    Serial.println("CO2e emissions percent:");
+    Serial.println(co2e_emissions_percent);
+    Serial.println("Index:");
+    Serial.println(index);
+    Serial.println("Range");
+    Serial.println(instructionPoint.co2e_intensity_range.max);
+    Serial.println(instructionPoint.co2e_intensity_range.min);
 
-        instructionPoint.color[0] = 150 + round(105 * badGeneration);
-        instructionPoint.color[1] = round(95 - (95 * badGeneration));
-        instructionPoint.powerSocketEnabled = false;
-    }
-    else
-    {
-        // Calculate the color if both coal and diesel power is not in use
+    memcpy(instructionPoint.color, colourRange[index], sizeof(instructionPoint.color));
 
-        double halfMaxGas = round(gas.capacity_mw / 2);
-        double mediumGeneration = min(gas.generation_mw / halfMaxGas, (double)1);
-
-        instructionPoint.color[0] = round(160 * mediumGeneration);
-        instructionPoint.color[1] = round(255 - (127 * mediumGeneration));
-        instructionPoint.powerSocketEnabled = true;
-    }
+    // Calculate power socket recommendation
+    instructionPoint.powerSocketEnabled = co2e_emissions_percent < 0.5;
 }
 
 bool PowerStations::deserializePowerStations(char *httpBody)
@@ -87,6 +90,9 @@ bool PowerStations::deserializePowerStations(char *httpBody)
     wind.generation_mw = doc["power_types"]["wind"]["generation_mw"];
     wind.capacity_mw = doc["power_types"]["wind"]["capacity_mw"];
 
+    co2e_intensity = doc["co2e_grams_per_kwh"];
+    co2e_emissions = doc["co2e_tonnne_per_hour"];
+
     calculateInstructionPoint();
 
     return true;
@@ -112,6 +118,12 @@ void PowerStations::SerialLogData()
     Serial.println(diesel.generation_mw);
     Serial.print("Wind generation: ");
     Serial.println(wind.generation_mw);
+
+    Serial.println("\nCO2e:");
+    Serial.print("Intensity: ");
+    Serial.println(co2e_intensity);
+    Serial.print("Emissions: ");
+    Serial.println(co2e_emissions);
 
     Serial.println("\nCalculations:");
     Serial.print("Percent renewable: ");
