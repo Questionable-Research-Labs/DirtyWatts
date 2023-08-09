@@ -9,6 +9,8 @@ export type PowerTypes = Record<string, PowerType>;
 export interface PowerStationsResponse {
   timestamp: string;
   power_types: PowerTypes;
+  co2e_tonnne_per_hour: number;
+  co2e_grams_per_kwh: number;
 }
 
 export interface PowerType {

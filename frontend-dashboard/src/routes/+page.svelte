@@ -39,7 +39,7 @@
 
 <div class="heading section section--fit">
   <div class="heading__logo">
-    <DynamicLogo powerTypes={$powerTypes?.power_types} />
+    <DynamicLogo powerStationData={$powerTypes} />
   </div>
   <div>
     <h1 class="section__title">Dirty Watts</h1>

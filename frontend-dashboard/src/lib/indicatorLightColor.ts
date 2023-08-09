@@ -1,8 +1,9 @@
-import type { PowerTypes } from "./api"
+import type { PowerStationsResponse, PowerTypes } from "./api"
 
 // Taine's famous indicator light color calculator
 // Used to mimic the physical indicator lights in the UI
-export function calculateLightColour(power_types: PowerTypes): [number, number, number] {
+export function calculateLightColourOld(data: PowerStationsResponse): [number, number, number] {
+    let power_types = data.power_types
     let red_value = 0
     let green_value = 0
 
@@ -30,3 +31,15 @@ export function calculateLightColour(power_types: PowerTypes): [number, number, 
     return [red_value,green_value,0]
 
 }                                                                                                                                                                                                                                                                                                                          
+
+
+const COLOUR_MAP: [number, number, number][] = [[24, 219, 0], [73, 216, 0], [99, 212, 0], [119, 208, 0], [136, 204, 0], [153, 200, 0], [169, 195, 0], [183, 190, 0], [195, 185, 0], [208, 179, 0], [219, 174, 0], [230, 167, 0], [243, 159, 0], [255, 150, 19], [255, 139, 31], [255, 126, 40], [255, 112, 47], [255, 94, 53], [255, 71, 58], [255, 28, 63]]
+const CO2_INTENSITY_RANGE = [24, 159]
+const CO2_OUTPUT_RANGE = [100, 975]
+
+export function calculateLightColour(data: PowerStationsResponse): [number, number, number] {
+    let co2_output = Math.max(Math.min(data.co2e_tonnne_per_hour, CO2_OUTPUT_RANGE[1]), CO2_OUTPUT_RANGE[0])
+    let co2_output_percent = (co2_output - CO2_OUTPUT_RANGE[0]) / (CO2_OUTPUT_RANGE[1] - CO2_OUTPUT_RANGE[0])
+    let index = Math.round(co2_output_percent * (COLOUR_MAP.length - 1))
+    return COLOUR_MAP[index];
+}
