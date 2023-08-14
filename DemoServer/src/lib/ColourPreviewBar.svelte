@@ -57,14 +57,19 @@
 
     let clean = powerTypesHistory.subscribe(renderCanvas);
     let clean2 = newLightColorSystem.subscribe(()=>{renderCanvas($powerTypesHistory)});
+    let clean3: NodeJS.Timer;
 
     onMount(()=>{
         renderCanvas($powerTypesHistory);
+        clean3 = setInterval(()=>{
+            renderCanvas($powerTypesHistory);
+        }, 2000);
     });
 
     onDestroy(()=>{
         clean();
         clean2();
+        clearInterval(clean3);
     })
 </script>
 

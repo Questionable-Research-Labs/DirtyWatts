@@ -1,12 +1,20 @@
+import { derived, writable, type Readable, type Writable, get } from "svelte/store";
 import { connectionPoints, powerTypes, powerTypesHistory, previewDatapoint } from "./stores";
+import { browser } from "$app/environment";
 
 const API_URL = "https://api.dirtywatts.nz";
 const OFFSET_HRS = 24*5;
 const OFFSET = OFFSET_HRS * 3600 * 1000;
 
-const StuckHistoryEndPoint = new Date("2023-06-28T19:00:00");
-// const StuckHistoryEndPoint = new Date();
-const StuckHistoryStartPoint = new Date(StuckHistoryEndPoint - OFFSET);
+export const calendarDate = writable(new Date("2023-06-28"));
+
+const dataEndPoint: Readable<Date> = derived(calendarDate, (calendarDate) => {
+  // Get datetime just before midnight
+  let date = new Date(calendarDate);
+  date.setHours(23, 59, 59, 999);
+  return date;
+}); 
+const dataStartPoint: Readable<Date> = derived(dataEndPoint, (dataEndPoint) => new Date(dataEndPoint - OFFSET));
 
 
 export type PowerTypes = Record<string, PowerType>;
@@ -52,7 +60,7 @@ export async function getPowerStationsHistory(): Promise<
   // Round the date to the nearest interval to make the API call easier to cache
 
   return fetchAPI<PowerStationsResponse[]>(
-    `history/power_stations?start=${StuckHistoryStartPoint.toISOString()}&end=${StuckHistoryEndPoint.toISOString()}&time_interval_minutes=${INTERVAL}`
+    `history/power_stations?start=${get(dataStartPoint).toISOString()}&end=${get(dataEndPoint).toISOString()}&time_interval_minutes=${INTERVAL}`
   );
 }
 
@@ -70,7 +78,7 @@ export async function getConnectionPointHistory(
   let startDate = new Date(Math.round((Date.now() - OFFSET) / INTERVAL_MS) * INTERVAL_MS);
 
   return fetchAPI<ConnectionPoint[]>(
-    `history/grid_connection_points/${point_code}?start=${StuckHistoryStartPoint.toISOString()}&end=${StuckHistoryEndPoint.toISOString()}&time_interval_minutes=${INTERVAL}`
+    `history/grid_connection_points/${point_code}?start=${get(dataStartPoint).toISOString()}&end=${get(dataEndPoint).toISOString()}&time_interval_minutes=${INTERVAL}`
   );
 }
 
@@ -83,7 +91,7 @@ export async function initialiseAPI() {
 let serverState: PowerStationsResponse | { timestamp: "" } = { timestamp: "" };
 
 async function syncToServer(previewDatapoint: PowerStationsResponse | null) {
-  if (!previewDatapoint) {
+  if (!previewDatapoint || !browser) {
     return;
   }
   if (previewDatapoint.timestamp != serverState.timestamp) {
@@ -96,3 +104,4 @@ async function syncToServer(previewDatapoint: PowerStationsResponse | null) {
 }
 
 previewDatapoint.subscribe(syncToServer);
+calendarDate.subscribe(initialiseAPI)
