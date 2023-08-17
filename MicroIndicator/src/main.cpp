@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <config.h>
 
-#if defined(ARDUINO_ESP8266_NODEMCU) || defined(ARDUINO_ESP8266_NODEMCU_ESP12E)
+#if defined(ESP8266)
 #include <ESP8266HTTPClient.h>
 #include <ESP8266WebServer.h>
 #include <ESP8266WiFi.h>  //https://github.com/esp8266/Arduino
@@ -28,6 +28,10 @@
 TWatch twatch;
 #endif
 
+#ifdef OUTPUT_RELAY
+#include <relay.h>
+#endif
+
 #include <powerstations.h>
 
 PowerStations currentPowerStats;
@@ -43,10 +47,11 @@ bool updatePowerStats() {
     // Not validating server
     client.setInsecure();
 
-    client.connect(host, 443);
+    int response = client.connect(host, 443);
     // Handle errors with connecting to server
     if (client.connected() == false) {
         Serial.println("Failed to connect to server");
+        Serial.println(response);
         delay(1000);
         return false;
     }
@@ -75,8 +80,16 @@ void setup() {
     Serial.begin(115200);
     Serial.println("DirtyWatts MicroIndicator Booting");
 
+    #ifdef ESP8266
+    Serial.setDebugOutput(true);
+    #endif
+
 #ifdef OUTPUT_NEOPIXEL
     setupNeoPixels();
+#endif
+
+#ifdef OUTPUT_RELAY
+    setupRelay();
 #endif
 
 #ifdef OUTPUT_VFD
@@ -131,6 +144,10 @@ void loop() {
 
 #ifdef OUTPUT_TWATCH
         twatch.refreshStats(currentPowerStats.instructionPoint);
+#endif
+
+#ifdef OUTPUT_RELAY
+    updateRelay(currentPowerStats);
 #endif
 
     } else {

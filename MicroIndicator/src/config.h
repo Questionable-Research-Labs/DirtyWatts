@@ -21,3 +21,7 @@
 #define APIRequestInterval 2000	 // 20 seconds
 
 #define ApiErrorColour 150, 150, 255  // Light Blue
+
+#ifdef OUTPUT_RELAY
+    #define RelayPin 12
+#endif
