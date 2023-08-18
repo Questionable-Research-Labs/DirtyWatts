@@ -129,13 +129,13 @@ void TWatch::refreshStats(InstructionPoint instructionPoint) {
     // Decide font color: 
     // If the background is dark, use white text
     // If the background is light, use black text
-    TWatch::textColor = (instructionPoint.color[0] + instructionPoint.color[1] + instructionPoint.color[2]) / 3 > 155 ? LV_COLOR_WHITE : LV_COLOR_WHITE;
+    TWatch::textColor = (instructionPoint.colorScreen[0] + instructionPoint.colorScreen[1] + instructionPoint.colorScreen[2]) / 3 > 155 ? LV_COLOR_WHITE : LV_COLOR_WHITE;
 
     // Set background colour
 	lv_obj_t *screen = lv_scr_act();
-	lv_obj_set_style_local_bg_color(screen, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(instructionPoint.color[0] << 16 | instructionPoint.color[1] << 8 | instructionPoint.color[2]));
+	lv_obj_set_style_local_bg_color(screen, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(instructionPoint.colorScreen[0] << 16 | instructionPoint.colorScreen[1] << 8 | instructionPoint.colorScreen[2]));
 	lv_obj_set_style_local_bg_opa(screen, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, LV_OPA_COVER);
-	lv_obj_set_style_local_bg_grad_color(screen, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(instructionPoint.color[0] << 16 | instructionPoint.color[1] << 8 | instructionPoint.color[2]));
+	lv_obj_set_style_local_bg_grad_color(screen, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(instructionPoint.colorScreen[0] << 16 | instructionPoint.colorScreen[1] << 8 | instructionPoint.colorScreen[2]));
 	lv_obj_set_style_local_bg_grad_dir(screen, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, LV_GRAD_DIR_VER);
 	lv_obj_set_style_local_bg_main_stop(screen, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, 0);
 	lv_obj_set_style_local_bg_grad_stop(screen, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, 255);

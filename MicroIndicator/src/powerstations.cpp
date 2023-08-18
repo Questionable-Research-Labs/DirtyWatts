@@ -2,12 +2,17 @@
 
 static int errorColor[3] = {ApiErrorColour};
 
-static int colourRange[][3] = {{24,219,0}, {73,216,0}, {99,212,0}, {119,208,0}, {136,204,0}, {153,200,0}, {169,195,0}, {183,190,0}, {195,185,0}, {208,179,0}, {219,174,0}, {230,167,0}, {243,159,0}, {255,150,19}, {255,139,31}, {255,126,40}, {255,112,47}, {255,94,53}, {255,71,58}, {255,28,63}};
+#define COLOUR_MAP_LENGTH 20
+
+static int colourRangeScreen[COLOUR_MAP_LENGTH][3] = {{24,219,0}, {73,216,0}, {99,212,0}, {119,208,0}, {136,204,0}, {153,200,0}, {169,195,0}, {183,190,0}, {195,185,0}, {208,179,0}, {219,174,0}, {230,167,0}, {243,159,0}, {255,150,19}, {255,139,31}, {255,126,40}, {255,112,47}, {255,94,53}, {255,71,58}, {255,28,63}};
+static int colourRangeLight[COLOUR_MAP_LENGTH][3] = {{2, 181, 0}, {17, 174, 0}, {32, 168, 0}, {47, 162, 0}, {63, 155, 0}, {81, 147, 0}, {101, 139, 0}, {120, 132, 0}, {140, 124, 0}, {160, 116, 0}, {181, 107, 0}, {201, 99, 0}, {228, 89, 0}, {255, 77, 2}, {255, 65, 4}, {255, 53, 5}, {255, 41, 7}, {255, 29, 9}, {255, 16, 11}, {255, 3, 13}};
 
 void PowerStations::calculateInstructionPoint()
 {
     // Initialise the instruction point
-    memset(instructionPoint.color, 0, sizeof(instructionPoint.color)); // fill the array with zeros
+    memset(instructionPoint.colorScreen, 0, sizeof(instructionPoint.colorScreen)); // fill the array with zeros
+    memset(instructionPoint.colorLight, 0, sizeof(instructionPoint.colorLight)); // fill the array with zeros
+
     instructionPoint.percentRenewable = 0;
     instructionPoint.powerSocketEnabled = true;
 
@@ -25,7 +30,8 @@ void PowerStations::calculateInstructionPoint()
     if (totalGeneration == 0)
     {
         Serial.println("No generation?!?");
-        memcpy(instructionPoint.color, errorColor, sizeof(instructionPoint.color));
+        memcpy(instructionPoint.colorScreen, errorColor, sizeof(instructionPoint.colorScreen));
+        memcpy(instructionPoint.colorLight, errorColor, sizeof(instructionPoint.colorLight));
         return;
     }
 
@@ -36,7 +42,7 @@ void PowerStations::calculateInstructionPoint()
     // Calculate colour using new scoring algorithm
     double co2e_emissions_norm = max(min(co2e_emissions, instructionPoint.co2e_emissions_range.max), instructionPoint.co2e_emissions_range.min);
     double co2e_emissions_percent = (co2e_emissions_norm - instructionPoint.co2e_emissions_range.min) / (instructionPoint.co2e_emissions_range.max - instructionPoint.co2e_emissions_range.min);
-    int index = round(co2e_emissions_percent * (sizeof(colourRange) / sizeof(colourRange[0]) - 1));
+    int index = round(co2e_emissions_percent * (COLOUR_MAP_LENGTH - 1));
 
     Serial.println("CO2e emissions:");
     Serial.println(co2e_emissions);
@@ -50,7 +56,8 @@ void PowerStations::calculateInstructionPoint()
     Serial.println(instructionPoint.co2e_intensity_range.max);
     Serial.println(instructionPoint.co2e_intensity_range.min);
 
-    memcpy(instructionPoint.color, colourRange[index], sizeof(instructionPoint.color));
+    memcpy(instructionPoint.colorLight, colourRangeLight[index], sizeof(instructionPoint.colorLight));
+    memcpy(instructionPoint.colorScreen, colourRangeScreen[index], sizeof(instructionPoint.colorScreen));
 
     // Calculate power socket recommendation
     instructionPoint.powerSocketEnabled = co2e_emissions_percent < 0.5;
@@ -128,12 +135,18 @@ void PowerStations::SerialLogData()
     Serial.println("\nCalculations:");
     Serial.print("Percent renewable: ");
     Serial.println(instructionPoint.percentRenewable);
-    Serial.print("Color: ");
-    Serial.print(instructionPoint.color[0]);
+    Serial.print("Color Light: ");
+    Serial.print(instructionPoint.colorLight[0]);
     Serial.print(", ");
-    Serial.print(instructionPoint.color[1]);
+    Serial.print(instructionPoint.colorLight[1]);
     Serial.print(", ");
-    Serial.println(instructionPoint.color[2]);
+    Serial.println(instructionPoint.colorLight[2]);
+    Serial.print("Color Screen: ");
+    Serial.print(instructionPoint.colorScreen[0]);
+    Serial.print(", ");
+    Serial.print(instructionPoint.colorScreen[1]);
+    Serial.print(", ");
+    Serial.println(instructionPoint.colorScreen[2]);
     Serial.print("Power socket: ");
     Serial.println(instructionPoint.powerSocketEnabled);
 }

@@ -43,7 +43,7 @@ Adafruit_NeoPixel pixels(NeoPixelCount, NeoPixelPin, NeoPixelFlags);
 
 // After the new Powergrid code is downloaded, this function is called to change the NeoPixel updates
 void updateNeoPixels(PowerStations powerstationData) {
-    int (&defaultColor)[3] = powerstationData.instructionPoint.color;
+    int (&defaultColor)[3] = powerstationData.instructionPoint.colorLight;
     
     pixels.fill(pixels.Color(defaultColor[0], defaultColor[1], defaultColor[2]), 0, NeoPixelCount);
 
@@ -52,6 +52,7 @@ void updateNeoPixels(PowerStations powerstationData) {
 
 // Runs once on startup, before attempting to connect to wifi
 void setupNeoPixels() {
+    Serial.println("Setting up NeoPixels");
     // INITIALIZE NeoPixel strip object
     pixels.begin();
     delay(500);
@@ -59,6 +60,7 @@ void setupNeoPixels() {
     pixels.show();
     pixels.rainbow(0, 5); // Show default rainbow to show it's working
     pixels.show();
+    Serial.println("NeoPixels setup complete, showing rainbow");
 }
 
 

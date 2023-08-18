@@ -20,7 +20,8 @@ struct DoubleRange {
 };
 
 struct InstructionPoint {
-    int color[3];
+    int colorScreen[3];
+    int colorLight[3];
     float percentRenewable;
     bool powerSocketEnabled;
     DoubleRange co2e_intensity_range;
