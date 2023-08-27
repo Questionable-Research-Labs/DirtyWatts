@@ -24,8 +24,6 @@ struct InstructionPoint {
     int colorLight[3];
     float percentRenewable;
     bool powerSocketEnabled;
-    DoubleRange co2e_intensity_range;
-    DoubleRange co2e_emissions_range;
 };
 
 class PowerStations {

@@ -10,37 +10,6 @@
 // Parameter 3 = Pixel type flags, add together as needed:
 Adafruit_NeoPixel pixels(NeoPixelCount, NeoPixelPin, NeoPixelFlags);
 
-// PowerStations powerstationData
-// |-> battery (Generation stats for battery power)
-//     |-> generation_mw
-//     |-> capacity_mw
-// |-> co_gen (Generation stats for CoGeneration)
-//     |-> generation_mw
-//     |-> capacity_mw
-// |-> coal (Generation stats for coal power)
-//     |-> generation_mw
-//     |-> capacity_mw
-// |-> gas (Generation stats for gas power)
-//     |-> generation_mw
-//     |-> capacity_mw
-// |-> geothermal (Generation stats for geothermal power)
-//     |-> generation_mw
-//     |-> capacity_mw
-// |-> hydro (Generation stats for hydopower)
-//     |-> generation_mw
-//     |-> capacity_mw
-// |-> diesel (Generation stats for diesel aka liquid power)
-//     |-> generation_mw
-//     |-> capacity_mw
-// |-> wind (Generation stats for wind power)
-//     |-> generation_mw
-//     |-> capacity_mw
-// |-> instructionPoint (Default algorithm)
-//     |-> color (single color summary of carbon output)
-//     |-> percentRenewable (0.0->1.0 percentage of renewable power)
-//     |-> powerSocketEnabled (recommendation if heavy-load draws should be enabled)
-
-
 // After the new Powergrid code is downloaded, this function is called to change the NeoPixel updates
 void updateNeoPixels(PowerStations powerstationData) {
     int (&defaultColor)[3] = powerstationData.instructionPoint.colorLight;
