@@ -1,5 +1,37 @@
 #include <powerstations.h>
 
+// PowerStations Class
+// |-> battery (Generation stats for battery power)
+//     |-> generation_mw
+//     |-> capacity_mw
+// |-> co_gen (Generation stats for CoGeneration)
+//     |-> generation_mw
+//     |-> capacity_mw
+// |-> coal (Generation stats for coal power)
+//     |-> generation_mw
+//     |-> capacity_mw
+// |-> gas (Generation stats for gas power)
+//     |-> generation_mw
+//     |-> capacity_mw
+// |-> geothermal (Generation stats for geothermal power)
+//     |-> generation_mw
+//     |-> capacity_mw
+// |-> hydro (Generation stats for hydopower)
+//     |-> generation_mw
+//     |-> capacity_mw
+// |-> diesel (Generation stats for diesel aka liquid power)
+//     |-> generation_mw
+//     |-> capacity_mw
+// |-> wind (Generation stats for wind power)
+//     |-> generation_mw
+//     |-> capacity_mw
+// |-> instructionPoint (Default algorithm)
+//     |-> colorLight (single color summary of carbon output, for lights)
+//     |-> colorScreen (single color summary of carbon output, for screens)
+//     |-> percentRenewable (0.0->1.0 percentage of renewable power)
+//     |-> powerSocketEnabled (recommendation if heavy-load draws should be enabled)
+
+
 static int errorColor[3] = {ApiErrorColour};
 
 #define COLOUR_MAP_LENGTH 20
@@ -16,13 +48,10 @@ void PowerStations::calculateInstructionPoint()
     instructionPoint.percentRenewable = 0;
     instructionPoint.powerSocketEnabled = true;
 
-    instructionPoint.co2e_intensity_range =  { CO2E_INTENSITY_RANGE_MIN, CO2E_INTENSITY_RANGE_MAX };
-    instructionPoint.co2e_emissions_range =  { CO2E_EMISSIONS_RANGE_MIN, CO2E_EMISSIONS_RANGE_MAX };
-
     // Calculate the total generation
-    double totalRenewable = battery.generation_mw + geothermal.generation_mw + hydro.generation_mw + wind.generation_mw;
-    double totalNonRenewable = co_gen.generation_mw + coal.generation_mw + gas.generation_mw + diesel.generation_mw;
-    
+    double totalRenewable = this->battery.generation_mw + this->geothermal.generation_mw + this->hydro.generation_mw + this->wind.generation_mw;
+    double totalNonRenewable = this->co_gen.generation_mw + this->coal.generation_mw + this->gas.generation_mw + this->diesel.generation_mw;
+
     double totalGeneration = totalRenewable + totalNonRenewable;
 
 
@@ -40,27 +69,30 @@ void PowerStations::calculateInstructionPoint()
     instructionPoint.percentRenewable = percentageRenewable;
 
     // Calculate colour using new scoring algorithm
-    double co2e_emissions_norm = max(min(co2e_emissions, instructionPoint.co2e_emissions_range.max), instructionPoint.co2e_emissions_range.min);
-    double co2e_emissions_percent = (co2e_emissions_norm - instructionPoint.co2e_emissions_range.min) / (instructionPoint.co2e_emissions_range.max - instructionPoint.co2e_emissions_range.min);
-    int index = round(co2e_emissions_percent * (COLOUR_MAP_LENGTH - 1));
 
-    Serial.println("CO2e emissions:");
-    Serial.println(co2e_emissions);
-    Serial.println("CO2e emissions norm:");
-    Serial.println(co2e_emissions_norm);
-    Serial.println("CO2e emissions percent:");
-    Serial.println(co2e_emissions_percent);
-    Serial.println("Index:");
-    Serial.println(index);
-    Serial.println("Range");
-    Serial.println(instructionPoint.co2e_intensity_range.max);
-    Serial.println(instructionPoint.co2e_intensity_range.min);
+    DoubleRange scoring_range =  { CO2E_EMISSIONS_RANGE_MIN, CO2E_EMISSIONS_RANGE_MAX };
+    double scoring_datum = this->co2e_emissions;
 
-    memcpy(instructionPoint.colorLight, colourRangeLight[index], sizeof(instructionPoint.colorLight));
-    memcpy(instructionPoint.colorScreen, colourRangeScreen[index], sizeof(instructionPoint.colorScreen));
+    // DoubleRange scoring_range =  { CO2E_INTENSITY_RANGE_MIN, CO2E_INTENSITY_RANGE_MAX };
+    // double scoring_datum = this->co2e_intensity;
+
+    double scoring_datum_norm = max(min(scoring_datum, scoring_range.max), scoring_range.min);
+    double scoring_datum_percent = (scoring_datum_norm - scoring_range.min) / (scoring_range.max - scoring_range.min);
+    int colour_index = round(scoring_datum_percent * (COLOUR_MAP_LENGTH - 1));
+
+    memcpy(instructionPoint.colorLight, colourRangeLight[colour_index], sizeof(instructionPoint.colorLight));
+    memcpy(instructionPoint.colorScreen, colourRangeScreen[colour_index], sizeof(instructionPoint.colorScreen));
 
     // Calculate power socket recommendation
-    instructionPoint.powerSocketEnabled = co2e_emissions_percent < 0.5;
+    instructionPoint.powerSocketEnabled = scoring_datum_percent < 0.5;
+
+    Serial.println("CO2e emission Intensity Total:");
+    Serial.println(co2e_emissions);
+    Serial.println(co2e_intensity);
+    Serial.println("Scoring Algorithm percent:");
+    Serial.println(scoring_datum_percent);
+    Serial.println("Colour Index:");
+    Serial.println(colour_index);
 }
 
 bool PowerStations::deserializePowerStations(char *httpBody)
