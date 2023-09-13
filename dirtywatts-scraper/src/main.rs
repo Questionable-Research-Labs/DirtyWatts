@@ -52,8 +52,9 @@ async fn run_emi_stats(conn: &mut PgConnection) {
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    println!("Yeet");
-    dotenv::dotenv()?;
+    if dotenv::dotenv().is_err() {
+        println!("No .env file found");
+    }
 
     println!("Creating connections");
     let mut conn_a = create_connection()?;
