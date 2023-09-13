@@ -61,7 +61,7 @@ async def power_stations():
 
 @router.get("/grid_connection_points", response_model=List[ConnectionPoint])
 @cache(namespace="network-supply", expire=60)
-async def network_supply():
+async def grid_connection_points():
     session = db.sessionMaker()
     latest_timestamp = session.query(func.max(db.networkSupplyReading.c.timestamp))
     subquery = session.query(db.networkSupplyReading).order_by(db.networkSupplyReading.c.timestamp.desc()).filter(db.networkSupplyReading.c.timestamp==latest_timestamp).subquery()

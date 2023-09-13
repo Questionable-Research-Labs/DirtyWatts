@@ -73,7 +73,7 @@ async def power_stations(start: datetime = datetime.min, end: datetime = datetim
 
 @router.get("/grid_connection_points/{connection_code}", response_model=List[ConnectionPoint])
 @cache(namespace="network-supply", expire=60*15)
-async def power_stations(connection_code: str, start: datetime = datetime.min, end: datetime = datetime.max,
+async def grid_connection_points(connection_code: str, start: datetime = datetime.min, end: datetime = datetime.max,
                          time_interval_minutes: float = 60):
     """
     Gets the entire history of a particular connection point, for example you can try "ABY0111". It defaults to hourly data, but you can go down to 15 minutely data. 

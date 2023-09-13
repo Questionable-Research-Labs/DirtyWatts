@@ -8,11 +8,10 @@ class PowerStationStats(BaseModel):
     capacity_mw: float
 
 
-power_type_count = 8
+power_type_count = 7
 
 
 class PowerTypes(BaseModel):
-    battery: PowerStationStats
     co_gen: PowerStationStats
     coal: PowerStationStats
     gas: PowerStationStats
