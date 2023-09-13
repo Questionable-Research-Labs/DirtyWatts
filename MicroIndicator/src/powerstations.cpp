@@ -1,9 +1,6 @@
 #include <powerstations.h>
 
 // PowerStations Class
-// |-> battery (Generation stats for battery power)
-//     |-> generation_mw
-//     |-> capacity_mw
 // |-> co_gen (Generation stats for CoGeneration)
 //     |-> generation_mw
 //     |-> capacity_mw
@@ -49,7 +46,7 @@ void PowerStations::calculateInstructionPoint()
     instructionPoint.powerSocketEnabled = true;
 
     // Calculate the total generation
-    double totalRenewable = this->battery.generation_mw + this->geothermal.generation_mw + this->hydro.generation_mw + this->wind.generation_mw;
+    double totalRenewable = this->geothermal.generation_mw + this->hydro.generation_mw + this->wind.generation_mw;
     double totalNonRenewable = this->co_gen.generation_mw + this->coal.generation_mw + this->gas.generation_mw + this->diesel.generation_mw;
 
     double totalGeneration = totalRenewable + totalNonRenewable;
@@ -112,8 +109,6 @@ bool PowerStations::deserializePowerStations(char *httpBody)
     }
     timestamp = doc["timestamp"];
 
-    battery.generation_mw = doc["power_types"]["battery"]["generation_mw"];
-    battery.capacity_mw = doc["power_types"]["battery"]["capacity_mw"];
     co_gen.generation_mw = doc["power_types"]["co_gen"]["generation_mw"];
     co_gen.capacity_mw = doc["power_types"]["co_gen"]["capacity_mw"];
     coal.generation_mw = doc["power_types"]["coal"]["generation_mw"];
@@ -141,8 +136,6 @@ void PowerStations::SerialLogData()
 {
     Serial.println("Got power stations:");
 
-    Serial.print("Battery generation: ");
-    Serial.println(battery.generation_mw);
     Serial.print("Co-gen generation: ");
     Serial.println(co_gen.generation_mw);
     Serial.print("Coal generation: ");

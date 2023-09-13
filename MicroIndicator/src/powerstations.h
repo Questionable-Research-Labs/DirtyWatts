@@ -28,7 +28,6 @@ struct InstructionPoint {
 
 class PowerStations {
     public:
-        PowerStats battery;
         PowerStats co_gen;
         PowerStats coal;
         PowerStats gas;

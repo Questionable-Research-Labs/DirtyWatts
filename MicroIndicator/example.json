@@ -1,10 +1,6 @@
 {
     "timestamp": "2022-10-18T21:30:00+00:00",
     "power_types": {
-        "battery": {
-            "generation_mw": 0.0,
-            "capacity_mw": 1.0
-        },
         "co_gen": {
             "generation_mw": 95.0,
             "capacity_mw": 216.0
