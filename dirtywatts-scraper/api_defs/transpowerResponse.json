@@ -1,7 +1,6 @@
 {
   "data": {
     "New Zealand": {
-      "Battery": { "generation": -0, "capacity": 1 },
       "Co-Gen": { "generation": 144, "capacity": 216 },
       "Coal": { "generation": 76, "capacity": 750 },
       "Gas": { "generation": 50, "capacity": 1280 },

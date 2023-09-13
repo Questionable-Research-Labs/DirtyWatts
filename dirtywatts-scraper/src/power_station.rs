@@ -28,8 +28,6 @@ pub struct PowerStationType {
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct PowerTypes {
-    #[serde(alias = "Battery")]
-    pub battery: PowerStationType,
     #[serde(alias = "Co-Gen")]
     pub co_gen: PowerStationType,
     #[serde(alias = "Coal")]

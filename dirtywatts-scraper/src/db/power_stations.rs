@@ -1,11 +1,11 @@
 use crate::db::models::{GenerationLevel, NewGenerationLevel, NewPowerSource, PowerSource};
 use crate::power_station::{PowerStationType, PowerStationUpdatePackage, PowerTypes};
 use anyhow::anyhow;
-use bigdecimal::BigDecimal;
+use bigdecimal::{BigDecimal, FromPrimitive};
 use chrono::{DateTime, Utc};
 use diesel::prelude::*;
 
-pub fn get_power_source(name: &str, connection: &PgConnection) -> anyhow::Result<PowerSource> {
+pub fn get_power_source(name: &str, connection: &mut PgConnection) -> anyhow::Result<PowerSource> {
     use super::schema::power_sources::{self, dsl::*};
 
     match power_sources
@@ -30,7 +30,7 @@ fn add_data(
     name: &str,
     value: PowerStationType,
     timestamp: &DateTime<Utc>,
-    connection: &PgConnection,
+    connection: &mut PgConnection,
 ) -> anyhow::Result<()> {
     use super::schema::generation_levels::{self, dsl::*};
 
@@ -48,8 +48,8 @@ fn add_data(
         diesel::insert_into(generation_levels::table)
             .values(NewGenerationLevel {
                 source_id: power_source_id,
-                generation: BigDecimal::from(value.generation_mw),
-                capacity: BigDecimal::from(value.capacity_mw),
+                generation: BigDecimal::from_f64(value.generation_mw).unwrap(),
+                capacity: BigDecimal::from_f64(value.capacity_mw).unwrap(),
                 reading_timestamp: timestamp.clone(),
             })
             .execute(connection)?;
@@ -67,10 +67,9 @@ pub fn add_readings(
         power_types,
         timestamp,
     }: PowerStationUpdatePackage,
-    connection: &PgConnection,
+    connection: &mut PgConnection,
 ) -> anyhow::Result<()> {
     let PowerTypes {
-        battery,
         co_gen,
         gas,
         coal,
@@ -80,7 +79,6 @@ pub fn add_readings(
         wind,
     } = power_types;
 
-    add_data("battery", battery, &timestamp, connection)?;
     add_data("co_gen", co_gen, &timestamp, connection)?;
     add_data("gas", gas, &timestamp, connection)?;
     add_data("coal", coal, &timestamp, connection)?;

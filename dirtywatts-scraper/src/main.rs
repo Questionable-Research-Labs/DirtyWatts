@@ -1,10 +1,8 @@
-#[macro_use]
-extern crate diesel;
-#[macro_use]
-extern crate diesel_migrations;
+use diesel_migrations::{embed_migrations, EmbeddedMigrations};
 
 use diesel::PgConnection;
 use std::time::Duration;
+use diesel_migrations::MigrationHarness;
 
 use crate::db::{add_emi_stats, add_readings, create_connection};
 use crate::{emi_stats::get_emi_stats, power_station::get_current_power};
@@ -13,9 +11,9 @@ mod db;
 mod emi_stats;
 mod power_station;
 
-embed_migrations!();
+pub const MIGRATIONS: EmbeddedMigrations = embed_migrations!();
 
-async fn run_power_sources(conn: &PgConnection) {
+async fn run_power_sources(conn: &mut PgConnection) {
     loop {
         let current_power = get_current_power().await;
         match current_power {
@@ -36,7 +34,7 @@ async fn run_power_sources(conn: &PgConnection) {
     }
 }
 
-async fn run_emi_stats(conn: &PgConnection) {
+async fn run_emi_stats(conn: &mut PgConnection) {
     loop {
         let current_power = get_emi_stats().await;
         match current_power {
@@ -55,18 +53,19 @@ async fn run_emi_stats(conn: &PgConnection) {
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     println!("Yeet");
-    dotenv::dotenv();
-    println!("Creating connection");
-    let conn = create_connection()?;
-    println!("Created connection");
+    dotenv::dotenv()?;
+
+    println!("Creating connections");
+    let mut conn_a = create_connection()?;
+    let mut conn_b = create_connection()?;
 
     println!("Running migrations");
-    embedded_migrations::run(&conn)?;
+    conn_a.run_pending_migrations(MIGRATIONS).unwrap();
     println!("Done!");
 
     tokio::select! {
-        _ = run_power_sources(&conn) => {}
-        _ = run_emi_stats(&conn) => {}
+        _ = run_power_sources(&mut conn_a) => {}
+        _ = run_emi_stats(&mut conn_b) => {}
     }
 
     Ok(())

@@ -1,10 +1,10 @@
 use crate::db::models::{NetworkSupply, NetworkSupplyReading, NewNetworkSupplyReading};
 use crate::emi_stats::ConnectionPoint;
-use bigdecimal::BigDecimal;
+use bigdecimal::{BigDecimal, FromPrimitive};
 use chrono::{DateTime, Utc};
 use diesel::prelude::*;
 
-fn check_for_network_supply(cc: &str, connection: &PgConnection) -> bool {
+fn check_for_network_supply(cc: &str, connection: &mut PgConnection) -> bool {
     use super::schema::network_supply::dsl::*;
     network_supply
         .filter(connection_code.like(cc))
@@ -12,7 +12,7 @@ fn check_for_network_supply(cc: &str, connection: &PgConnection) -> bool {
         .is_ok()
 }
 
-fn check_for_read_ts(ts: &DateTime<Utc>, connection: &PgConnection) -> bool {
+fn check_for_read_ts(ts: &DateTime<Utc>, connection: &mut PgConnection) -> bool {
     use super::schema::network_supply_reading::dsl::*;
     network_supply_reading
         .filter(timestamp.eq(ts))
@@ -20,7 +20,7 @@ fn check_for_read_ts(ts: &DateTime<Utc>, connection: &PgConnection) -> bool {
         .is_ok()
 }
 
-pub fn add_emi_stats(points: Vec<ConnectionPoint>, connection: &PgConnection) {
+pub fn add_emi_stats(points: Vec<ConnectionPoint>, connection: &mut PgConnection) {
     use super::schema::network_supply_reading;
 
     println!("----------------------------------------");
@@ -40,10 +40,10 @@ pub fn add_emi_stats(points: Vec<ConnectionPoint>, connection: &PgConnection) {
                 match diesel::insert_into(network_supply_reading::table)
                     .values(NewNetworkSupplyReading {
                         connection_code: trimed_connection_code.to_string(),
-                        mwh_price: BigDecimal::from(point.mwh_price),
+                        mwh_price: BigDecimal::from_f64(point.mwh_price).unwrap(),
                         timestamp: point.timestamp,
-                        load: BigDecimal::from(point.load_mw),
-                        generation: BigDecimal::from(point.generation_mw),
+                        load: BigDecimal::from_f64(point.load_mw).unwrap(),
+                        generation: BigDecimal::from_f64(point.generation_mw).unwrap(),
                     })
                     .execute(connection)
                 {
