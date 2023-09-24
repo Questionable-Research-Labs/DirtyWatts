@@ -5,7 +5,7 @@
     // Pin that the Neo Pixels are connected to
     #define NeoPixelPin D4
 
-    // Number of LEDs in chaine
+    // Number of LEDs in chain
     #define NeoPixelCount 30
 
     // Pixel type flags, add together as needed
@@ -14,11 +14,11 @@
     //   NEO_GRB     Pixels are wired for GRB bitstream (most NeoPixel products)
     //   NEO_RGB     Pixels are wired for RGB bitstream (v1 FLORA pixels, not v2)
     //   NEO_RGBW    Pixels are wired for RGBW bitstream (NeoPixel RGBW products)
-    #define NeoPixelFlags NEO_GRB + NEO_KHZ400
+    #define NeoPixelFlags NEO_GRB + NEO_KHZ800
 
 #endif
 
-#define APIRequestInterval 2000	 // 20 seconds
+#define APIRequestInterval 2000	 // 2 seconds, measured in milliseconds
 
 #define ApiErrorColour 150, 150, 255  // Light Blue
 
