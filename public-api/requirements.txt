@@ -5,4 +5,5 @@ databases[postgresql]
 python-dotenv
 psycopg2
 fastapi-cache2[redis]
+sqlalchemy==1.4.49
 redis

@@ -1,4 +1,4 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9-2024-12-02
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.11-2024-12-02
 
 COPY ./public-api/requirements.txt /app
 RUN pip install -r ./requirements.txt
