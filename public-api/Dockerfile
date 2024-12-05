@@ -1,4 +1,4 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9-2024-12-02
 
 COPY ./public-api/requirements.txt /app
 RUN pip install -r ./requirements.txt
@@ -6,4 +6,4 @@ RUN pip install -r ./requirements.txt
 COPY ./public-api/app/ /app
 ENV TZ="Pacific/Auckland"
 # Runs with defualt port 80
-ENV MAX_WORKERS 4
+ENV MAX_WORKERS=4

@@ -9,7 +9,7 @@ from starlette.responses import RedirectResponse
 
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.redis import RedisBackend
-from fastapi_cache.backends import Backend
+from fastapi_cache.backends.inmemory import InMemoryBackend
 from fastapi_cache.decorator import cache
 from redis.asyncio.connection import ConnectionPool
 import redis.asyncio as redis
@@ -70,7 +70,7 @@ async def startup():
         FastAPICache.init(RedisBackend(r), prefix="fastapi-cache")
     else:
         # Disable cache on development
-        FastAPICache.init(Backend(), enable=False)
+        FastAPICache.init(InMemoryBackend(), enable=False)
 
 
 
