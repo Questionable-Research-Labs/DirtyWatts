@@ -16,10 +16,13 @@
 // |-> hydro (Generation stats for hydopower)
 //     |-> generation_mw
 //     |-> capacity_mw
-// |-> diesel (Generation stats for diesel aka liquid power)
+// |-> diesel (Generation stats for diesel/oil aka liquid power)
 //     |-> generation_mw
 //     |-> capacity_mw
 // |-> wind (Generation stats for wind power)
+//     |-> generation_mw
+//     |-> capacity_mw
+// |-> solar (Generation stats for solar power)
 //     |-> generation_mw
 //     |-> capacity_mw
 // |-> instructionPoint (Default algorithm)
@@ -46,7 +49,7 @@ void PowerStations::calculateInstructionPoint()
     instructionPoint.powerSocketEnabled = true;
 
     // Calculate the total generation
-    double totalRenewable = this->geothermal.generation_mw + this->hydro.generation_mw + this->wind.generation_mw;
+    double totalRenewable = this->geothermal.generation_mw + this->hydro.generation_mw + this->wind.generation_mw + this->solar.generation_mw;
     double totalNonRenewable = this->co_gen.generation_mw + this->coal.generation_mw + this->gas.generation_mw + this->diesel.generation_mw;
 
     double totalGeneration = totalRenewable + totalNonRenewable;
@@ -123,6 +126,8 @@ bool PowerStations::deserializePowerStations(char *httpBody)
     diesel.capacity_mw = doc["power_types"]["diesel"]["capacity_mw"];
     wind.generation_mw = doc["power_types"]["wind"]["generation_mw"];
     wind.capacity_mw = doc["power_types"]["wind"]["capacity_mw"];
+    solar.generation_mw = doc["power_types"]["solar"]["generation_mw"];
+    solar.capacity_mw = doc["power_types"]["solar"]["capacity_mw"];
 
     co2e_intensity = doc["co2e_grams_per_kwh"];
     co2e_emissions = doc["co2e_tonnne_per_hour"];
@@ -150,6 +155,8 @@ void PowerStations::SerialLogData()
     Serial.println(diesel.generation_mw);
     Serial.print("Wind generation: ");
     Serial.println(wind.generation_mw);
+    Serial.print("Solar generation: ");
+    Serial.println(solar.generation_mw);
 
     Serial.println("\nCO2e:");
     Serial.print("Intensity: ");

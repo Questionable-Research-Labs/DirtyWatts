@@ -57,7 +57,11 @@ async def power_stations():
         co2e_intensity = (co2e_output*TONNES_TO_GRAMS) / cumulative_power_output
     print(co2e_intensity, co2e_output, cumulative_power_output)
 
-    return PowerstationUpdatePackage(timestamp=updateTime, power_types=powerTypes, co2e_tonnne_per_hour=round_sig(co2e_output,5), co2e_grams_per_kwh=round_sig(co2e_intensity,5))
+    total_generation = sum([x["generation"] for x in allPowerTypes])
+    total_renewable = sum([x["generation"] for x in allPowerTypes if x["kind"] in ["wind", "solar", "hydro", "geothermal"]])
+    percent_renewable = total_renewable / total_generation
+
+    return PowerstationUpdatePackage(timestamp=updateTime, power_types=powerTypes, co2e_tonnne_per_hour=round_sig(co2e_output,5), co2e_grams_per_kwh=round_sig(co2e_intensity,5), percent_renewable=round_sig(percent_renewable,5))
 
 @router.get("/grid_connection_points", response_model=List[ConnectionPoint])
 @cache(namespace="network-supply", expire=60)

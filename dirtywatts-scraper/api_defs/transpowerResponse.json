@@ -1,13 +1,34 @@
 {
   "data": {
     "New Zealand": {
-      "Co-Gen": { "generation": 144, "capacity": 216 },
-      "Coal": { "generation": 76, "capacity": 750 },
-      "Gas": { "generation": 50, "capacity": 1280 },
-      "Geothermal": { "generation": 920, "capacity": 1062 },
-      "Hydro": { "generation": 2620, "capacity": 5415 },
-      "Liquid": { "generation": 0, "capacity": 156 },
-      "Wind": { "generation": 423, "capacity": 1040 },
+      "Co-Gen": {
+        "generation": 144,
+        "capacity": 216
+      },
+      "Coal": {
+        "generation": 76,
+        "capacity": 750
+      },
+      "Gas": {
+        "generation": 50,
+        "capacity": 1280
+      },
+      "Geothermal": {
+        "generation": 920,
+        "capacity": 1062
+      },
+      "Hydro": {
+        "generation": 2620,
+        "capacity": 5415
+      },
+      "Liquid": {
+        "generation": 0,
+        "capacity": 156
+      },
+      "Wind": {
+        "generation": 423,
+        "capacity": 1040
+      },
       "total": 4232.298
     }
   },

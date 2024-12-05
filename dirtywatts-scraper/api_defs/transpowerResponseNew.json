@@ -1,0 +1,46 @@
+{
+    "data": {
+        "New Zealand": {
+            "Battery": {
+                "generation": 0,
+                "capacity": 35
+            },
+            "Co-Gen": {
+                "generation": 106,
+                "capacity": 168
+            },
+            "Coal": {
+                "generation": 208,
+                "capacity": 750
+            },
+            "Gas": {
+                "generation": 747,
+                "capacity": 1280
+            },
+            "Geothermal": {
+                "generation": 891,
+                "capacity": 1062
+            },
+            "Hydro": {
+                "generation": 2288,
+                "capacity": 5415
+            },
+            "Diesel\/Oil": {
+                "generation": 0,
+                "capacity": 156
+            },
+            "Solar": {
+                "generation": 30,
+                "capacity": 47
+            },
+            "Wind": {
+                "generation": 917,
+                "capacity": 1259
+            },
+            "total": 5188
+        }
+    },
+    "date": "28 Mar 2024 16:00",
+    "timestamp": 1711594800,
+    "update": true
+}

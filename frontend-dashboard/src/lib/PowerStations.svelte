@@ -45,9 +45,10 @@
         hydro: "Hydro",
         diesel: "Diesel",
         wind: "Wind",
+        solar: "Solar"
     };
 
-    const cleanPower: string[] = ["hydro", "wind", "geothermal"];
+    const cleanPower: string[] = ["hydro", "wind", "geothermal", "solar"];
     const dirtyPower: string[] = ["batter", "co_gen", "coal", "gas", "diesel"];
 
     const cleanGraphData = writable<Group[]>();

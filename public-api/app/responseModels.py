@@ -8,7 +8,7 @@ class PowerStationStats(BaseModel):
     capacity_mw: float
 
 
-power_type_count = 7
+power_type_count = 9
 
 
 class PowerTypes(BaseModel):
@@ -19,11 +19,14 @@ class PowerTypes(BaseModel):
     hydro: PowerStationStats
     diesel: PowerStationStats
     wind: PowerStationStats
+    battery: PowerStationStats
+    solar: PowerStationStats
 
 
 class PowerstationUpdatePackage(BaseModel):
     timestamp: datetime
     power_types: PowerTypes
+    percent_renewable: float
     co2e_tonnne_per_hour: float
     co2e_grams_per_kwh: float
 

@@ -38,12 +38,16 @@ pub struct PowerTypes {
     pub geothermal: PowerStationType,
     #[serde(alias = "Hydro")]
     pub hydro: PowerStationType,
-    #[serde(alias = "Liquid")]
+    #[serde(alias = "Diesel/Oil")]
     pub diesel: PowerStationType,
     #[serde(alias = "Wind")]
     pub wind: PowerStationType,
-}
+    #[serde(alias = "Solar")]
+    pub solar: PowerStationType,
+    #[serde(alias = "Battery")]
+    pub battery: PowerStationType,
 
+}
 #[derive(Debug)]
 pub struct PowerStationUpdatePackage {
     pub timestamp: DateTime<Utc>,

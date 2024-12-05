@@ -35,6 +35,7 @@ class PowerStations {
         PowerStats hydro;
         PowerStats diesel;
         PowerStats wind;
+        PowerStats solar;
         double co2e_intensity;
         double co2e_emissions;
         const char *timestamp;

@@ -68,7 +68,12 @@ async def power_stations(start: datetime = datetime.min, end: datetime = datetim
         if cumulative_power_output > 0:
             co2e_intensity = (co2e_output*TONNES_TO_GRAMS) / cumulative_power_output
 
-        outputSlices.append(PowerstationUpdatePackage(timestamp=updateTime, power_types=powerTypes, co2e_tonnne_per_hour=round_sig(co2e_output,5), co2e_grams_per_kwh=round_sig(co2e_intensity,5)))
+        total_generation = sum([x["generation"] for x in timeSlice])
+        total_renewable = sum([x["generation"] for x in timeSlice if x["kind"] in ["wind", "solar", "hydro", "geothermal"]])
+        percent_renewable = total_renewable / total_generation
+
+
+        outputSlices.append(PowerstationUpdatePackage(timestamp=updateTime, power_types=powerTypes, co2e_tonnne_per_hour=round_sig(co2e_output,5), co2e_grams_per_kwh=round_sig(co2e_intensity,5), percent_renewable=round_sig(percent_renewable,5)))
     return outputSlices
 
 @router.get("/grid_connection_points/{connection_code}", response_model=List[ConnectionPoint])

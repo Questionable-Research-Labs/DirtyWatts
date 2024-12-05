@@ -14,6 +14,7 @@ const cleanPowerIndex: Record<string, boolean> = {
     hydro: true,
     diesel: false,
     wind: true,
+    solar: true
 };
 
 export const percentRenewable = derived(powerTypes, (powerTypes) => {

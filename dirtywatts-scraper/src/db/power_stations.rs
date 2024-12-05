@@ -77,6 +77,8 @@ pub fn add_readings(
         geothermal,
         diesel,
         wind,
+        battery,
+        solar
     } = power_types;
 
     add_data("co_gen", co_gen, &timestamp, connection)?;
@@ -86,6 +88,8 @@ pub fn add_readings(
     add_data("geothermal", geothermal, &timestamp, connection)?;
     add_data("diesel", diesel, &timestamp, connection)?;
     add_data("wind", wind, &timestamp, connection)?;
+    add_data("battery", battery, &timestamp, connection)?;
+    add_data("solar", solar, &timestamp, connection)?;
 
     Ok(())
 }

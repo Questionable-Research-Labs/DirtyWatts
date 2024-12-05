@@ -7,7 +7,7 @@
 #include <ESP8266WiFi.h>  //https://github.com/esp8266/Arduino
 #endif
 
-#ifdef ARDUINO_ARCH_ESP32
+#if defined(ARDUINO_ARCH_ESP32) or defined(LT_BK72XX)
 #include <HTTPClient.h>
 #include <WebServer.h>
 #include <WiFi.h>
